@@ -28,6 +28,11 @@ export default {
             path: '/clients',
             component: () => import('@/views/clients/index.vue')
         },
+        {
+            name: 'helper',
+            path: '/helper',
+            component: () => import('@/views/helper/index.vue')
+        },
     ]
 };
 
