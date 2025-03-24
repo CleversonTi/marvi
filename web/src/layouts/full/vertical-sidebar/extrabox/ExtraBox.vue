@@ -1,19 +1,15 @@
 <script setup lang="ts">
-import { PowerIcon } from 'vue-tabler-icons';
+import { CircleHelp } from 'lucide-vue-next';
 </script>
 
 <template>
-    <v-sheet rounded="md" color="lightprimary" class="ExtraBox hide-menu mx-3 px-6 pb-5 pt-4">
-        <div class="d-flex align-center">
-            <div class="pr-1">
-                <h6 class="text-h6 text-10 mb-2">Unlimited Access</h6>
-                <v-btn to="https://adminmart.com/product/modernize-vuetify-vue-admin-dashboard/?ref=5" size="small" color="primary" flat>Upgrade</v-btn>
+   <v-list-item-title> 
+        <v-list-item__content>
+            <div class="v-list-item-title hepl">
+                <router-link to="/">  <CircleHelp stroke-width="1.5" size="20"/> Ajuda </router-link>
             </div>
-            <div class="mt-n7 ml-2">
-                <img src="@/assets/images/background/rocket.png" />
-            </div>
-        </div>
-    </v-sheet>
+        </v-list-item__content>
+    </v-list-item-title>
 </template>
 <style lang="scss">
 .ExtraBox {

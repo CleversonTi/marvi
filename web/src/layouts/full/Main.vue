@@ -1,10 +1,10 @@
-<script setup lang="ts">
+<script setup lang="js">
 import { ref, shallowRef } from 'vue';
 import sidebarItems from './vertical-sidebar/sidebarItem';
 import NavGroup from './vertical-sidebar/NavGroup/index.vue';
 import NavItem from './vertical-sidebar/NavItem/index.vue';
 import ExtraBox from './vertical-sidebar/extrabox/ExtraBox.vue';
-import Logo from './logo/Logo.vue';
+import Msg from './msg-saudacao/Mensagem.vue';
 // Icon Imports
 import { Menu2Icon, BellRingingIcon } from 'vue-tabler-icons';
 // dropdown imports
@@ -47,7 +47,7 @@ const sDrawer = ref(true);
     <v-navigation-drawer left elevation="0"  app class="leftSidebar"  v-model="sDrawer">
         <!---Logo part -->
         <div class="pa-5">
-            <Logo />
+            <Msg />
         </div>
         <!-- ---------------------------------------------- -->
         <!---Navigation -->

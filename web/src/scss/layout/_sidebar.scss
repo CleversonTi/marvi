@@ -63,6 +63,7 @@
 
         .v-list-item-title {
             font-size: 0.875rem;
+            
         }
     }
     .v-list {
@@ -165,7 +166,7 @@
                 font-weight: 600;
                 text-transform: capitalize;
                 text-decoration: none;
-                
+
             }
         }
     }
@@ -255,5 +256,35 @@
             column-gap: 10px;
             display: flex;
         }
+    }
+}
+
+.v-navigation-drawer{
+    background-color: #ECEFF1 !important;
+    .v-navigation-drawer__content{
+
+    }
+    .v-list-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        column-gap: 10px;
+        .v-list-item__prepend{
+            color: #1B1B1B;
+            svg{
+                width: 30px;
+                height: 30px;
+            }
+
+        }
+         .v-list-item__content{
+           
+            .v-list-item-title{
+               font-size: 16px;
+               font-weight: 400;
+               font-family: 'Poppins', sans-serif;
+            }
+        }
+        
     }
 }

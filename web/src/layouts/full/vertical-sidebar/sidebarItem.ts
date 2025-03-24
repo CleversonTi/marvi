@@ -4,6 +4,13 @@ import {
     LayoutDashboardIcon, LoginIcon, MoodHappyIcon, TypographyIcon, UserPlusIcon
 } from 'vue-tabler-icons';
 
+import {
+     HouseIcon,
+     FileText,
+     User,
+     Users
+} from 'lucide-vue-next';
+
 export interface menu {
     header?: string;
     title?: string;
@@ -20,45 +27,30 @@ export interface menu {
 }
 
 const sidebarItem: menu[] = [
-    { header: 'Home' },
+    
+    
     {
-        title: 'Dashboard',
-        icon: LayoutDashboardIcon,
-        to: '/'
-    },
-    { header: 'utilities' },
-    {
-        title: 'Typography',
-        icon: TypographyIcon,
+        title: 'Minha Conta',
+        icon: HouseIcon ,
         to: '/ui/typography'
     },
     {
-        title: 'Shadow',
-        icon: CopyIcon,
+        title: 'Pedidos',
+        icon: FileText,
         to: '/ui/shadow'
     },
-    { header: 'auth' },
     {
-        title: 'Login',
-        icon: LoginIcon,
-        to: '/auth/login'
+        title: 'Representantes',
+        icon:  User,
+        to: '/ui/shadow'
     },
     {
-        title: 'Register',
-        icon: UserPlusIcon,
-        to: '/auth/register'
+        title: 'Clientes',
+        icon:   Users,
+        to: '/ui/shadow'
     },
-    { header: 'Extra' },
-    {
-        title: 'Icons',
-        icon: MoodHappyIcon,
-        to: '/icons'
-    },
-    {
-        title: 'Sample Page',
-        icon: ApertureIcon,
-        to: '/sample-page'
-    },
+   
+   
 ];
 
 export default sidebarItem;
