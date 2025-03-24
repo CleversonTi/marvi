@@ -9,6 +9,7 @@ const props = defineProps({ item: Object, level: Number });
     <v-list-item
         :to="item.to"
         rounded
+        exact
         class="mb-1"
         color="primary"
         :disabled="item.disabled"

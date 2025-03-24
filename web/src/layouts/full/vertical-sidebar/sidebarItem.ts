@@ -15,7 +15,7 @@ export interface menu {
     header?: string;
     title?: string;
     icon?: any;
-    to?: string;
+    to?: object;
     chip?: string;
     chipColor?: string;
     chipVariant?: string;
@@ -32,22 +32,22 @@ const sidebarItem: menu[] = [
     {
         title: 'Minha Conta',
         icon: HouseIcon ,
-        to: '/ui/typography'
+        to: {name:'account'}
     },
     {
         title: 'Pedidos',
         icon: FileText,
-        to: '/ui/shadow'
+        to: {name: 'pedidos'}
     },
     {
         title: 'Representantes',
         icon:  User,
-        to: '/ui/shadow'
+        to: {name:'representantes'}
     },
     {
         title: 'Clientes',
         icon:   Users,
-        to: '/ui/shadow'
+        to: {name:'clients'}
     },
    
    
