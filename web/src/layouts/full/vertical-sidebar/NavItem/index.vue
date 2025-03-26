@@ -5,6 +5,7 @@ const props = defineProps({ item: Object, level: Number });
 </script>
 
 <template>
+
     <!---Single Item-->
     <v-list-item
         :to="item.to"
@@ -20,7 +21,7 @@ const props = defineProps({ item: Object, level: Number });
             <Icon :item="item.icon" :level="level" />
         </template>
         
-        <v-list-item-title>{{item.title }}</v-list-item-title>
+        <v-list-item-title :name="item.title ">{{item.title }}</v-list-item-title>
         <!---If Caption-->
         <v-list-item-subtitle v-if="item.subCaption" class="text-caption mt-n1 hide-menu">
             {{ item.subCaption }}

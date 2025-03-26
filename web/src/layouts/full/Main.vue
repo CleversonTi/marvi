@@ -12,7 +12,9 @@ import NotificationDD from './vertical-header/NotificationDD.vue';
 import ProfileDD from './vertical-header/ProfileDD.vue';
 const sidebarMenu = shallowRef(sidebarItems);
 import { Monitor } from 'lucide-vue-next';
+const drawer = ref(false)
 const sDrawer = ref(true);
+
 </script>
 
 <template>
@@ -49,6 +51,7 @@ const sDrawer = ref(true);
         <div class="pa-5">
             <Msg />
         </div>
+         <v-app-bar-nav-icon @click="$emit('drawerEvent')"></v-app-bar-nav-icon>
         <!-- ---------------------------------------------- -->
         <!---Navigation -->
         <!-- ---------------------------------------------- -->
@@ -64,7 +67,7 @@ const sDrawer = ref(true);
                     <!---End Single Item-->
                 </template>
             </v-list>
-            <div class="pa-4">
+            <div class="pa-4 helpers">
                 <ExtraBox />
             </div>
         

@@ -309,4 +309,36 @@
         }
         
     }
+
+    .helpers{
+        .v-list-item-title{
+           
+            padding: 0 10px;
+            
+            a{
+                font-size: 16px;
+                font-weight: 400;
+                font-family: 'Poppins', sans-serif;
+                color: #1B1B1B;
+                display: flex;
+                padding: 10px 0;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                column-gap: 10px;
+                min-height: 48px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                text-decoration: none;
+                svg{
+                    width: 30px;
+    height: 30px;
+                }
+                &.router-link-active{
+                  //background-color: #fff;
+                }
+
+            }
+         }
+    }
 }
