@@ -29,3 +29,216 @@
         }
     }
 }
+.account{
+    .primary_section{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 5rem;
+        .filter_area{
+            .v-container{
+                display: flex;
+            }
+        }
+
+    }
+
+}
+.title-section{
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+.box-area{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #EEEEEE;
+    }
+    .btn:link,
+    .btn:visited {
+        // background-color: darken(#EEEEEE, 30%);
+    }
+
+    .btn:hover {
+        
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        // background: darken(#EEEEEE, 10%);
+    }
+
+    .btn:active {
+    
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-white {
+        
+        color: #777;
+    }
+
+    .btn::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    .btn-white::after {
+        background-color: #fff;
+    }
+}
+.v-card-item__content{
+    display: block;
+    float: left;
+    border: 1px solid #CACACA;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
+    .v-card-item_header{
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        strong{
+            font-size: 40px;
+            font-weight: 700;
+            color: #434343;
+        }
+        span{
+            font-size: 14px;
+            font-weight: 400;
+            color: #71717A;
+        }
+        .total{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            column-gap: 1rem;
+        }
+        .periodo{
+            span{
+                color: #1E293B;
+                font-weight: 600;
+            }
+        }
+    }
+}
+.v-card-item__box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 1rem;
+
+    .card{
+        width: 49%;
+        border-radius: 12px;
+        padding: 16px;
+        border: 1px solid #CACACA;
+        box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
+        transition: all 0.3s;
+        cursor: pointer;
+        a{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            .description{
+                width: 100%;
+            }
+
+            font-family: 'Poppins', sans-serif;
+            strong{
+                font-size: 40px;
+                font-weight: 700;
+                color: #434343;
+                font-family: 'Poppins', sans-serif;
+            }
+            span{
+                font-size: 14px;
+                font-weight: 400;
+                color: #71717A;
+                font-family: 'Poppins', sans-serif;
+            }
+        }
+        &.fatura{
+            background-color: #FB8C00;
+            border: 1px solid #FB8C00;
+            a{
+                color: #fff;
+                strong{
+                    
+                    color: #fff;
+                }
+                span{
+                   
+                    color: #fff;
+                }
+
+            }
+            &:hover{
+                background-color: darken(#FB8C00, 15%);
+            }
+        }
+        &.unbilled{
+            background-color: #F4511E;
+            border: 1px solid #F4511E;
+            &:hover{
+                background-color: darken(#F4511E, 15%);
+            }
+        }
+        &.totalfaturamento{
+            border: 1px solid #1A9701;
+        }
+        &:hover{
+          
+            border: 1px solid #1E293B;
+        }
+       
+    }
+}
+
+
+
+.primary_section{
+    margin: 1rem 0 0;
+    padding: 1rem 2rem 0;
+    &.tables{
+        width: 100%;
+        .tabela-representantes{
+            width: 100%;
+        }
+    }
+    h4{
+        color: #646262;
+        font-size: 24;
+        font-weight: 600;
+    }
+}
+.area-graphics{
+    
+
+}
+
+
+

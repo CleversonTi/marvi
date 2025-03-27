@@ -4,11 +4,18 @@ import {
     LayoutDashboardIcon, LoginIcon, MoodHappyIcon, TypographyIcon, UserPlusIcon
 } from 'vue-tabler-icons';
 
+import {
+     HouseIcon,
+     FileText,
+     User,
+     Users
+} from 'lucide-vue-next';
+
 export interface menu {
     header?: string;
     title?: string;
     icon?: any;
-    to?: string;
+    to?: object;
     chip?: string;
     chipColor?: string;
     chipVariant?: string;
@@ -20,45 +27,35 @@ export interface menu {
 }
 
 const sidebarItem: menu[] = [
-    { header: 'Home' },
+    
+    
     {
-        title: 'Dashboard',
-        icon: LayoutDashboardIcon,
-        to: '/'
-    },
-    { header: 'utilities' },
-    {
-        title: 'Typography',
-        icon: TypographyIcon,
-        to: '/ui/typography'
+        title: 'Minha Conta',
+        icon: HouseIcon ,
+        to: {name:'account'}
     },
     {
-        title: 'Shadow',
-        icon: CopyIcon,
-        to: '/ui/shadow'
-    },
-    { header: 'auth' },
-    {
-        title: 'Login',
-        icon: LoginIcon,
-        to: '/auth/login'
+        title: 'Pedidos',
+        icon: FileText,
+        to: {name: 'pedidos'}
     },
     {
-        title: 'Register',
-        icon: UserPlusIcon,
-        to: '/auth/register'
-    },
-    { header: 'Extra' },
-    {
-        title: 'Icons',
-        icon: MoodHappyIcon,
-        to: '/icons'
+        title: 'Representantes',
+        icon:  User,
+        to: {name:'representantes'}
     },
     {
-        title: 'Sample Page',
-        icon: ApertureIcon,
-        to: '/sample-page'
+        title: 'Clientes',
+        icon:   Users,
+        to: {name:'clients'}
     },
+    {
+        title: 'Mix de Produtos',
+        icon:   Users,
+        to: {name:'mix-produtos'}
+    },
+   
+   
 ];
 
 export default sidebarItem;

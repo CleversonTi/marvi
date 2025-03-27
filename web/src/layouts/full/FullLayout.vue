@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script setup lang="js">
 import { RouterView } from 'vue-router';
-// import VerticalSidebarVue from './vertical-sidebar/VerticalSidebar.vue';
+//  import VerticalSidebarVue from './vertical-sidebar/VerticalSidebar.vue';
 // import VerticalHeaderVue from './vertical-header/VerticalHeader.vue';
 import MainView from './Main.vue';
 </script>
@@ -12,10 +12,9 @@ import MainView from './Main.vue';
             <VerticalHeaderVue  /> -->
             <MainView />
             <v-main>
+               
                 <v-container fluid class="page-wrapper">
-                    <div class="maxWidth">
-                        <RouterView />
-                    </div>
+                   <RouterView />
                 </v-container>
             </v-main>
         </v-app>

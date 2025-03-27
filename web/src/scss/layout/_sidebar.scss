@@ -63,6 +63,7 @@
 
         .v-list-item-title {
             font-size: 0.875rem;
+            
         }
     }
     .v-list {
@@ -165,7 +166,7 @@
                 font-weight: 600;
                 text-transform: capitalize;
                 text-decoration: none;
-                
+
             }
         }
     }
@@ -255,5 +256,89 @@
             column-gap: 10px;
             display: flex;
         }
+    }
+}
+
+.v-navigation-drawer{
+    background-color: #ECEFF1 !important;
+    .v-navigation-drawer__content{
+
+    }
+    .v-list-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        column-gap: 10px;
+
+        .v-ripple__container{
+            background-color: #ECEFF1;
+           display: none; 
+        }
+        &.v-list-item--active{
+            .v-list-item__overlay{
+                background-color: #fff;
+                opacity: 1;
+                z-index: -1;
+            }
+            .v-list-item__content{
+                .v-list-item-title{
+                    font-weight: 600;
+                    color: #1B1B1B;
+
+                }
+            }
+        }
+        .v-list-item__overlay{
+            background-color: #ECEFF1;
+        }
+        .v-list-item__prepend{
+            color: #1B1B1B;
+            svg{
+                width: 30px;
+                height: 30px;
+            }
+
+        }
+         .v-list-item__content{
+           
+            .v-list-item-title{
+               font-size: 16px;
+               font-weight: 400;
+               font-family: 'Poppins', sans-serif;
+            }
+        }
+        
+    }
+
+    .helpers{
+        .v-list-item-title{
+           
+            padding: 0 10px;
+            
+            a{
+                font-size: 16px;
+                font-weight: 400;
+                font-family: 'Poppins', sans-serif;
+                color: #1B1B1B;
+                display: flex;
+                padding: 10px 0;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                column-gap: 10px;
+                min-height: 48px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                text-decoration: none;
+                svg{
+                    width: 30px;
+    height: 30px;
+                }
+                &.router-link-active{
+                  //background-color: #fff;
+                }
+
+            }
+         }
     }
 }

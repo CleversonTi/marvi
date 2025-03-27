@@ -1,18 +1,27 @@
-
-
-
-// Components
-import App from './App.vue'
-import router from './router'
-// Composables
+// Vue e App
 import { createApp } from 'vue'
+import App from './App.vue'
 
-const app = createApp(App)
+// Plugins
+import router from './router'
 import vuetify from './plugins/vuetify'
-import '@/scss/style.scss';
+import ElementPlus from 'element-plus'
+import ptBr from 'element-plus/es/locale/lang/pt-br'
+import VueApexCharts from 'vue3-apexcharts'
 
+// Estilos
+import 'element-plus/dist/index.css'
+import '@/scss/style.scss'
+
+// Criando a aplicação
+const app = createApp(App)
 
 app
-.use(router)
-.use(vuetify)
-.mount('#app')
+  .use(router)
+  .use(vuetify)
+  .use(ElementPlus, { locale: ptBr }) // Locale correto aplicado aqui
+  .use(VueApexCharts)
+
+app.component('apexchart', VueApexCharts)
+
+app.mount('#app')

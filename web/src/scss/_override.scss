@@ -14,8 +14,18 @@ html {
     .bg-warning {
         color: #fff !important;
     }
+    .notfound{
+        .text-h1{
+            color: #E6223D;
+        }
+        .v-btn {
+            background-color: #E6223D !important;
+            span{}
+        }
+    }
 }
 .border,
 .v-divider {
     border-color: rgba(var(--v-border-color), 1) !important;
 }
+

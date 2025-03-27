@@ -1,18 +1,29 @@
-<script setup lang="ts">
+<script setup lang="js">
 import { ref, shallowRef } from 'vue';
 import sidebarItems from './vertical-sidebar/sidebarItem';
 import NavGroup from './vertical-sidebar/NavGroup/index.vue';
 import NavItem from './vertical-sidebar/NavItem/index.vue';
 import ExtraBox from './vertical-sidebar/extrabox/ExtraBox.vue';
-import Logo from './logo/Logo.vue';
+import Msg from './msg-saudacao/Mensagem.vue';
 // Icon Imports
 import { Menu2Icon, BellRingingIcon } from 'vue-tabler-icons';
 // dropdown imports
 import NotificationDD from './vertical-header/NotificationDD.vue';
 import ProfileDD from './vertical-header/ProfileDD.vue';
-const sidebarMenu = shallowRef(sidebarItems);
+import Sidebar from '@/layouts/full/vertical-container/Sidebar.vue';
+
 import { Monitor } from 'lucide-vue-next';
+const drawer = ref(false)
+// Aqui está o menu que será passado
+const sidebarMenu = [
+  { title: 'Minha Conta', icon: 'mdi-account-circle-outline', to: '/minha-conta' },
+  { title: 'Pedidos', icon: 'mdi-file-document-multiple-outline', to: '/pedidos' },
+  { title: 'Clientes', icon: 'mdi-account-group-outline', to: '/clientes' },
+  { title: 'Mix de Produtos', icon: 'mdi-package-variant-closed', to: '/mix-produtos' }
+];
+
 const sDrawer = ref(true);
+
 </script>
 
 <template>
@@ -43,37 +54,9 @@ const sDrawer = ref(true);
             </div>
         </v-app-bar>
     </div>
+
     <!------Sidebar-------->
-    <v-navigation-drawer left elevation="0"  app class="leftSidebar"  v-model="sDrawer">
-        <!---Logo part -->
-        <div class="pa-5">
-            <Logo />
-        </div>
-        <!-- ---------------------------------------------- -->
-        <!---Navigation -->
-        <!-- ---------------------------------------------- -->
-        <div>
-            <v-list class="pa-6">
-                <!---Menu Loop -->
-                <template v-for="(item, i) in sidebarMenu">
-                    <!---Item Sub Header -->
-                    <NavGroup :item="item" v-if="item.header" :key="item.title" />
-
-                    <!---Single Item-->
-                    <NavItem :item="item" v-else class="leftPadding" />
-                    <!---End Single Item-->
-                </template>
-            </v-list>
-            <div class="pa-4">
-                <ExtraBox />
-            </div>
-        
-    </div>
-
-    </v-navigation-drawer>
+        <Sidebar :menu="sidebarMenu" />
     <!------Header-------->
-
-
-
     
 </template>
