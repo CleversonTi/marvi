@@ -223,6 +223,12 @@
 .primary_section{
     margin: 1rem 0 0;
     padding: 1rem 2rem 0;
+    &.tables{
+        width: 100%;
+        .tabela-representantes{
+            width: 100%;
+        }
+    }
     h4{
         color: #646262;
         font-size: 24;

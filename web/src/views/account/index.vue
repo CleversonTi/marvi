@@ -1,43 +1,57 @@
 <template>
-    <div class="account">
-        <section class="primary_section">
-            <h1 class="title-section">Minha Conta</h1>
-                <div class="filter_area">
-                    <FilterPerido 
-                        :title="filtro.title" 
-                        v-on:selectedRange="deleteItem"
-                    />
-            </div>
-        </section>
+  <div class="account">
+    <section class="primary_section">
+      <h1 class="title-section">Minha Conta</h1>
+      <div class="filter_area">
+        <FilterPerido 
+          :title="filtro.title"
+          :startPlaceholder="'Data de início'"
+          :endPlaceholder="'Data de fim'"
+          @selectedRange="onDateChange"
+        />
+      </div>
+    </section>
+   
+    <Resumo 
+        :startDate="startDate"
+        :startEnd="startEnd"
        
-              
-              <Resumo/> 
-            
-    </div>
+    />
+  </div>
 </template>
+
 <script setup>
-  import { shallowRef } from 'vue'
-  import { ref, onMounted } from "vue";
+import { ref, onMounted } from 'vue';
+import FilterPerido from '@/components/FilterDates/DatePicker.vue';
+import Resumo from '@/layouts/pedidos/resumo/Main.vue';
 
- const items = ref([])
+const pedidos = ref([]);
+const selectedRange = ref([]);
+const startDate = ref('');
+const startEnd = ref('');
 
-    onMounted(async () => {
-    const response = await fetch('http://localhost:4000/pedidos')
-    console.log(response);
-    items.value = await response.json();
-    console.log( items.value );
-    })
+onMounted(async () => {
+  const response = await fetch('http://localhost:4000/pedidos');
+  pedidos.value = await response.json();
+  
+});
 
-  const model = shallowRef(null)
-
-  import FilterPerido from '@/components/FilterDates/DatePicker.vue';
-  import Resumo from '@/layouts/pedidos/resumo/Main.vue';
-
-  const filtro = {
-    title: 'Filtrar por Período',
-    };
-    function selectedRange(item, item2) {
-	    console.log(item, item2);
-    }
-
+const onDateChange = (datasSelecionadas) => {
+  // Verifica se o array de datas selecionadas possui exatamente 2 elementos
+  if (datasSelecionadas.length === 2) {
+    // Atualiza o array `selectedRange` com os valores de `datasSelecionadas`
+    selectedRange.value = [...datasSelecionadas]; // ou datasSelecionadas.slice()
+    console.log(typeof startDate.value);
+    startDate.value = selectedRange.value[0];
+    console.log(startDate.value);
+    startEnd.value = selectedRange.value[1];
+   
+  } else {
+    console.warn('O array datasSelecionadas deve conter exatamente duas datas.');
+  }
+};
+  
+const filtro = {
+  title: 'Filtrar por Período',
+};
 </script>

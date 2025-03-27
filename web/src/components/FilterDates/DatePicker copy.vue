@@ -1,0 +1,44 @@
+<template>
+  <span>{{ title }}</span>
+  <div class="area-calendar">
+    <ElDatePicker
+      v-model="selectedRange"
+      type="daterange"
+      range-separator="até"
+      :start-placeholder="startPlaceholder"
+      :end-placeholder="endPlaceholder"
+      @change="emitSelectedRange"
+    />
+    <IconCalendar />
+    {{}}
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import 'element-plus/dist/index.css';
+import { ElDatePicker } from 'element-plus';
+import IconCalendar from '@/components/icons/IconCalendar.vue';
+
+const selectedRange = ref([]);
+const emit = defineEmits(['selectedRange']);
+
+const emitSelectedRange = () => {
+   selectedRange.value = [...datasSelecionadas]; // ou datasSelecionadas.slice()
+
+    // console.log('Datas selecionadas:', datasSelecionadas);
+    // console.log('Data inicial:', selectedRange.value[0]);
+    // console.log('Data final:', selectedRange.value[1]);
+  if (selectedRange.value.length === 2) {
+    emit('selectedRange', selectedRange.value); // Emitindo corretamente o evento com as datas selecionadas
+  }else {
+    console.warn('Selecionadas deve conter exatamente duas datas.');
+  }
+};
+
+defineProps({
+  title: String,
+  startPlaceholder: String,
+  endPlaceholder: String,
+});
+</script>

@@ -8,7 +8,7 @@ const selectedRange = ref([]);
 </script>
 
 <template>
-   <span>Escolha um período:</span>
+   <span>Escolha um período1:</span>
   <div class="area-calendar">
     <ElDatePicker
       v-model="selectedRange"

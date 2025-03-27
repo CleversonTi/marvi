@@ -1,41 +1,54 @@
-<script setup>
-import { ref } from 'vue';
-import 'element-plus/dist/index.css';
-import { ElDatePicker } from 'element-plus';
-import IconCalendar from '@/components/icons/IconCalendar.vue'
-const selectedRange = ref([]);
-defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  startPlaceholder: {
-    type: Date,
-    required: true,
-  },
-  endPlaceholder: {
-    type: Date,
-    required: true,
-  }
-});
-</script>
-
 <template>
-   <span>{{ title }}</span>
-  <div class="area-calendar">
+  
+    <span>{{ title }}</span>
+    <div class="area-calendar">
     <ElDatePicker
-                v-model="selectedRange"
-                type="daterange"
-                range-separator="até"
-                start-placeholder=" Data de início"
-                end-placeholder="Data de fim"
-                @change="$emit('selectedRange',(selectedRange[0], selectedRange[1]))"
-
+      v-model="selectedRange"
+      type="daterange"
+      unlink-panels
+      range-separator="até"
+      :start-placeholder="startPlaceholder"
+      :end-placeholder="endPlaceholder"
+     format="DD/MM/YYYY"
+      
+      @change="emitSelectedRange"
     />
-     <!-- <p>Período Selecionado: {{ selectedRange[0] }} a {{ selectedRange[1] }}</p>  -->
-    <IconCalendar/>
+    <IconCalendar />
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const props = defineProps({
+  title: String,
+  startPlaceholder: String,
+  endPlaceholder: String
+})
+
+const emit = defineEmits(['selectedRange'])
+
+const selectedRange = ref([])
+
+// Dispara o evento para o pai quando a data for alterada manualmente
+const emitSelectedRange = () => {
+  if (selectedRange.value && selectedRange.value.length === 2) {
+    emit('selectedRange', selectedRange.value)
+  }
+}
+
+// Preenche automaticamente ao carregar o componente
+onMounted(() => {
+  const today = new Date()
+  const thirtyDaysAgo = new Date()
+  thirtyDaysAgo.setDate(today.getDate() - 30)
+
+  selectedRange.value = [thirtyDaysAgo, today]
+
+  // Emite para o pai também, se quiser disparar logo de cara
+  emit('selectedRange', selectedRange.value)
+})
+</script>
 
 <style lang="scss">
   .area-calendar{
