@@ -49,6 +49,11 @@ const sidebarItem: menu[] = [
         icon:   Users,
         to: {name:'clients'}
     },
+    {
+        title: 'Mix de Produtos',
+        icon:   Users,
+        to: {name:'mix-produtos'}
+    },
    
    
 ];

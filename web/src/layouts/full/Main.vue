@@ -10,9 +10,18 @@ import { Menu2Icon, BellRingingIcon } from 'vue-tabler-icons';
 // dropdown imports
 import NotificationDD from './vertical-header/NotificationDD.vue';
 import ProfileDD from './vertical-header/ProfileDD.vue';
-const sidebarMenu = shallowRef(sidebarItems);
+import Sidebar from '@/layouts/full/vertical-container/Sidebar.vue';
+
 import { Monitor } from 'lucide-vue-next';
 const drawer = ref(false)
+// Aqui está o menu que será passado
+const sidebarMenu = [
+  { title: 'Minha Conta', icon: 'mdi-account-circle-outline', to: '/minha-conta' },
+  { title: 'Pedidos', icon: 'mdi-file-document-multiple-outline', to: '/pedidos' },
+  { title: 'Clientes', icon: 'mdi-account-group-outline', to: '/clientes' },
+  { title: 'Mix de Produtos', icon: 'mdi-package-variant-closed', to: '/mix-produtos' }
+];
+
 const sDrawer = ref(true);
 
 </script>
@@ -45,38 +54,9 @@ const sDrawer = ref(true);
             </div>
         </v-app-bar>
     </div>
+
     <!------Sidebar-------->
-    <v-navigation-drawer left elevation="0"  app class="leftSidebar"  v-model="sDrawer">
-        <!---Logo part -->
-        <div class="pa-5">
-            <Msg />
-        </div>
-         <v-app-bar-nav-icon @click="$emit('drawerEvent')"></v-app-bar-nav-icon>
-        <!-- ---------------------------------------------- -->
-        <!---Navigation -->
-        <!-- ---------------------------------------------- -->
-        <div>
-            <v-list class="pa-6">
-                <!---Menu Loop -->
-                <template v-for="(item, i) in sidebarMenu">
-                    <!---Item Sub Header -->
-                    <NavGroup :item="item" v-if="item.header" :key="item.title" />
-
-                    <!---Single Item-->
-                    <NavItem :item="item" v-else class="leftPadding" />
-                    <!---End Single Item-->
-                </template>
-            </v-list>
-            <div class="pa-4 helpers">
-                <ExtraBox />
-            </div>
-        
-    </div>
-
-    </v-navigation-drawer>
+        <Sidebar :menu="sidebarMenu" />
     <!------Header-------->
-
-
-
     
 </template>
