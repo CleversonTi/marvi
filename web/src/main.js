@@ -22,6 +22,6 @@ app
   .use(ElementPlus, { locale: ptBr }) // Locale correto aplicado aqui
   .use(VueApexCharts)
 
-app.component('apexchart', VueApexCharts)
+app.component('Apexchart', VueApexCharts)
 
 app.mount('#app')

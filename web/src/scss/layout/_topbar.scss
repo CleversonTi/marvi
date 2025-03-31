@@ -7,15 +7,11 @@
         margin: 0 15px 0 10px !important;
     }
 }
-
-.topo{
-   
-    height: 100%;
-    header{
-        &.v-theme--myCustomLightTheme{
-            background-color: #E6223D;
-            padding: 0 32px;
-        }
+header{
+    &.v-theme--myCustomLightTheme{
+        background-color: #E6223D;
+        padding: 0 32px;
     }
-    
 }
+    
+

@@ -22,81 +22,87 @@
 
     <div class="v-card-item__box">
       <div class="card fatura not-approved">
-                <router-link :to="{name: 'pedidos'}"> 
-                    <div class="total">
-                            <strong>1</strong>
-                    </div>
-                    <div class="link">
-                            <IconDirection stroke-width="1.5" size="20"/> 
-                    </div>
-                    <div class="description">
-                       <span>
-                            Pedidos não aprovados
-                        </span> 
-                    </div>
-                </router-link>
-            </div>
-             <div class="card fatura unbilled">
-                <router-link :to="{name: 'pedidos'}">  
-                    <div class="total">
-                            <strong>3</strong>
-                    </div>
-                    <div class="link">
-                           <IconDirection stroke-width="1.5" size="20"/> 
-                    </div>
-                    <div class="description">
-                        <span>
-                            Pedidos não faturados
+        <router-link :to="{name: 'pedidos'}"> 
+          <div class="total">
+            <strong>1</strong>
+          </div>
+          <div class="link">
+            <IconDirection
+              stroke-width="1.5"
+              size="20"
+            /> 
+          </div>
+          <div class="description">
+            <span>
+              Pedidos não aprovados
+            </span> 
+          </div>
+        </router-link>
+      </div>
+      <div class="card fatura unbilled">
+        <router-link :to="{name: 'pedidos'}">  
+          <div class="total">
+            <strong>3</strong>
+          </div>
+          <div class="link">
+            <IconDirection
+              stroke-width="1.5"
+              size="20"
+            /> 
+          </div>
+          <div class="description">
+            <span>
+              Pedidos não faturados
 
-                        </span>
-                    </div>
-                </router-link>
-            </div>
-            <div class="card">
-                <router-link :to="{name: 'pedidos'}"> 
-                    <div class="total">
-                            <strong>
-                                300
-                            </strong>
-                    </div>
+            </span>
+          </div>
+        </router-link>
+      </div>
+      <div class="card">
+        <router-link :to="{name: 'pedidos'}"> 
+          <div class="total">
+            <strong>
+              300
+            </strong>
+          </div>
                     
-                    <div class="description">
-                        <span>
-                            Pedidos não faturados
-                        </span>
-                    </div>
-                </router-link>
-            </div>
-            <div class="card">
-                <router-link :to="{name: 'pedidos'}"> 
-                    <div class="total">
-                            <strong>
-                               20
-                            </strong>
-                    </div>
+          <div class="description">
+            <span>
+              Pedidos não faturados
+            </span>
+          </div>
+        </router-link>
+      </div>
+      <div class="card">
+        <router-link :to="{name: 'pedidos'}"> 
+          <div class="total">
+            <strong>
+              20
+            </strong>
+          </div>
                     
-                    <div class="description">
-                        <span>
-                           Pedidos aguardando envio
-                        </span>
-                    </div>
-                </router-link>
-            </div>
-            <div class="card">
-                <router-link :to="{name: 'pedidos'}">  
-                    <div class="total">
-                            <strong>
-                                25t
-                                </strong>
-                    </div>
+          <div class="description">
+            <span>
+              Pedidos aguardando envio
+            </span>
+          </div>
+        </router-link>
+      </div>
+      <div class="card">
+        <router-link :to="{name: 'pedidos'}">  
+          <div class="total">
+            <strong>
+              25t
+            </strong>
+          </div>
                     
-                    <div class="description">
-                       <span>
-                        Peso dos pedidos
-                        </span>
-                    </div>
-                </router-link>
-            </div>
+          <div class="description">
+            <span>
+              Peso dos pedidos
+            </span>
+          </div>
+        </router-link>
+      </div>
 
       <div class="card totalfaturamento">
         <router-link :to="{ name: 'pedidos' }">
@@ -112,14 +118,14 @@
   </section>
   <section class="primary_section tables">
     <TabelaRepresentantes :dados="faturamentoPorRepresentante" />
-   </section>
+  </section>
 </template>
 
 <script setup>
 import { ref, watch, onMounted, computed, toRefs } from 'vue'
 import axios from 'axios'
 import Download from '@/components/download/index.vue'
-import Graficos from '@/components/pedidos/resumo/Grafico.vue';
+import Graficos from '@/components/Graphic/Graphic.vue';
 import UnapprovedRequests from '@/components/pedidos/resumo/UnapprovedRequests.vue';
 //import NotBilled from '@/components/pedidos/resumo/NotBilled.vue';
 import IconDirection from '@/components/icons/IconLeft.vue'

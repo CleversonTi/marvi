@@ -16,7 +16,7 @@
    
     <Resumo 
       :start-date="startDate"
-      :start-end="startEnd"   
+      :start-end="startEnd"
     />
   </div>
 </template>
@@ -34,16 +34,25 @@ const startEnd = ref('');
 onMounted(async () => {
   const response = await fetch('http://localhost:4000/pedidos');
   pedidos.value = await response.json();
+  
 });
 
 const onDateChange = (datasSelecionadas) => {
+  // Verifica se o array de datas selecionadas possui exatamente 2 elementos
   if (datasSelecionadas.length === 2) {
-    startDate.value = datasSelecionadas[0].toISOString(); // 🔥 Salvar como String ISO
-    startEnd.value = datasSelecionadas[1].toISOString();   // 🔥 Salvar como String ISO
-    console.log("📅 Data Inicial:", startDate.value);
-    console.log("📅 Data Final:", startEnd.value);
+    // Atualiza o array `selectedRange` com os valores de `datasSelecionadas`
+    selectedRange.value = [...datasSelecionadas]; // ou datasSelecionadas.slice()
+    console.log(typeof startDate.value);
+    startDate.value = selectedRange.value[0];
+    console.log(startDate.value);
+    startEnd.value = selectedRange.value[1];
+   
+  } else {
+    console.warn('O array datasSelecionadas deve conter exatamente duas datas.');
   }
 };
   
-const filtro = { title: 'Filtrar por Período' };
+const filtro = {
+  title: 'Filtrar por Período',
+};
 </script>

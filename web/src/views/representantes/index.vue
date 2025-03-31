@@ -1,6 +1,6 @@
 <template>
-    Representantes
-    <ItensTable/>
+  Representantes
+  <ItensTable />
 </template>
 <script setup>
   import { shallowRef } from 'vue'

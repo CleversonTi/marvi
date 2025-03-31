@@ -1,7 +1,6 @@
 <template>
-  
-    <span>{{ title }}</span>
-    <div class="area-calendar">
+  <span class="title-calendar">{{ title }}</span>
+  <div class="area-calendar">
     <ElDatePicker
       v-model="selectedRange"
       type="daterange"
@@ -9,7 +8,7 @@
       range-separator="até"
       :start-placeholder="startPlaceholder"
       :end-placeholder="endPlaceholder"
-     format="DD/MM/YYYY"
+      format="DD/MM/YYYY"
       
       @change="emitSelectedRange"
     />
@@ -56,6 +55,15 @@ onMounted(() => {
     background: #F0F0F0;
     padding: 10px 0;
     border-radius: 30px;
+    border: 1px solid transparent;
+    
+    transition: border 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    &:hover {
+        border: 1px solid #CACACA;
+    }
+    &:focus-within {
+      border: 1px solid #9e9e9e; /* Azul para indicar foco */
+  }
     .el-date-editor {
       background: #F0F0F0;
       box-shadow: none !important;

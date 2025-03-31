@@ -1,58 +1,88 @@
 <template>
+  <v-navigation-drawer
+    v-model="drawer"
+    :mini-variant="collapsed"
+    :width="260"
+    :mini-variant-width="80"
+    app
+    class="custom-sidebar"
+  >
+    <div class="sidebar__top">
+      <v-btn
+        icon
+        @click="collapsed = !collapsed"
+      >
+        <v-icon>{{ collapsed ? 'mdi-chevron-right' : 'mdi-chevron-left' }}</v-icon>
+      </v-btn>
+    </div>
 
-  <v-list class="pa-6">
-    <v-list-item
-      v-for="(item, index) in menu"
-      :key="index"
-      :to="item.to"
-      :exact="true"
-      :class="[
-        'mb-2',
-        'sidebar-item',
-        { 'active-sidebar': $route.path === item.to }
-      ]"
-      rounded
-      :disabled="item.disabled"
-      :target="item.type === 'external' ? '_blank' : ''"
+    <v-list
+      dense
+      nav
     >
-      <template v-slot:prepend>
-        <v-icon
-          :icon="item.icon"
-          class="sidebar-icon"
-          :color="$route.path === item.to ? 'primary' : 'grey'"
-          size="24"
-        />
-      </template>
+      <SidebarItem
+        icon="mdi-home"
+        label="Home"
+        to="/"
+        :collapsed="collapsed"
+      />
+      <SidebarItem
+        icon="mdi-view-dashboard"
+        label="Dashboard"
+        to="/dashboard"
+        :collapsed="collapsed"
+      />
+      <SidebarItem
+        icon="mdi-folder"
+        label="Create"
+        to="/create"
+        :collapsed="collapsed"
+      />
+      <SidebarItem
+        icon="mdi-format-list-checkbox"
+        label="Todo-Lists"
+        to="/todos"
+        :collapsed="collapsed"
+      />
 
-      <v-list-item-title>{{ item.title }}</v-list-item-title>
-    </v-list-item>
-  </v-list>
+      <!-- Submenu com toggle -->
+      <SidebarGroup
+        icon="mdi-calendar"
+        label="Calendar"
+        :collapsed="collapsed"
+        :items="[
+          { label: 'Mensal', to: '/calendar/month' },
+          { label: 'Semanal', to: '/calendar/week' }
+        ]"
+      />
+
+      <SidebarItem
+        icon="mdi-account"
+        label="Profile"
+        to="/profile"
+        :collapsed="collapsed"
+      />
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import SidebarItem from './SidebarItem.vue'
+import SidebarGroup from './SidebarGroup.vue'
 
-    const { menu } = defineProps({
-    menu: Array
-    });
-
-    console.log("menu");
-    console.log(menu);
-
-
+const drawer = ref(true)
+const collapsed = ref(false)
 </script>
 
 <style scoped>
-.sidebar-item {
-  padding: 12px 16px;
-  transition: background 0.3s ease;
+.custom-sidebar {
+  background-color: #ECEFF1;
+  color: #1B1B1B;
 }
-.active-sidebar {
-  background: white;
-  border-radius: 12px;
-  font-weight: bold;
-}
-.sidebar-icon {
-  margin-right: 16px;
-  transition: color 0.3s ease;
+.sidebar__top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 12px;
 }
 </style>

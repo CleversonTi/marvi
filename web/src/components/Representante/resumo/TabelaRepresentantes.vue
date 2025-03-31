@@ -11,16 +11,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="rep in dados" :key="rep.nome">
-          <td>{{ rep.nome }}</td>
-          <td>{{ rep.peso.toFixed(2) }}</td>
-          <td>{{ formatarMoeda(rep.valor) }}</td>
+        <tr
+          v-for="representante in dados"
+          :key="representante.nome"
+        >
+          <td>{{ representante.nome }}</td>
+          <td>{{ isNaN(representante.peso) ? '0.00' : Number(representante.peso).toFixed(2) }} kg</td>
+          <td>{{ isNaN(representante.valor) ? '0.00' : Number(representante.valor).toFixed(2) }} R$</td>
         </tr>
       </tbody>
     </table>
 
     <div class="footer">
-      <button @click="verTodos">Ver todos os representantes →</button>
+      <button @click="verTodos">
+        Ver todos os representantes →
+      </button>
     </div>
   </section>
 </template>
@@ -29,9 +34,10 @@
 const props = defineProps({
   dados: {
     type: Array,
-    required: true
+    required: true,
+    default: () => []
   }
-})
+});
 
 const formatarMoeda = (valor) =>
   new Intl.NumberFormat('pt-BR', {
