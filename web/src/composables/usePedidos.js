@@ -13,8 +13,10 @@ export function usePedidos() {
       pedidos.value = response.data;
       pedidosCarregados.value = true;
       console.log("✅ Pedidos carregados com sucesso:", pedidos.value);
+      return true; // Agora retornamos um sucesso para o .then() do onMounted
     } catch (error) {
       console.error('❌ Erro ao carregar pedidos:', error);
+      return false; // Retornamos um falso em caso de erro
     }
   };
 

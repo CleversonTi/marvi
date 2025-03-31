@@ -19,7 +19,13 @@ const { pedidos, pedidosFiltrados, pedidosCarregados, getPedidos, filtrarPedidos
 
 onMounted(() => {
   console.log("📥 onMounted executado.");
-  getPedidos();
+  getPedidos().then(() => {
+    if (pedidosCarregados.value) {
+      console.log("🔄 Aplicando filtro após carregamento inicial.");
+      filtrarPedidos(thisStartDate.value, thisStartEnd.value);
+      console.log('📊 Pedidos Filtrados após carregamento inicial:', pedidosFiltrados.value);
+    }
+  });
 });
 
 watch(
