@@ -1,123 +1,123 @@
 // web/src/styles/ModalFiltro.scss
 
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-  
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    width: 320px;
-    position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: #888;
-    transition: color 0.3s;
-  
-    &:hover {
-      color: red;
-    }
-  }
-  
-  .filtros-container {
-    margin-top: 20px;
-  }
-  
-  .filtros-container h3 {
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 320px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+ 
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #1B1B1B99;
+  transition: color 0.3s;
+
+  &:hover {
     color: #000;
   }
+}
+
+.filtros-container {
+  margin-top: 20px;
+}
+
+.filtros-container h3 {
+  font-size:1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.filtros-container label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-size: 0.95rem;
+  color: #1B1B1B80;
   
-  .filtros-container label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-    cursor: pointer;
-    transition: color 0.3s;
-    font-size: 0.95rem;
-    color: #1B1B1B99;
+}
+
+.filtros-container input[type="checkbox"] {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid #1B1B1B99;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, border-color 0.3s;
   
-    &:hover {
-      color: #000;
-    }
-  
-    input[type="checkbox"] {
-      appearance: none; 
-      width: 18px;
-      height: 18px;
-      border: 1px solid #1B1B1B99;
-     
-      border-radius: 4px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-right: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s, border-color 0.3s;
-  
-      &:checked {
-        background-color: #000;
-        border-color: #1B1B1B;
-        position: relative;
-      }
-  
-      &:checked::after {
-        content: "✔";
-        color: white;
-        font-size: 12px;
-        position: absolute;
-        top: 1px;
-        left: 3px;
-      }
-  
-      &:disabled {
-        background-color: #e0e0e0;
-        border-color: #c0c0c0;
-        cursor: not-allowed;
-      }
-  
-      &:disabled + span {
-        color: #c0c0c0;
-      }
-    }
+
+  &:checked {
+    background-color: #000;
   }
-  
-  .filtrar-button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s;
-    display: block;
-    width: 100%;
-    text-align: center;
-  
-    &:hover {
-      background-color: #218838;
-    }
+
+  &:checked::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 6px;
+    border-left: 3px solid white;
+    border-bottom: 3px solid white;
+    transform: rotate(-45deg);
+    top: 7px;
+    left: 5px;
   }
-  
+
+  &:disabled {
+    background-color: #e0e0e0;
+    border-color: #c0c0c0;
+    cursor: not-allowed;
+  }
+
+  &:disabled + span {
+    color: #c0c0c0;
+  }
+}
+
+.filtrar-button {
+  background-color: #1A9701;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background-color 0.3s;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+
+  &:hover {
+    background-color: #218838;
+  }
+}
