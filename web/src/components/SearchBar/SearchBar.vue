@@ -1,10 +1,10 @@
 <template>
   <div class="search-bar">
     <input 
-      v-model="searchQuery" 
-      type="text" 
-      placeholder="Digite a sua busca"
-      @input="onSearch"
+      v-model="termoBusca" 
+      type="text"
+      placeholder="Buscar pedidos..."
+      @input="emitirBusca"
     >
     <div class="icon-wrapper">
       <v-icon>mdi-magnify</v-icon>
@@ -13,18 +13,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
+const props = defineProps({});
+const emit = defineEmits(['buscar']);
 
-const searchQuery = ref('')
+const termoBusca = ref('');
 
-const onSearch = () => {
-  // Aqui você pode emitir o evento de busca ou processar a pesquisa
-  console.log('Buscando por:', searchQuery.value)
+const emitirBusca = () => {
+  emit('buscar', termoBusca.value);
 }
 </script>
 
 <style scoped lang="scss">
-
-
 
 </style>

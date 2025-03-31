@@ -4,7 +4,7 @@
       <h1 class="title-section">
         Pedidos
       </h1>
-      <SearchBar />
+      <SearchBar @buscar="onBuscar" />
     </section>
     <section class="primary_section pedidos">
       <ResumoCardsVue />
@@ -28,13 +28,32 @@
 import { ref, onMounted } from 'vue';
 import FilterPerido from '@/components/FilterDates/DatePicker.vue';
 import { useDateFilter } from '@/composables/useDateFilter';
+import { usePedidos } from '@/composables/usePedidos';
 import SearchBar from '@/components/SearchBar/SearchBar.vue';
 import ResumoCardsVue from '@/components/pedidos/ResumoCards.vue';
 import Tabela from './Tabela.vue';
 
 
-const pedidos = ref([]);
+
+
+
+const { pedidos, pedidosBuscados, getPedidos, filtrarPedidos, aplicarBusca, termoBusca } = usePedidos();
+
+const onBuscar = (termo) => {
+  termoBusca.value = termo;
+  aplicarBusca();
+};
+
+onMounted(() => {
+  getPedidos();
+});
 const { startDate, startEnd, onDateChange } = useDateFilter();
+
+
+onMounted(async () => {
+  await getPedidos();
+});
+
 
 onMounted(async () => {
   const response = await fetch('http://localhost:4000/pedidos');

@@ -1,16 +1,17 @@
 <template>
   <section class="tabela-pedidos">
     <div class="header">
-      <header><span>Todos os Pedidos</span></header>
+      <!--<header><span>Todos os Pedidos</span></header>-->
       <div class="titulo-status">
-        <span>Mostrando {{ pedidosFiltrados.length }} pedidos de {{ pedidos.length }}</span>
+        <span>Mostrando <strong>{{ pedidosFiltrados.length }}</strong> pedidos de <strong>{{ pedidos.length }}</strong></span>
         <button
           class="filter-button"
           @click="abrirFiltro"
         >
           <Filter
             size="20"
-            stroke-width="1.5"
+            stroke-width="2.5"
+            color="#fff"
           />
         </button>
       </div>
@@ -19,31 +20,41 @@
           class="new-order-button"
           @click="novoPedido"
         >
-          Novo Pedido +
+          <span>
+            Novo Pedido +
+          </span>
         </button>
-        <button
-          class="view-button"
-          @click="toggleView"
-        >
-          <IconList
-            size="20"
-            stroke-width="1.5"
-          />
-          <Grid2x2
-            size="20"
-            stroke-width="1.5"
-          />
-        </button>
+        <div class="actions-list-or-grid">
+          <button
+            class="view-button"
+            @click="toggleView"
+          >
+            <IconList
+              size="40"
+              stroke-width="2.5"
+              class="text-pink-500 hover:text-red-500 transition-colors duration-300"
+              color="#8B8B8B"
+            />
+          </button>
+          <button
+            class="view-button"
+            @click="toggleView"
+          >
+            <Grid2x2
+              size="40"
+              stroke-width="2.5"
+              color="#8B8B8B"
+            />
+          </button>
+        </div>
+        
+
         <button
           class="popup-button"
           @click="abrirPopup"
         >
-          <IconMore
-            size="20"
-            stroke-width="1.5"
-          /> 
           <IconMoreVertical
-            size="20"
+            size="40"
             stroke-width="1.5"
           />
         </button>
@@ -159,7 +170,16 @@ const formatarMoeda = (valor) => {
 // 🔥 Função para formatar o status para classe CSS
 const formatarStatus = (status) => {
   if (!status) return 'status-default';
-  return status.toLowerCase().replace(/\s+/g, '-'); // Transforma o status em um nome de classe válido
+  
+  // Remove caracteres especiais, mantendo apenas letras, números e espaços
+  const sanitizedStatus = status
+    .toLowerCase()
+    .normalize('NFD') // Remove acentuação (ex: "á" -> "a")
+    .replace(/[\u0300-\u036f]/g, '') // Remove marcas diacríticas geradas pelo normalize
+    .replace(/[^a-z0-9\s]/g, '') // Remove todos os caracteres especiais
+    .replace(/\s+/g, '-'); // Substitui espaços por hífen
+
+  return sanitizedStatus;
 };
 const paginaAtual = ref(1);
 const itensPorPagina = ref(10);
@@ -189,7 +209,7 @@ const atualizarPagina = ({ pagina, itensPorPagina: itens }) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .filtros {
@@ -217,17 +237,7 @@ td {
   border-bottom: 1px solid #e0e0e0;
 }
 
-.status-badge {
-  padding: 5px 10px;
-  border-radius: 12px;
-  color: white;
-  font-size: 12px;
-  text-transform: capitalize;
-}
 
-.status-badge.faturado { background-color: blue; }
-.status-badge.pendente { background-color: orange; }
-.status-badge.enviado { background-color: green; }
-.status-badge.nao-faturado { background-color: red; }
-.status-badge.aguardando { background-color: yellow; }
+
+
 </style>
