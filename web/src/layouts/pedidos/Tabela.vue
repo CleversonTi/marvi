@@ -60,7 +60,12 @@
         </button>
       </div>
     </div>
-
+    <!-- 🔥 Aqui você adiciona o ModalFiltro -->
+    <ModalFiltro 
+      :is-visible="filtroVisivel" 
+      @close="fecharFiltro" 
+      @filtrar="aplicarFiltro"
+    />
     <div class="table-container">
       <table>
         <thead>
@@ -108,6 +113,7 @@ import { Filter, Grid2x2, MoreHorizontal } from 'lucide-vue-next';
 import  IconList  from '@/components/icons/IconListMarvi.vue';
 import  IconMoreVertical  from '@/components/icons/IconMoreVertical.vue';
 import Paginator from '@/components/Pagination/Paginator.vue';
+import ModalFiltro from '@/components/modals/ModalFiltro.vue';
 
 const props = defineProps({
   startDate: { type: String, required: true },
@@ -120,7 +126,20 @@ const thisStartDate = ref(new Date(props.startDate));
 const thisStartEnd = ref(new Date(props.startEnd));
 
 const { pedidos, pedidosFiltrados, pedidosCarregados, getPedidos, filtrarPedidos } = usePedidos();
+const filtroVisivel = ref(false);
 
+const abrirFiltro = () => {
+  filtroVisivel.value = true;
+};
+
+const fecharFiltro = () => {
+  filtroVisivel.value = false;
+};
+
+const aplicarFiltro = (filtrosSelecionados) => {
+  console.log('Filtros Aplicados:', filtrosSelecionados);
+  fecharFiltro();
+};
 onMounted(() => {
   console.log("📥 onMounted executado.");
   
