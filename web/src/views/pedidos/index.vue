@@ -4,7 +4,7 @@
 
 <script setup>
 
-import Pedidos from '@/layouts/pedidos/Main.vue';
+import Pedidos from '@/layouts/pedidos/Pedidos.vue';
 </script>
 
 <style scoped>

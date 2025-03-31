@@ -17,21 +17,24 @@
         />
       </div>
     </section>
+    <Tabela
+      :start-date="startDate"
+      :start-end="startEnd"
+    />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import FilterPerido from '@/components/FilterDates/DatePicker.vue';
-
+import { useDateFilter } from '@/composables/useDateFilter';
 import SearchBar from '@/components/SearchBar/SearchBar.vue';
 import ResumoCardsVue from '@/components/pedidos/ResumoCards.vue';
+import Tabela from './Tabela.vue';
 
 
 const pedidos = ref([]);
-const selectedRange = ref([]);
-const startDate = ref('');
-const startEnd = ref('');
+const { startDate, startEnd, onDateChange } = useDateFilter();
 
 onMounted(async () => {
   const response = await fetch('http://localhost:4000/pedidos');
@@ -39,19 +42,9 @@ onMounted(async () => {
   pedidos.value = await response.json();
 });
 
-const onDateChange = (datasSelecionadas) => {
-  if (datasSelecionadas.length === 2) {
-    selectedRange.value = [...datasSelecionadas];
-    startDate.value = selectedRange.value[0];
-    startEnd.value = selectedRange.value[1];
-  } else {
-    console.warn('O array datasSelecionadas deve conter exatamente duas datas.');
-  }
-};
 
-const filtro = {
-  title: 'Escolha um período:',
-};
+
+const filtro = { title: 'Filtrar por Período' };
 
 
 </script>

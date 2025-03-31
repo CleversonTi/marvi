@@ -1,7 +1,6 @@
 <template>
   <section class="tabela-representantes">
     <h3>Faturamento por representantes</h3>
-
     <table>
       <thead>
         <tr>
@@ -12,16 +11,15 @@
       </thead>
       <tbody>
         <tr
-          v-for="representante in dados"
-          :key="representante.nome"
+          v-for="(representante, index) in representantesAgrupados"
+          :key="index"
         >
           <td>{{ representante.nome }}</td>
-          <td>{{ isNaN(representante.peso) ? '0.00' : Number(representante.peso).toFixed(2) }} kg</td>
-          <td>{{ isNaN(representante.valor) ? '0.00' : Number(representante.valor).toFixed(2) }} R$</td>
+          <td>{{ representante.peso.toFixed(2) }} kg</td>
+          <td>{{ formatarMoeda(representante.valor) }}</td>
         </tr>
       </tbody>
     </table>
-
     <div class="footer">
       <button @click="verTodos">
         Ver todos os representantes →
@@ -31,6 +29,8 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
   dados: {
     type: Array,
@@ -43,11 +43,29 @@ const formatarMoeda = (valor) =>
   new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL'
-  }).format(valor)
+  }).format(valor || 0);
+
+const representantesAgrupados = computed(() => {
+  const agrupado = {};
+
+  props.dados.forEach(pedido => {
+    const nome = pedido.Representante || 'Representante Desconhecido';
+    const peso = Number(pedido.PesoFaturado || 0);
+    const valor = Number(pedido.ValorTotal || 0);
+
+    if (!agrupado[nome]) {
+      agrupado[nome] = { nome, peso: 0, valor: 0 };
+    }
+
+    agrupado[nome].peso += peso;
+    agrupado[nome].valor += valor;
+  });
+
+  return Object.values(agrupado);
+});
 
 const verTodos = () => {
-  // Aqui você pode usar router.push, emitir evento, abrir modal etc.
-  console.log('Ver todos os representantes')
+  console.log('Ver todos os representantes');
 }
 </script>
 
@@ -60,11 +78,6 @@ const verTodos = () => {
   overflow-x: auto;
 }
 
-.tabela-representantes h3 {
-  font-size: 20px;
-  margin-bottom: 16px;
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -72,7 +85,6 @@ table {
 
 th {
   text-align: left;
-  font-weight: bold;
   padding: 12px 8px;
   background: #f5f5f5;
 }
@@ -86,14 +98,5 @@ td {
   display: flex;
   justify-content: flex-end;
   padding-top: 12px;
-}
-
-button {
-  background: #1a73e8;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
 }
 </style>

@@ -21,6 +21,7 @@ export function usePedidos() {
   };
 
   const filtrarPedidos = (startDate, endDate) => {
+    console.log("Entrou no filtrar pedidos")
     if (!startDate || !endDate || !pedidos.value.length) {
       console.warn("⚠️ Dados insuficientes para o filtro.");
       return;
@@ -70,6 +71,8 @@ export function usePedidos() {
     const formatarDataCurta = (data) => {
       const dia = data.getDate().toString().padStart(2, '0');
       const mes = (data.getMonth() + 1).toString().padStart(2, '0');
+      // console.log("Formatar Periodo");
+      // console.log(`${dia}/${mes}`);
       return `${dia}/${mes}`;
     };
 
@@ -79,9 +82,9 @@ export function usePedidos() {
     return `Período entre ${formatarDataCurta(dataInicio)} - ${formatarDataCurta(dataFim)}`;
   };
   const valorTotalFaturamento = computed(() => {
-    return pedidosFiltrados.value.reduce((total, pedido) => {
+    return formatarMoeda (pedidosFiltrados.value.reduce((total, pedido) => {
       return total + (parseFloat(pedido.ValorTotal) || 0);
-    }, 0);
+    }, 0));
   });
 
   return {
@@ -93,6 +96,6 @@ export function usePedidos() {
     formatarData,
     formatarMoeda,
     formatarPeriodo, 
-    valorTotalFaturamento
+    valorTotalFaturamento,
   };
 }
