@@ -1,34 +1,45 @@
 <template>
   <div class="paginator">
-    <div class="paginator-info">
-      Resultados por página: 
-      <select
-        v-model="itensPorPagina"
-        @change="atualizarPagina"
-      >
-        <option
-          v-for="opt in [10, 20, 50, 100]"
-          :key="opt"
-          :value="opt"
-        >
-          {{ opt }}
-        </option>
-      </select>
-    </div>
-
     <div class="paginator-controls">
+      <div class="paginator-info">
+        Resultados por página: 
+        <div class="result_paginator">
+          <div class="select-wrapper">
+            <select
+              v-model="itensPorPagina"
+              @change="selecionarItem"
+              @focus="abrirSelect"
+              @blur="fecharSelect"
+            >
+              <option
+                v-for="opt in [10, 20, 50, 100]"
+                :key="opt"
+                :value="opt"
+              >
+                {{ opt }}
+              </option>
+            </select>
+            <component
+              :is="iconAtual"
+              class="ml-2 transition-transform duration-300"
+              size="20"
+              stroke-width="2"
+            />
+          </div>
+        </div>
+      </div>
+      <span>{{ inicioItem }} - {{ fimItem }} de {{ totalItens }}</span>
       <button
         :disabled="paginaAtual === 1"
         @click="irParaPagina(paginaAtual - 1)"
       >
-        <span>◀</span>
+        <span><ChevronLeft /></span>
       </button>
-      <span>{{ inicioItem }} - {{ fimItem }} de {{ totalItens }}</span>
       <button
         :disabled="paginaAtual === totalPaginas"
         @click="irParaPagina(paginaAtual + 1)"
       >
-        <span>▶</span>
+        <span><ChevronRight /></span>
       </button>
     </div>
   </div>
@@ -36,12 +47,19 @@
 
 <script setup>
 import { ref, computed, watch } from 'vue';
+import { ChevronRight, ChevronLeft} from 'lucide-vue-next';
+import  IconSelectUP  from '@/components/icons/Icon-selectUp.vue';
+import  IconSelectDown  from '@/components/icons/Icon-select.vue';
+
+import { ChevronDown, ChevronUp } from 'lucide-vue-next'; // Certifique-se que o import está correto
 
 const props = defineProps({
   totalItens: Number,
   itensPorPagina: Number,
   paginaAtual: Number,
 });
+const iconAtual = ref(IconSelectDown); 
+
 
 const emit = defineEmits(['mudanca-pagina']);
 
@@ -52,7 +70,17 @@ const totalPaginas = computed(() => Math.ceil(props.totalItens / itensPorPagina.
 
 const inicioItem = computed(() => ((paginaAtual.value - 1) * itensPorPagina.value) + 1);
 const fimItem = computed(() => Math.min(props.totalItens, paginaAtual.value * itensPorPagina.value));
+const abrirSelect = () => {
+  iconAtual.value = IconSelectUP; // Ícone vira para cima quando o select é aberto
+};
 
+const fecharSelect = () => {
+  iconAtual.value = IconSelectDown; // Ícone volta para baixo quando o select é fechado
+};
+
+const selecionarItem = () => {
+  fecharSelect(); // Força o ícone a mudar para baixo quando um item é selecionado
+};
 const atualizarPagina = () => {
   emit('mudanca-pagina', { pagina: paginaAtual.value, itensPorPagina: itensPorPagina.value });
 };
@@ -70,41 +98,5 @@ watch(() => props.paginaAtual, (novaPagina) => {
 </script>
 
 <style scoped lang="scss">
-.paginator {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-top: 1px solid #e0e0e0;
-}
 
-.paginator-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.paginator-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: background-color 0.3s;
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-
-  &:hover:not(:disabled) {
-    background-color: #f0f0f0;
-  }
-}
 </style>

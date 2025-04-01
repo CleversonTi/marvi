@@ -15,8 +15,12 @@
 @use './pages/datePickers' as *;
 @use './components/SearchBar' as *;
 @use './components/Tabelas' as *;
+@use './components/Listas' as *;
 @use './components/ModalFiltro' as *;
 @use './components/Modal-download' as *;
+@use './components/Paginator' as *;
+@use './components/Toolbar' as *;
+@use './components/Badge' as *;
 
 
 

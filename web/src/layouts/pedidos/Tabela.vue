@@ -1,9 +1,9 @@
 <template>
   <section class="tabela-pedidos">
-    <div class="header">
+    <div class="toolbar">
       <!--<header><span>Todos os Pedidos</span></header>-->
       <div class="titulo-status">
-        <span>Mostrando <strong>{{ pedidosFiltrados.length }}</strong> pedidos de <strong>{{ pedidos.length }}</strong></span>
+        <span>Mostrando <strong>{{ pedidosPaginados.length }}</strong> pedidos de <strong>{{ pedidosFiltrados.length }}</strong></span>
         <button
           class="filter-button"
           @click="abrirFiltro"
@@ -27,7 +27,7 @@
         <div class="actions-list-or-grid">
           <button
             class="view-button"
-            @click="toggleView"
+            @click="toggleView('list')"
           >
             <IconList
               size="30"
@@ -38,7 +38,7 @@
           </button>
           <button
             class="view-button"
-            @click="toggleView"
+            @click="toggleView('grid')"
           >
             <Grid2x2
               size="30"
@@ -73,7 +73,11 @@
     />
     
 
-    <div class="table-container">
+    
+    <div
+      v-if="viewMode === 'list'"
+      class="table-container"
+    >
       <table>
         <thead>
           <tr>
@@ -109,7 +113,81 @@
         :total-itens="pedidosFiltrados.length" 
         @mudanca-pagina="atualizarPagina" 
       />
-    </div>
+    </div> 
+   
+    <section
+      v-else
+      class="listas-container"
+    >
+      <div class="item-conteudo">
+        <ul class="lista-card">
+          <li
+            v-for="(pedido, index) in pedidosPaginados" 
+            :key="index" 
+            class="lista-item"
+          >
+            <div class="cod_pedidos item">
+              <strong class="title">N do Pedido</strong>
+              <span>
+                {{ pedido.NumeroPedido }}
+              </span>
+            </div>
+
+            <div class="name_cliente item">
+              <strong class="title">
+                Cliente
+              </strong>
+              <span>Sorveteria Gelaboca Lorem Ipsum Dolor</span>
+            </div>
+            <div class="name_cliente item">
+              <strong class="title">
+                Representante
+              </strong>
+              <span>{{ pedido.Cliente }}</span>
+            </div>
+            
+            <div class="dates_cliente item two-itens">
+              <div class="name_cliente">
+                <strong class="title">
+                  Entrada
+                </strong>
+                <span class="title">{{ pedido.DataEntrada }}</span>
+              </div>
+              <div class="name_cliente">
+                <strong class="title">
+                  Vencimento
+                </strong>
+                <span class="title">{{ pedido.Vencimento }}</span>
+              </div>
+            </div>
+            <div class="dates_cliente item three-itens">
+              <div class="name_cliente">
+                <strong class="title">
+                  Situação
+                </strong>
+                <span class="title">{{ pedido.Situacao }}</span>
+              </div>
+              <div class="name_cliente">
+                <strong class="title">
+                  Total
+                </strong>
+                <span>{{ formatarMoeda(pedido.ValorTotal) }}</span>
+              </div>
+              <div class="name_cliente badge">
+                <strong class="title">
+                  Status
+                </strong>
+                <span><span :class="['status-badge', formatarStatus(pedido.Status)]">{{ pedido.Status }}</span></span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <Paginator 
+        :total-itens="pedidosFiltrados.length" 
+        @mudanca-pagina="atualizarPagina" 
+      />
+    </section>
   </section>
 </template>
 
@@ -135,7 +213,7 @@ const thisStartEnd = ref(new Date(props.startEnd));
 
 const { pedidos, pedidosFiltrados, pedidosCarregados, getPedidos, filtrarPedidos } = usePedidos();
 const filtroVisivel = ref(false);
-
+const viewMode = ref('list'); // 🔥 Define o modo de visualização inicial como 'list'
 const abrirFiltro = () => {
   filtroVisivel.value = true;
 };
@@ -148,7 +226,10 @@ const aplicarFiltro = (filtrosSelecionados) => {
   console.log('Filtros Aplicados:', filtrosSelecionados);
   fecharFiltro();
 };
-
+// 🔥 Função para alternar entre os modos de visualização
+const toggleView = (mode) => {
+  viewMode.value = mode;
+};
 const popupVisivel = ref(false);
 
 const togglePopup = () => {
@@ -222,7 +303,6 @@ const formatarStatus = (status) => {
 const paginaAtual = ref(1);
 const itensPorPagina = ref(10);
 
-
 const pedidosPaginados = computed(() => {
   const inicio = (paginaAtual.value - 1) * itensPorPagina.value;
   const fim = inicio + itensPorPagina.value;
@@ -232,7 +312,6 @@ const pedidosPaginados = computed(() => {
 const atualizarPagina = ({ pagina, itensPorPagina: itens }) => {
   paginaAtual.value = pagina;
   itensPorPagina.value = itens;
-  console.log( paginaAtual);
 };
 </script>
 

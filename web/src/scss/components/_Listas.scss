@@ -1,0 +1,73 @@
+.tabela-pedidos {
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    .listas-container{
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      ul{
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+       
+        align-items: center;
+        column-gap: 10px;
+        row-gap: 30px;
+        li{
+          width: 32%;
+          border: 1px solid #B6B6B6;
+          border-radius: 12px;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          row-gap: 16px;
+          .item{
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              font-family: 'Poppins', sans-serif;
+              
+            &.cod_pedidos{
+              span{
+                color: #3790CF;
+                font-weight: 600;
+              }
+            }
+            &.dates_cliente{
+              flex-direction: row;
+              justify-content: space-between;
+              .name_cliente{
+                display: flex;
+                flex-direction: column;
+              }
+            }
+            &.three-itens{
+              .name_cliente{
+                row-gap: 10px;
+              }
+              .status-badge{
+                color: #fff;
+                font-family: 'Roboto', sans-serif;
+              }
+            }
+            strong{
+              color: #09090B;
+              font-weight: 700;
+            }
+            span{
+              color: #09090BDE;
+              font-weight: 400;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  
+   
+  }
+  

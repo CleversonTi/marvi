@@ -1,0 +1,34 @@
+.status-badge {
+  padding: 7px 15px;
+  border-radius: 30px;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  &.faturado {
+    background-color: #1E88E5;
+  }
+  &.em-aberto{
+    background-color: #FB8C00;
+  }
+  &.pendente {
+    background-color: #ff9800;
+  }
+
+  &.enviado {
+    background-color: #7CB342;
+  }
+
+  &.nao-faturado {
+    background-color: #E53935;
+  }
+
+  &.aguardando {
+    background-color: #FFD900;
+    color: #232323;
+  }
+
+  &.entregue {
+    background-color: #546E7A;
+  }
+}
+  
