@@ -70,139 +70,151 @@
       @close="fecharFiltro" 
       @filtrar="aplicarFiltro"
     />
-    <!-- Transição suave para os modos de exibição -->
-    <transition
-      :name="transitionName"
-      mode="out-in"
+    <!-- 🔥 Exibe a mensagem de "Nenhum resultado encontrado" quando não há itens filtrados -->
+    <div
+      v-if="pedidosPaginados.length === 0"
+      class="no-results"
     >
-      <div
-        v-if="viewMode === 'list'"
-        :key="viewMode"
-        class="table-container"
-      >
-        <table>
-          <thead>
-            <tr>
-              <th>Número do Pedido</th>
-              <th>Data Entrada</th>
-              <th>Cliente</th>
-              <th>Perfil</th>
-              <th>Vencimento</th>
-              <th>Situação</th>
-              <th>Peso (kg)</th>
-              <th>Valor Total (R$)</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="(pedido, index) in pedidosPaginados"
-              :key="index"
-            >
-              <td>{{ pedido.NumeroPedido }}</td>
-              <td>{{ pedido.DataEntrada }}</td>
-              <td>{{ pedido.Cliente }}</td>
-              <td>{{ pedido.Perfil || 'Padrão' }}</td>
-              <td>{{ pedido.Vencimento }}</td>
-              <td>{{ pedido.Situacao }}</td>
-              <td>{{ pedido.PesoFaturado || '0.0000' }}</td>
-              <td>{{ formatarMoeda(pedido.ValorTotal) }}</td>
-              <td><span :class="['status-badge', formatarStatus(pedido.Status)]">{{ pedido.Status }}</span></td>
-            </tr>
-          </tbody>
-        </table>
-        <Paginator 
-          :total-itens="pedidosFiltrados.length" 
-          @mudanca-pagina="atualizarPagina" 
-        />
-      </div>
-    </transition>
-
-    <transition
-      :name="transitionName"
-      mode="out-in"
+      Nenhum pedido encontrado para a busca: <strong>{{ props.termoBusca }}</strong>
+    </div>
+    <div
+      v-else
+      class="table-container"
     >
-      <section
-        v-if="viewMode === 'grid'"
-        class="listas-container"
+      <!-- Transição suave para os modos de exibição -->
+      <transition
+        :name="transitionName"
+        mode="out-in"
       >
-        <div class="item-conteudo">
-          <ul class="lista-card">
-            <li
-              v-for="(pedido, index) in pedidosPaginados"
-              :key="index"
-              class="lista-item"
-            >
-              <div class="cod_pedidos item">
-                <strong class="title">N do Pedido</strong>
-                <span>
-                  {{ pedido.NumeroPedido }}
-                </span>
-              </div>
-
-              <div class="name_cliente item">
-                <strong class="title">
-                  Cliente
-                </strong>
-                <span>Sorveteria Gelaboca Lorem Ipsum Dolor</span>
-              </div>
-              <div class="name_cliente item">
-                <strong class="title">
-                  Representante
-                </strong>
-                <span>{{ pedido.Cliente }}</span>
-              </div>
-            
-              <div class="dates_cliente item two-itens">
-                <div class="name_cliente">
-                  <strong class="title">
-                    Entrada
-                  </strong>
-                  <span class="title">{{ pedido.DataEntrada }}</span>
-                </div>
-                <div class="name_cliente">
-                  <strong class="title">
-                    Vencimento
-                  </strong>
-                  <span class="title">{{ pedido.Vencimento }}</span>
-                </div>
-              </div>
-              <div class="dates_cliente item three-itens">
-                <div class="name_cliente">
-                  <strong class="title">
-                    Situação
-                  </strong>
-                  <span class="title">{{ pedido.Situacao }}</span>
-                </div>
-                <div class="name_cliente">
-                  <strong class="title">
-                    Total
-                  </strong>
-                  <span>{{ formatarMoeda(pedido.ValorTotal) }}</span>
-                </div>
-                <div class="name_cliente badge">
-                  <strong class="title">
-                    Status
-                  </strong>
-                  <span><span :class="['status-badge', formatarStatus(pedido.Status)]">{{ pedido.Status }}</span></span>
-                </div>
-              </div>
-            </li>
-          </ul>
+        <div
+          v-if="viewMode === 'list'"
+          :key="viewMode"
+          class="table-container"
+        >
+          <table>
+            <thead>
+              <tr>
+                <th>Número do Pedido</th>
+                <th>Data Entrada</th>
+                <th>Cliente</th>
+                <th>Perfil</th>
+                <th>Vencimento</th>
+                <th>Situação</th>
+                <th>Peso (kg)</th>
+                <th>Valor Total (R$)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="(pedido, index) in pedidosPaginados"
+                :key="index"
+              >
+                <td>{{ pedido.NumeroPedido }}</td>
+                <td>{{ pedido.DataEntrada }}</td>
+                <td>{{ pedido.Cliente }}</td>
+                <td>{{ pedido.Perfil || 'Padrão' }}</td>
+                <td>{{ pedido.Vencimento }}</td>
+                <td>{{ pedido.Situacao }}</td>
+                <td>{{ pedido.PesoFaturado || '0.0000' }}</td>
+                <td>{{ formatarMoeda(pedido.ValorTotal) }}</td>
+                <td><span :class="['status-badge', formatarStatus(pedido.Status)]">{{ pedido.Status }}</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <Paginator 
+            :total-itens="pedidosFiltrados.length" 
+            @mudanca-pagina="atualizarPagina" 
+          />
         </div>
-        <Paginator 
-          :total-itens="pedidosFiltrados.length" 
-          @mudanca-pagina="atualizarPagina" 
-        />
-      </section>
-    </transition>
+      </transition>
+
+      <transition
+        :name="transitionName"
+        mode="out-in"
+      >
+        <section
+          v-if="viewMode === 'grid'"
+          class="listas-container"
+        >
+          <div class="item-conteudo">
+            <ul class="lista-card">
+              <li
+                v-for="(pedido, index) in pedidosPaginados"
+                :key="index"
+                class="lista-item"
+              >
+                <div class="cod_pedidos item">
+                  <strong class="title">N do Pedido</strong>
+                  <span>
+                    {{ pedido.NumeroPedido }}
+                  </span>
+                </div>
+
+                <div class="name_cliente item">
+                  <strong class="title">
+                    Cliente
+                  </strong>
+                  <span>Sorveteria Gelaboca Lorem Ipsum Dolor</span>
+                </div>
+                <div class="name_cliente item">
+                  <strong class="title">
+                    Representante
+                  </strong>
+                  <span>{{ pedido.Cliente }}</span>
+                </div>
+            
+                <div class="dates_cliente item two-itens">
+                  <div class="name_cliente">
+                    <strong class="title">
+                      Entrada
+                    </strong>
+                    <span class="title">{{ pedido.DataEntrada }}</span>
+                  </div>
+                  <div class="name_cliente">
+                    <strong class="title">
+                      Vencimento
+                    </strong>
+                    <span class="title">{{ pedido.Vencimento }}</span>
+                  </div>
+                </div>
+                <div class="dates_cliente item three-itens">
+                  <div class="name_cliente">
+                    <strong class="title">
+                      Situação
+                    </strong>
+                    <span class="title">{{ pedido.Situacao }}</span>
+                  </div>
+                  <div class="name_cliente">
+                    <strong class="title">
+                      Total
+                    </strong>
+                    <span>{{ formatarMoeda(pedido.ValorTotal) }}</span>
+                  </div>
+                  <div class="name_cliente badge">
+                    <strong class="title">
+                      Status
+                    </strong>
+                    <span><span :class="['status-badge', formatarStatus(pedido.Status)]">{{ pedido.Status }}</span></span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <Paginator 
+            :total-itens="pedidosFiltrados.length" 
+            @mudanca-pagina="atualizarPagina" 
+          />
+        </section>
+      </transition>
+    </div>
   </section>
 </template>
 
 <script setup>
-import { ref, watch, onMounted, toRefs, computed } from 'vue';
+import { ref, watch, onMounted,  computed } from 'vue';
 import { usePedidos } from '@/composables/usePedidos';
-import { Filter, Grid2x2, MoreHorizontal } from 'lucide-vue-next';
+import { Filter, Grid2x2 } from 'lucide-vue-next';
 import  IconList  from '@/components/icons/IconListMarvi.vue';
 import  IconMoreVertical  from '@/components/icons/IconMoreVertical.vue';
 import Paginator from '@/components/Pagination/Paginator.vue';
@@ -314,7 +326,6 @@ const formatarStatus = (status) => {
 
   return sanitizedStatus;
 };
-
 const atualizarPagina = ({ pagina, itensPorPagina: itens }) => {
   paginaAtual.value = pagina;
   itensPorPagina.value = itens;
