@@ -1,7 +1,6 @@
 <template>
   <section class="tabela-pedidos">
     <div class="toolbar">
-      <!--<header><span>Todos os Pedidos</span></header>-->
       <div class="titulo-status">
         <span>Mostrando <strong>{{ pedidosPaginados.length }}</strong> pedidos de <strong>{{ pedidosFiltrados.length }}</strong></span>
         <button
@@ -71,123 +70,132 @@
       @close="fecharFiltro" 
       @filtrar="aplicarFiltro"
     />
-    
-
-    
-    <div
-      v-if="viewMode === 'list'"
-      class="table-container"
+    <!-- Transição suave para os modos de exibição -->
+    <transition
+      :name="transitionName"
+      mode="out-in"
     >
-      <table>
-        <thead>
-          <tr>
-            <th>Número do Pedido</th>
-            <th>Data Entrada</th>
-            <th>Cliente</th>
-            <th>Perfil</th>
-            <th>Vencimento</th>
-            <th>Situação</th>
-            <th>Peso (kg)</th>
-            <th>Valor Total (R$)</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="(pedido, index) in pedidosPaginados"
-            :key="index"
-          >
-            <td>{{ pedido.NumeroPedido }}</td>
-            <td>{{ pedido.DataEntrada }}</td>
-            <td>{{ pedido.Cliente }}</td>
-            <td>{{ pedido.Perfil || 'Padrão' }}</td>
-            <td>{{ pedido.Vencimento }}</td>
-            <td>{{ pedido.Situacao }}</td>
-            <td>{{ pedido.PesoFaturado || '0.0000' }}</td>
-            <td>{{ formatarMoeda(pedido.ValorTotal) }}</td>
-            <td><span :class="['status-badge', formatarStatus(pedido.Status)]">{{ pedido.Status }}</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <Paginator 
-        :total-itens="pedidosFiltrados.length" 
-        @mudanca-pagina="atualizarPagina" 
-      />
-    </div> 
-   
-    <section
-      v-else
-      class="listas-container"
-    >
-      <div class="item-conteudo">
-        <ul class="lista-card">
-          <li
-            v-for="(pedido, index) in pedidosPaginados" 
-            :key="index" 
-            class="lista-item"
-          >
-            <div class="cod_pedidos item">
-              <strong class="title">N do Pedido</strong>
-              <span>
-                {{ pedido.NumeroPedido }}
-              </span>
-            </div>
-
-            <div class="name_cliente item">
-              <strong class="title">
-                Cliente
-              </strong>
-              <span>Sorveteria Gelaboca Lorem Ipsum Dolor</span>
-            </div>
-            <div class="name_cliente item">
-              <strong class="title">
-                Representante
-              </strong>
-              <span>{{ pedido.Cliente }}</span>
-            </div>
-            
-            <div class="dates_cliente item two-itens">
-              <div class="name_cliente">
-                <strong class="title">
-                  Entrada
-                </strong>
-                <span class="title">{{ pedido.DataEntrada }}</span>
-              </div>
-              <div class="name_cliente">
-                <strong class="title">
-                  Vencimento
-                </strong>
-                <span class="title">{{ pedido.Vencimento }}</span>
-              </div>
-            </div>
-            <div class="dates_cliente item three-itens">
-              <div class="name_cliente">
-                <strong class="title">
-                  Situação
-                </strong>
-                <span class="title">{{ pedido.Situacao }}</span>
-              </div>
-              <div class="name_cliente">
-                <strong class="title">
-                  Total
-                </strong>
-                <span>{{ formatarMoeda(pedido.ValorTotal) }}</span>
-              </div>
-              <div class="name_cliente badge">
-                <strong class="title">
-                  Status
-                </strong>
-                <span><span :class="['status-badge', formatarStatus(pedido.Status)]">{{ pedido.Status }}</span></span>
-              </div>
-            </div>
-          </li>
-        </ul>
+      <div
+        v-if="viewMode === 'list'"
+        :key="viewMode"
+        class="table-container"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th>Número do Pedido</th>
+              <th>Data Entrada</th>
+              <th>Cliente</th>
+              <th>Perfil</th>
+              <th>Vencimento</th>
+              <th>Situação</th>
+              <th>Peso (kg)</th>
+              <th>Valor Total (R$)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="(pedido, index) in pedidosPaginados"
+              :key="index"
+            >
+              <td>{{ pedido.NumeroPedido }}</td>
+              <td>{{ pedido.DataEntrada }}</td>
+              <td>{{ pedido.Cliente }}</td>
+              <td>{{ pedido.Perfil || 'Padrão' }}</td>
+              <td>{{ pedido.Vencimento }}</td>
+              <td>{{ pedido.Situacao }}</td>
+              <td>{{ pedido.PesoFaturado || '0.0000' }}</td>
+              <td>{{ formatarMoeda(pedido.ValorTotal) }}</td>
+              <td><span :class="['status-badge', formatarStatus(pedido.Status)]">{{ pedido.Status }}</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <Paginator 
+          :total-itens="pedidosFiltrados.length" 
+          @mudanca-pagina="atualizarPagina" 
+        />
       </div>
-      <Paginator 
-        :total-itens="pedidosFiltrados.length" 
-        @mudanca-pagina="atualizarPagina" 
-      />
-    </section>
+    </transition>
+
+    <transition
+      :name="transitionName"
+      mode="out-in"
+    >
+      <section
+        v-if="viewMode === 'grid'"
+        class="listas-container"
+      >
+        <div class="item-conteudo">
+          <ul class="lista-card">
+            <li
+              v-for="(pedido, index) in pedidosPaginados"
+              :key="index"
+              class="lista-item"
+            >
+              <div class="cod_pedidos item">
+                <strong class="title">N do Pedido</strong>
+                <span>
+                  {{ pedido.NumeroPedido }}
+                </span>
+              </div>
+
+              <div class="name_cliente item">
+                <strong class="title">
+                  Cliente
+                </strong>
+                <span>Sorveteria Gelaboca Lorem Ipsum Dolor</span>
+              </div>
+              <div class="name_cliente item">
+                <strong class="title">
+                  Representante
+                </strong>
+                <span>{{ pedido.Cliente }}</span>
+              </div>
+            
+              <div class="dates_cliente item two-itens">
+                <div class="name_cliente">
+                  <strong class="title">
+                    Entrada
+                  </strong>
+                  <span class="title">{{ pedido.DataEntrada }}</span>
+                </div>
+                <div class="name_cliente">
+                  <strong class="title">
+                    Vencimento
+                  </strong>
+                  <span class="title">{{ pedido.Vencimento }}</span>
+                </div>
+              </div>
+              <div class="dates_cliente item three-itens">
+                <div class="name_cliente">
+                  <strong class="title">
+                    Situação
+                  </strong>
+                  <span class="title">{{ pedido.Situacao }}</span>
+                </div>
+                <div class="name_cliente">
+                  <strong class="title">
+                    Total
+                  </strong>
+                  <span>{{ formatarMoeda(pedido.ValorTotal) }}</span>
+                </div>
+                <div class="name_cliente badge">
+                  <strong class="title">
+                    Status
+                  </strong>
+                  <span><span :class="['status-badge', formatarStatus(pedido.Status)]">{{ pedido.Status }}</span></span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <Paginator 
+          :total-itens="pedidosFiltrados.length" 
+          @mudanca-pagina="atualizarPagina" 
+        />
+      </section>
+    </transition>
   </section>
 </template>
 
@@ -213,7 +221,8 @@ const thisStartEnd = ref(new Date(props.startEnd));
 
 const { pedidos, pedidosFiltrados, pedidosCarregados, getPedidos, filtrarPedidos } = usePedidos();
 const filtroVisivel = ref(false);
-const viewMode = ref('list'); // 🔥 Define o modo de visualização inicial como 'list'
+const viewMode = ref('list');
+const transitionName = ref('fade'); // Nome da transição aplicada
 const abrirFiltro = () => {
   filtroVisivel.value = true;
 };
@@ -226,10 +235,14 @@ const aplicarFiltro = (filtrosSelecionados) => {
   console.log('Filtros Aplicados:', filtrosSelecionados);
   fecharFiltro();
 };
-// 🔥 Função para alternar entre os modos de visualização
 const toggleView = (mode) => {
   viewMode.value = mode;
+  transitionName.value = mode === 'list' ? 'smooth-fade' : 'smooth-slide';
 };
+
+watch(() => viewMode.value, () => {
+  pedidosPaginados.value = pedidosFiltrados.value.slice(0, 10);
+});
 const popupVisivel = ref(false);
 
 const togglePopup = () => {
@@ -315,48 +328,50 @@ const atualizarPagina = ({ pagina, itensPorPagina: itens }) => {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .tabela-pedidos {
-  padding: 20px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.filtros {
-  display: flex;
-  gap: 10px;
 }
 
 .table-container {
   overflow-x: auto;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+/* Transições rápidas aprimoradas */
+.smooth-fade-enter-active, .smooth-fade-leave-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
+.smooth-fade-enter-from, .smooth-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
 }
 
-th {
-  background-color: #f0f0f0;
-  padding: 10px;
-  text-align: left;
+.smooth-slide-enter-active, .smooth-slide-leave-active {
+  transition: all 0.3s ease;
+}
+.smooth-slide-enter-from {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.smooth-slide-leave-to {
+  opacity: 0;
+  transform: translateX(20px);
 }
 
-td {
-  padding: 10px;
-  border-bottom: 1px solid #e0e0e0;
+.listas-container {
+  
+  opacity: 1;
+  transition: opacity 0.3s;
 }
 
+.lista-item {
+ 
+  transition: transform 0.3s, background-color 0.3s;
+}
 
-
+.lista-item:hover {
+  transform: scale(1.01);
+ 
+}
 
 </style>
