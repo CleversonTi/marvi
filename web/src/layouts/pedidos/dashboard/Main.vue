@@ -63,7 +63,7 @@ const pedidosFiltradosCount = computed(() => pedidosFiltrados.value?.length || 0
           <strong>
             {{ pedidosFiltrados.length }}
           </strong>
-          <span>Total de Pedidos {{ pedidosFiltrados.length }}</span>
+          <span>Total de Pedidos</span>
         </div>
         <div class="periodo">
           <div class="periodo">

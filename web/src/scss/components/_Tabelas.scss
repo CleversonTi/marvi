@@ -80,7 +80,7 @@
               color: #fff;
               font-size: 16px;
               font-weight: 400;
-              padding: 15px 30px;
+              padding: 10px 30px;
               background-color: #21599E;
               border-radius: 30px;
               &:hover {
@@ -101,9 +101,9 @@
                 padding: 8px;
                 cursor: pointer;
                   .icon-list{
-                    width: 40px;
-                    height: 40px;
-                    color: pink;
+                    width: 30px;
+                    height: 30px;
+                  
                     transition: color 0.3s; /* Animação suave na troca de cor */
                     &:hover {
                       color: red; /* Cor desejada no hover */
@@ -115,9 +115,9 @@
           }
         .popup-button{
           .icon-more{
-            width: 40px;
-            height: 40px;
-            color: pink;
+            width: 30px;
+            height: 30px;
+           
             transition: color 0.3s; /* Animação suave na troca de cor */
             &:hover {
               color: red; /* Cor desejada no hover */

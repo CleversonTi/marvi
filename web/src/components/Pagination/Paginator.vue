@@ -1,33 +1,34 @@
 <template>
   <div class="paginator">
-    <div class="results-info">
-      Resultados por página:
+    <div class="paginator-info">
+      Resultados por página: 
       <select
         v-model="itensPorPagina"
         @change="atualizarPagina"
       >
         <option
-          v-for="option in [10, 20, 50]"
-          :key="option"
-          :value="option"
+          v-for="opt in [10, 20, 50, 100]"
+          :key="opt"
+          :value="opt"
         >
-          {{ option }}
+          {{ opt }}
         </option>
       </select>
     </div>
-    <div class="navigation">
+
+    <div class="paginator-controls">
       <button
         :disabled="paginaAtual === 1"
-        @click="paginaAnterior"
+        @click="irParaPagina(paginaAtual - 1)"
       >
-        &lt;
+        <span>◀</span>
       </button>
-      <span>{{ paginaAtual }} de {{ totalPaginas }}</span>
+      <span>{{ inicioItem }} - {{ fimItem }} de {{ totalItens }}</span>
       <button
         :disabled="paginaAtual === totalPaginas"
-        @click="proximaPagina"
+        @click="irParaPagina(paginaAtual + 1)"
       >
-        &gt;
+        <span>▶</span>
       </button>
     </div>
   </div>
@@ -37,64 +38,73 @@
 import { ref, computed, watch } from 'vue';
 
 const props = defineProps({
-  totalItens: { type: Number, required: true },
-  itensPorPaginaPadrao: { type: Number, default: 10 }
+  totalItens: Number,
+  itensPorPagina: Number,
+  paginaAtual: Number,
 });
 
 const emit = defineEmits(['mudanca-pagina']);
 
-const itensPorPagina = ref(props.itensPorPaginaPadrao);
-const paginaAtual = ref(1);
+const itensPorPagina = ref(props.itensPorPagina || 10);
+const paginaAtual = ref(props.paginaAtual || 1);
 
 const totalPaginas = computed(() => Math.ceil(props.totalItens / itensPorPagina.value));
+
+const inicioItem = computed(() => ((paginaAtual.value - 1) * itensPorPagina.value) + 1);
+const fimItem = computed(() => Math.min(props.totalItens, paginaAtual.value * itensPorPagina.value));
 
 const atualizarPagina = () => {
   emit('mudanca-pagina', { pagina: paginaAtual.value, itensPorPagina: itensPorPagina.value });
 };
 
-watch([itensPorPagina, paginaAtual], atualizarPagina, { immediate: true });
-
-const proximaPagina = () => {
-  if (paginaAtual.value < totalPaginas.value) {
-    paginaAtual.value++;
+const irParaPagina = (pagina) => {
+  if (pagina > 0 && pagina <= totalPaginas.value) {
+    paginaAtual.value = pagina;
+    atualizarPagina();
   }
 };
 
-const paginaAnterior = () => {
-  if (paginaAtual.value > 1) {
-    paginaAtual.value--;
-  }
-};
+watch(() => props.paginaAtual, (novaPagina) => {
+  paginaAtual.value = novaPagina;
+});
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .paginator {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
-  background: #fff;
-  border-radius: 8px;
-  border-top: 1px solid #ddd;
-  margin-top: 10px;
+  padding: 10px 0;
+  border-top: 1px solid #e0e0e0;
 }
 
-.results-info select {
-  padding: 4px;
-  border-radius: 4px;
+.paginator-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.navigation button {
-  padding: 4px 8px;
-  margin: 0 5px;
+.paginator-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button {
   border: none;
-  border-radius: 4px;
+  background: none;
   cursor: pointer;
-  transition: background 0.2s;
-}
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
 
-.navigation button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: #f0f0f0;
+  }
 }
 </style>

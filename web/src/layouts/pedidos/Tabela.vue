@@ -30,7 +30,7 @@
             @click="toggleView"
           >
             <IconList
-              size="40"
+              size="30"
               stroke-width="2.5"
               class="text-pink-500 hover:text-red-500 transition-colors duration-300"
               color="#8B8B8B"
@@ -41,23 +41,28 @@
             @click="toggleView"
           >
             <Grid2x2
-              size="40"
+              size="30"
               stroke-width="2.5"
               color="#8B8B8B"
             />
           </button>
         </div>
-        
-
-        <button
-          class="popup-button"
-          @click="abrirPopup"
-        >
-          <IconMoreVertical
-            size="40"
-            stroke-width="1.5"
+        <div class="modal-downloadPopup">
+          <button
+            class="popup-button"
+            @click="togglePopup"
+          >
+            <IconMoreVertical
+              size="40"
+              stroke-width="1.5"
+            /> 
+          </button>
+          <DownloadPopup 
+            :is-visible="popupVisivel" 
+            @close="togglePopup" 
+            @download="baixarArquivo" 
           />
-        </button>
+        </div>
       </div>
     </div>
     <!-- 🔥 Aqui você adiciona o ModalFiltro -->
@@ -66,6 +71,8 @@
       @close="fecharFiltro" 
       @filtrar="aplicarFiltro"
     />
+    
+
     <div class="table-container">
       <table>
         <thead>
@@ -114,6 +121,7 @@ import  IconList  from '@/components/icons/IconListMarvi.vue';
 import  IconMoreVertical  from '@/components/icons/IconMoreVertical.vue';
 import Paginator from '@/components/Pagination/Paginator.vue';
 import ModalFiltro from '@/components/modals/ModalFiltro.vue';
+import DownloadPopup from '@/components/modals/DownloadPopup.vue';
 
 const props = defineProps({
   startDate: { type: String, required: true },
@@ -140,6 +148,17 @@ const aplicarFiltro = (filtrosSelecionados) => {
   console.log('Filtros Aplicados:', filtrosSelecionados);
   fecharFiltro();
 };
+
+const popupVisivel = ref(false);
+
+const togglePopup = () => {
+  popupVisivel.value = !popupVisivel.value;
+};
+
+const baixarArquivo = (formato) => {
+  console.log(`Baixando arquivo em formato: ${formato}`);
+};
+
 onMounted(() => {
   console.log("📥 onMounted executado.");
   
@@ -203,6 +222,7 @@ const formatarStatus = (status) => {
 const paginaAtual = ref(1);
 const itensPorPagina = ref(10);
 
+
 const pedidosPaginados = computed(() => {
   const inicio = (paginaAtual.value - 1) * itensPorPagina.value;
   const fim = inicio + itensPorPagina.value;
@@ -212,6 +232,7 @@ const pedidosPaginados = computed(() => {
 const atualizarPagina = ({ pagina, itensPorPagina: itens }) => {
   paginaAtual.value = pagina;
   itensPorPagina.value = itens;
+  console.log( paginaAtual);
 };
 </script>
 
