@@ -212,17 +212,18 @@ import DownloadPopup from '@/components/modals/DownloadPopup.vue';
 const props = defineProps({
   startDate: { type: String, required: true },
   startEnd: { type: String, required: true },
+  termoBusca: { type: String, default: '' }
 });
 
-console.log("📅 Props recebidas - startDate:", props.startDate, "startEnd:", props.startEnd);
-
+const paginaAtual = ref(1);
+const itensPorPagina = ref(10);
 const thisStartDate = ref(new Date(props.startDate));
 const thisStartEnd = ref(new Date(props.startEnd));
 
-const { pedidos, pedidosFiltrados, pedidosCarregados, getPedidos, filtrarPedidos } = usePedidos();
+const { pedidos, pedidosFiltrados, pedidosCarregados, getPedidos, filtrarPedidos, aplicarBusca, termoBusca } = usePedidos();
 const filtroVisivel = ref(false);
 const viewMode = ref('list');
-const transitionName = ref('fade'); // Nome da transição aplicada
+const transitionName = ref('fade'); 
 const abrirFiltro = () => {
   filtroVisivel.value = true;
 };
@@ -313,19 +314,24 @@ const formatarStatus = (status) => {
 
   return sanitizedStatus;
 };
-const paginaAtual = ref(1);
-const itensPorPagina = ref(10);
-
-const pedidosPaginados = computed(() => {
-  const inicio = (paginaAtual.value - 1) * itensPorPagina.value;
-  const fim = inicio + itensPorPagina.value;
-  return pedidosFiltrados.value.slice(inicio, fim);
-});
 
 const atualizarPagina = ({ pagina, itensPorPagina: itens }) => {
   paginaAtual.value = pagina;
   itensPorPagina.value = itens;
 };
+
+// 🔥 Computed para aplicar busca e filtro
+const pedidosPaginados = computed(() => {
+  const inicio = (paginaAtual.value - 1) * itensPorPagina.value;
+  const fim = inicio + itensPorPagina.value;
+  return pedidosFiltrados.value.slice(inicio, fim);
+});
+// 🔥 Aplica busca sempre que o termo de busca mudar
+watch(() => props.termoBusca, (novoTermo) => {
+  termoBusca.value = novoTermo; // Atualiza o termo no Composable
+  aplicarBusca(); // Chama o método aplicarBusca do Composable
+  console.log("Aplicando busca para:", novoTermo);
+});
 </script>
 
 <style scoped lang="scss">

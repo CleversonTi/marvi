@@ -18,6 +18,7 @@
       </div>
     </section>
     <Tabela
+      :termo-busca="termoBusca" 
       :start-date="startDate"
       :start-end="startEnd"
     />
@@ -32,27 +33,21 @@ import { usePedidos } from '@/composables/usePedidos';
 import SearchBar from '@/components/SearchBar/SearchBar.vue';
 import ResumoCardsVue from '@/components/pedidos/ResumoCards.vue';
 import Tabela from './Tabela.vue';
-
-
-
-
-
+const { startDate, startEnd, onDateChange } = useDateFilter();
 const { pedidos, pedidosBuscados, getPedidos, filtrarPedidos, aplicarBusca, termoBusca } = usePedidos();
 
+
+
 const onBuscar = (termo) => {
-  termoBusca.value = termo;
-  aplicarBusca();
+  termoBusca.value = termo; // Atualiza o termo de busca no Composable
 };
+
 
 onMounted(() => {
   getPedidos();
 });
-const { startDate, startEnd, onDateChange } = useDateFilter();
 
 
-onMounted(async () => {
-  await getPedidos();
-});
 
 
 onMounted(async () => {

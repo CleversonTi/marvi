@@ -1,22 +1,22 @@
-import { ref, computed } from 'vue';
+// web/src/composables/usePedidos.js
+
+import { ref, computed,  watch } from 'vue';
 import axios from 'axios';
 
 export function usePedidos() {
   const pedidos = ref([]);
   const pedidosFiltrados = ref([]);
   const pedidosCarregados = ref(false);
+  const termoBusca = ref(''); // 🔍 Termo de busca atual
 
   const getPedidos = async () => {
-    console.log("🔄 Iniciando requisição para obter pedidos...");
     try {
       const response = await axios.get('http://localhost:4000/pedidos');
       pedidos.value = response.data;
+      pedidosFiltrados.value = pedidos.value; // Inicialmente, mostra todos os pedidos
       pedidosCarregados.value = true;
-      console.log("✅ Pedidos carregados com sucesso:", pedidos.value);
-      return true; // Agora retornamos um sucesso para o .then() do onMounted
     } catch (error) {
-      console.error('❌ Erro ao carregar pedidos:', error);
-      return false; // Retornamos um falso em caso de erro
+      console.error('Erro ao carregar pedidos:', error);
     }
   };
 
@@ -51,7 +51,21 @@ export function usePedidos() {
       return dataPedido >= dataIni && dataPedido <= dataFim;
     });
 
+    aplicarBusca(); // 🔥 Aplica a busca após filtrar por data
     console.log('✅ Pedidos Filtrados após o filtro:', pedidosFiltrados.value);
+  };
+
+  const aplicarBusca = () => {
+    if (!termoBusca.value.trim()) {
+      pedidosFiltrados.value = pedidos.value;
+      return;
+    }
+
+    const termo = termoBusca.value.toLowerCase();
+    pedidosFiltrados.value = pedidos.value.filter(pedido => 
+      (pedido.Cliente && pedido.Cliente.toLowerCase().includes(termo)) ||
+      (pedido.NumeroPedido && pedido.NumeroPedido.toString().includes(termo))
+    );
   };
 
   const formatarData = (data) => {
@@ -82,11 +96,12 @@ export function usePedidos() {
     return `Período entre ${formatarDataCurta(dataInicio)} - ${formatarDataCurta(dataFim)}`;
   };
   const valorTotalFaturamento = computed(() => {
-    return formatarMoeda (pedidosFiltrados.value.reduce((total, pedido) => {
+    return formatarMoeda(pedidosFiltrados.value.reduce((total, pedido) => {
       return total + (parseFloat(pedido.ValorTotal) || 0);
     }, 0));
   });
-
+  // 🔥 Sempre aplica a busca quando o termo de busca é alterado
+  watch(termoBusca, aplicarBusca);
   return {
     pedidos,
     pedidosFiltrados,
@@ -95,7 +110,9 @@ export function usePedidos() {
     filtrarPedidos,
     formatarData,
     formatarMoeda,
-    formatarPeriodo, 
+    formatarPeriodo,
+    aplicarBusca,
+    termoBusca, // Exporta o termo de busca para ser atualizado pelo SearchBar
     valorTotalFaturamento,
   };
 }
