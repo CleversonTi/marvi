@@ -21,7 +21,8 @@ export function usePedidos() {
   };
 
   const filtrarPedidos = (startDate, endDate) => {
-    console.log("Entrou no filtrar pedidos")
+    console.log("Entrou no filtrar pedidos");
+
     if (!startDate || !endDate || !pedidos.value.length) {
       console.warn("⚠️ Dados insuficientes para o filtro.");
       return;
@@ -39,21 +40,37 @@ export function usePedidos() {
     dataIni.setHours(0, 0, 0, 0);
     dataFim.setHours(23, 59, 59, 999);
 
-    pedidosFiltrados.value = pedidos.value.filter((pedido) => {
+    aplicarBusca(); // 🔥 Aplica o termo de busca ANTES de filtrar por data
+
+    pedidosFiltrados.value = pedidosFiltrados.value.filter((pedido) => {
       if (!pedido.DataEntrada) return false;
 
-      const [dia, mes, ano] = pedido.DataEntrada.split('/').map(Number);
+      // 🔥 Conversão robusta da data
+      const dataPartes = pedido.DataEntrada.split('/');
+      if (dataPartes.length !== 3) {
+          console.warn("❓ DataEntrada em formato inválido:", pedido.DataEntrada);
+          return false;
+      }
+
+      const [dia, mes, ano] = dataPartes.map(Number);
       if (!dia || !mes || !ano) return false;
 
       const dataPedido = new Date(ano, mes - 1, dia);
+      if (isNaN(dataPedido.getTime())) {
+          console.error("❌ Data do pedido inválida:", pedido.DataEntrada);
+          return false;
+      }
+
       dataPedido.setHours(0, 0, 0, 0);
 
-      return dataPedido >= dataIni && dataPedido <= dataFim;
+      const dentroDoRange = dataPedido >= dataIni && dataPedido <= dataFim;
+      console.log(`📅 Pedido: ${pedido.NumeroPedido} | Data: ${dataPedido.toISOString()} | Dentro do Range: ${dentroDoRange}`);
+
+      return dentroDoRange;
     });
 
-    aplicarBusca(); // 🔥 Aplica a busca após filtrar por data
     console.log('✅ Pedidos Filtrados após o filtro:', pedidosFiltrados.value);
-  };
+};
 
   const aplicarBusca = () => {
     if (!termoBusca.value.trim()) {
