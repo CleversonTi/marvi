@@ -1,247 +1,62 @@
 <template>
   <section class="tabela-pedidos">
-    <div class="toolbar">
-      <div class="titulo-status">
-        <span>Mostrando <strong>{{ pedidosPaginados.length }}</strong> pedidos de <strong>{{ pedidosFiltrados.length }}</strong></span>
-        <button
-          class="filter-button"
-          @click="abrirFiltro"
-        >
-          <Filter
-            size="20"
-            stroke-width="2.5"
-            color="#fff"
-          />
-        </button>
-        <!-- Filtros Aplicados -->
-        <div
-          v-if="filtrosAtivos.length > 0"
-          class="filtros-aplicados"
-        >
-          <div
-            v-for="(filtro, index) in filtrosAtivos"
-            :key="index"
-            class="filtro-tag"
-          >
-            <span>{{ filtro }}</span>
-            <button @click="removerFiltro(index)">
-              X
-            </button>
-          </div>
-          <button
-            class="btn-limpar"
-            @click="limparFiltros"
-          >
-            Limpar Todos X
-          </button>
-        </div>
-      </div>
-      <div class="action-buttons">
-        <button
-          class="new-order-button"
-          @click="novoPedido"
-        >
-          <span>
-            Novo Pedido +
-          </span>
-        </button>
-        <div class="actions-list-or-grid">
-          <button
-            class="view-button"
-            @click="toggleView('list')"
-          >
-            <IconList
-              size="30"
-              stroke-width="2.5"
-              class="text-pink-500 hover:text-red-500 transition-colors duration-300"
-              color="#8B8B8B"
-            />
-          </button>
-          <button
-            class="view-button"
-            @click="toggleView('grid')"
-          >
-            <Grid2x2
-              size="30"
-              stroke-width="2.5"
-              color="#8B8B8B"
-            />
-          </button>
-        </div>
-        <div class="modal-downloadPopup">
-          <button
-            class="popup-button"
-            @click="togglePopup"
-          >
-            <IconMoreVertical
-              size="40"
-              stroke-width="1.5"
-            /> 
-          </button>
-          <DownloadPopup 
-            :is-visible="popupVisivel" 
-            @close="togglePopup" 
-            @download="baixarArquivo" 
-          />
-        </div>
-      </div>
-    </div>
+    <Toolbar
+      :pedidos-paginados="pedidosPaginados.length"
+      :total-pedidos="pedidosFiltrados.length"
+      :filtros-ativos="[]"
+      @abrir-filtro="abrirFiltro"
+      @trocar-visualizacao="trocarVisualizacao"
+      @remover-filtro="removerFiltro" 
+    />
+   
     <!-- 🔥 Aqui você adiciona o ModalFiltro -->
     <ModalFiltro 
       :is-visible="filtroVisivel" 
       @close="fecharFiltro" 
       @filtrar="aplicarFiltro"
     />
-    <!-- 🔥 Exibe a mensagem de "Nenhum resultado encontrado" quando não há itens filtrados -->
-    <div
-      v-if="pedidosPaginados.length === 0"
-      class="no-results"
+    <!-- Exibição da Tabela ou Grid -->
+    <transition
+      :name="transitionName"
+      mode="out-in"
     >
-      Nenhum pedido encontrado para a busca: <strong>{{ props.termoBusca }}</strong>
-    </div>
-    <div
-      v-else
-      class="table-container"
-    >
-      <!-- Transição suave para os modos de exibição -->
-      <transition
-        :name="transitionName"
-        mode="out-in"
+      <div
+        v-if="viewMode === 'list'"
+        :key="viewMode"
       >
-        <div
-          v-if="viewMode === 'list'"
-          :key="viewMode"
-          class="table-container"
-        >
-          <table>
-            <thead>
-              <tr>
-                <th>Número do Pedido</th>
-                <th>Data Entrada</th>
-                <th>Cliente</th>
-                <th>Perfil</th>
-                <th>Vencimento</th>
-                <th>Situação</th>
-                <th>Peso (kg)</th>
-                <th>Valor Total (R$)</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="(pedido, index) in pedidosPaginados"
-                :key="index"
-              >
-                <td>{{ pedido.NumeroPedido }}</td>
-                <td>{{ pedido.DataEntrada }}</td>
-                <td>{{ pedido.Cliente }}</td>
-                <td>{{ pedido.Perfil || 'Padrão' }}</td>
-                <td>{{ pedido.Vencimento }}</td>
-                <td>{{ pedido.Situacao }}</td>
-                <td>{{ pedido.PesoFaturado || '0.0000' }}</td>
-                <td>{{ formatarMoeda(pedido.ValorTotal) }}</td>
-                <td><span :class="['status-badge', formatarStatus(pedido.Status)]">{{ pedido.Status }}</span></td>
-              </tr>
-            </tbody>
-          </table>
-          <Paginator 
-            :total-itens="pedidosFiltrados.length" 
-            @mudanca-pagina="atualizarPagina" 
-          />
-        </div>
-      </transition>
-
-      <transition
-        :name="transitionName"
-        mode="out-in"
+        <TableList
+          :pedidos="pedidosPaginados"
+          :total-pedidos="pedidosFiltrados.length"
+          @mudanca-pagina="atualizarPagina"
+        />
+      </div>
+      <div
+        v-else
+        :key="viewMode"
       >
-        <section
-          v-if="viewMode === 'grid'"
-          class="listas-container"
-        >
-          <div class="item-conteudo">
-            <ul class="lista-card">
-              <li
-                v-for="(pedido, index) in pedidosPaginados"
-                :key="index"
-                class="lista-item"
-              >
-                <div class="cod_pedidos item">
-                  <strong class="title">N do Pedido</strong>
-                  <span>
-                    {{ pedido.NumeroPedido }}
-                  </span>
-                </div>
-
-                <div class="name_cliente item">
-                  <strong class="title">
-                    Cliente
-                  </strong>
-                  <span>Sorveteria Gelaboca Lorem Ipsum Dolor</span>
-                </div>
-                <div class="name_cliente item">
-                  <strong class="title">
-                    Representante
-                  </strong>
-                  <span>{{ pedido.Cliente }}</span>
-                </div>
-            
-                <div class="dates_cliente item two-itens">
-                  <div class="name_cliente">
-                    <strong class="title">
-                      Entrada
-                    </strong>
-                    <span class="title">{{ pedido.DataEntrada }}</span>
-                  </div>
-                  <div class="name_cliente">
-                    <strong class="title">
-                      Vencimento
-                    </strong>
-                    <span class="title">{{ pedido.Vencimento }}</span>
-                  </div>
-                </div>
-                <div class="dates_cliente item three-itens">
-                  <div class="name_cliente">
-                    <strong class="title">
-                      Situação
-                    </strong>
-                    <span class="title">{{ pedido.Situacao }}</span>
-                  </div>
-                  <div class="name_cliente">
-                    <strong class="title">
-                      Total
-                    </strong>
-                    <span>{{ formatarMoeda(pedido.ValorTotal) }}</span>
-                  </div>
-                  <div class="name_cliente badge">
-                    <strong class="title">
-                      Status
-                    </strong>
-                    <span><span :class="['status-badge', formatarStatus(pedido.Status)]">{{ pedido.Status }}</span></span>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <Paginator 
-            :total-itens="pedidosFiltrados.length" 
-            @mudanca-pagina="atualizarPagina" 
-          />
-        </section>
-      </transition>
-    </div>
+        <GridList
+          :pedidos="pedidosPaginados"
+          :total-pedidos="pedidosFiltrados.length"
+          @mudanca-pagina="atualizarPagina"
+        />
+      </div>
+    </transition>
   </section>
 </template>
 
 <script setup>
 import { ref, watch, onMounted,  computed } from 'vue';
 import { usePedidos } from '@/composables/usePedidos';
-import { Filter, Grid2x2 } from 'lucide-vue-next';
-import  IconList  from '@/components/icons/IconListMarvi.vue';
-import  IconMoreVertical  from '@/components/icons/IconMoreVertical.vue';
+
 import Paginator from '@/components/Pagination/Paginator.vue';
 import ModalFiltro from '@/components/modals/ModalFiltro.vue';
 import DownloadPopup from '@/components/modals/DownloadPopup.vue';
+import Toolbar from '@/components/Toolbar/Toolbar.vue';
+import TableList from '@/components/Tabelas/TableList.vue';
+import GridList from '@/components/GridList/GridList.vue';
+
+// 🔥 Controle da visualização atual ('list' ou 'grid')
+const viewMode = ref('list');
 
 const props = defineProps({
   startDate: { type: String, required: true },
@@ -254,11 +69,14 @@ const itensPorPagina = ref(10);
 const thisStartDate = ref(new Date(props.startDate));
 const thisStartEnd = ref(new Date(props.startEnd));
 
+
 const { pedidos, pedidosFiltrados, pedidosCarregados, getPedidos, filtrarPedidos, aplicarBusca, termoBusca } = usePedidos();
+
+
 const filtroVisivel = ref(false);
 const filtrosAtivos = ref([]);
 
-const viewMode = ref('list');
+
 const transitionName = ref('fade'); 
 const abrirFiltro = () => {
   filtroVisivel.value = true;
@@ -287,7 +105,7 @@ watch(filtrosAtivos, () => {
   filtrarPedidos(); // Refiltra a lista ao atualizar os filtros
 });
 
-const toggleView = (mode) => {
+const trocarVisualizacao = (mode) => {
   viewMode.value = mode;
   transitionName.value = mode === 'list' ? 'smooth-fade' : 'smooth-slide';
 };
@@ -304,7 +122,6 @@ const togglePopup = () => {
 const baixarArquivo = (formato) => {
   console.log(`Baixando arquivo em formato: ${formato}`);
 };
-
 onMounted(() => {
   console.log("📥 onMounted executado.");
   
@@ -321,6 +138,7 @@ onMounted(() => {
     console.error("❌ Erro ao carregar os pedidos:", error);
   });
 });
+
 
 const configurarWatch = () => {
   watch(
@@ -342,6 +160,8 @@ const configurarWatch = () => {
     { immediate: true }
   );
 };
+
+
 // 🔥 Função para formatar moeda
 const formatarMoeda = (valor) => {
   if (typeof valor !== 'number') valor = parseFloat(valor) || 0;

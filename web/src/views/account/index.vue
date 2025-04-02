@@ -27,7 +27,6 @@ import FilterPerido from '@/components/FilterDates/DatePicker.vue';
 import Resumo from '@/layouts/pedidos/dashboard/Main.vue';
 
 const pedidos = ref([]);
-const selectedRange = ref([]);
 const startDate = ref('');
 const startEnd = ref('');
 

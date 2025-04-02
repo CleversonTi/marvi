@@ -79,7 +79,7 @@
 import { ref, computed } from 'vue';
 const props = defineProps({ isVisible: Boolean });
 const emit = defineEmits(['close', 'filtrar']);
-
+console.log(props.isVisible);
 const situacaoSelecionada = ref([]);
 const statusSelecionado = ref([]);
 

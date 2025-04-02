@@ -8,6 +8,7 @@ export function usePedidos() {
   const pedidosFiltrados = ref([]);
   const pedidosCarregados = ref(false);
   const termoBusca = ref(''); // 🔍 Termo de busca atual
+  
 
   const getPedidos = async () => {
     try {
@@ -90,12 +91,7 @@ export function usePedidos() {
     return new Intl.DateTimeFormat('pt-BR').format(data);
   };
 
-  const formatarMoeda = (valor) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    }).format(valor || 0);
-  };
+  
   const formatarPeriodo = (startDate, endDate) => {
     if (!startDate || !endDate) return '';
 
@@ -126,10 +122,28 @@ export function usePedidos() {
     getPedidos,
     filtrarPedidos,
     formatarData,
-    formatarMoeda,
     formatarPeriodo,
     aplicarBusca,
     termoBusca, // Exporta o termo de busca para ser atualizado pelo SearchBar
     valorTotalFaturamento,
   };
 }
+export const formatarStatus = (status) => {
+  if (!status) return 'status-default';
+  
+  // Remove caracteres especiais, mantendo apenas letras, números e espaços
+  const sanitizedStatus = status
+    .toLowerCase()
+    .normalize('NFD') // Remove acentuação (ex: "á" -> "a")
+    .replace(/[\u0300-\u036f]/g, '') // Remove marcas diacríticas geradas pelo normalize
+    .replace(/[^a-z0-9\s]/g, '') // Remove todos os caracteres especiais
+    .replace(/\s+/g, '-'); // Substitui espaços por hífen
+
+  return sanitizedStatus;
+};
+export const formatarMoeda = (valor) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(valor || 0);
+};
