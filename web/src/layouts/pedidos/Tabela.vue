@@ -13,6 +13,28 @@
             color="#fff"
           />
         </button>
+        <!-- Filtros Aplicados -->
+        <div
+          v-if="filtrosAtivos.length > 0"
+          class="filtros-aplicados"
+        >
+          <div
+            v-for="(filtro, index) in filtrosAtivos"
+            :key="index"
+            class="filtro-tag"
+          >
+            <span>{{ filtro }}</span>
+            <button @click="removerFiltro(index)">
+              X
+            </button>
+          </div>
+          <button
+            class="btn-limpar"
+            @click="limparFiltros"
+          >
+            Limpar Todos X
+          </button>
+        </div>
       </div>
       <div class="action-buttons">
         <button
@@ -234,6 +256,8 @@ const thisStartEnd = ref(new Date(props.startEnd));
 
 const { pedidos, pedidosFiltrados, pedidosCarregados, getPedidos, filtrarPedidos, aplicarBusca, termoBusca } = usePedidos();
 const filtroVisivel = ref(false);
+const filtrosAtivos = ref([]);
+
 const viewMode = ref('list');
 const transitionName = ref('fade'); 
 const abrirFiltro = () => {
@@ -244,10 +268,25 @@ const fecharFiltro = () => {
   filtroVisivel.value = false;
 };
 
+
 const aplicarFiltro = (filtrosSelecionados) => {
-  console.log('Filtros Aplicados:', filtrosSelecionados);
+  filtrosAtivos.value = filtrosSelecionados;
   fecharFiltro();
 };
+// Função para remover um filtro específico
+const removerFiltro = (index) => {
+  filtrosAtivos.value.splice(index, 1);
+  aplicarFiltro(filtrosAtivos.value);
+};
+// Função para limpar todos os filtros
+const limparFiltros = () => {
+  filtrosAtivos.value = [];
+  aplicarFiltro([]);
+};
+watch(filtrosAtivos, () => {
+  filtrarPedidos(); // Refiltra a lista ao atualizar os filtros
+});
+
 const toggleView = (mode) => {
   viewMode.value = mode;
   transitionName.value = mode === 'list' ? 'smooth-fade' : 'smooth-slide';
@@ -390,5 +429,42 @@ watch(() => props.termoBusca, (novoTermo) => {
   transform: scale(1.01);
  
 }
+.filtros-aplicados {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  
+}
 
+.filtro-tag {
+  background-color: #2270AD;
+  padding: 5px 10px;
+  border-radius:30px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
+  cursor: pointer;
+  span{
+    color: #fff;
+    font-size: 12px;
+  }
+}
+
+.filtro-tag button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn-limpar {
+  background: none;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+
+}
 </style>
