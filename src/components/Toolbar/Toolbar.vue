@@ -13,7 +13,6 @@
         />
       </button>
 
-      <!-- Filtros Aplicados -->
       <div
         v-if="filtrosAtivos.length > 0"
         class="filtros-aplicados"

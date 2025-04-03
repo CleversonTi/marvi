@@ -85,6 +85,8 @@ const statusSelecionado = ref([]);
 
 const aplicarFiltros = () => {
   const filtros = [...situacaoSelecionada.value, ...statusSelecionado.value];
+  console.log("Modal filtros");
+  console.log(filtros);
   emit('filtrar', filtros);
   emit('close');
 };

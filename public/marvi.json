@@ -1,0 +1,3977 @@
+{
+    "representantes": [
+        {
+            "id": 1,
+            "nome_social": {
+                "value": "Representante 1",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "52.564.438/0001-52",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 1",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "RS",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 1",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    15
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 2,
+            "nome_social": {
+                "value": "Representante 2",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "31.695.755/0001-98",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 2",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "RJ",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 2",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    28
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 3,
+            "nome_social": {
+                "value": "Representante 3",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "79.776.461/0001-57",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 3",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "CE",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 3",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 4,
+            "nome_social": {
+                "value": "Representante 4",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "71.192.838/0001-55",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 4",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "BA",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 4",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    12
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 5,
+            "nome_social": {
+                "value": "Representante 5",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "19.440.582/0001-73",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 5",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "PR",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 5",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    4,
+                    30
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 6,
+            "nome_social": {
+                "value": "Representante 6",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "72.544.984/0001-29",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 6",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "RJ",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 6",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    3,
+                    17,
+                    23
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 7,
+            "nome_social": {
+                "value": "Representante 7",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "71.491.578/0001-98",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 7",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "RS",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 7",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 8,
+            "nome_social": {
+                "value": "Representante 8",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "73.143.155/0001-71",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 8",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "BA",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 8",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    13
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 9,
+            "nome_social": {
+                "value": "Representante 9",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "22.509.270/0001-72",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 9",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "PR",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 9",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 10,
+            "nome_social": {
+                "value": "Representante 10",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "49.434.471/0001-78",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 10",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "BA",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 10",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    1
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 11,
+            "nome_social": {
+                "value": "Representante 11",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "34.563.207/0001-92",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 11",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "MG",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 11",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    22
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 12,
+            "nome_social": {
+                "value": "Representante 12",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "39.775.595/0001-77",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 12",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "MG",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 12",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    26
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 13,
+            "nome_social": {
+                "value": "Representante 13",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "56.736.446/0001-38",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 13",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "CE",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 13",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    9
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 14,
+            "nome_social": {
+                "value": "Representante 14",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "13.280.442/0001-69",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 14",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "PR",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 14",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 15,
+            "nome_social": {
+                "value": "Representante 15",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "13.162.403/0001-11",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 15",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "PR",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 15",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 16,
+            "nome_social": {
+                "value": "Representante 16",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "81.335.908/0001-95",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 16",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "RS",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 16",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 17,
+            "nome_social": {
+                "value": "Representante 17",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "90.684.710/0001-88",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 17",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "RJ",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 17",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 18,
+            "nome_social": {
+                "value": "Representante 18",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "27.124.218/0001-83",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 18",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "RJ",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 18",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    2,
+                    10
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 19,
+            "nome_social": {
+                "value": "Representante 19",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "90.693.519/0001-74",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 19",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "RS",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 19",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 20,
+            "nome_social": {
+                "value": "Representante 20",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "38.702.157/0001-71",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 20",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "RJ",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 20",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    5,
+                    7,
+                    11,
+                    24,
+                    29
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 21,
+            "nome_social": {
+                "value": "Representante 21",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "24.371.977/0001-93",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 21",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "GO",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 21",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    8,
+                    16,
+                    27
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 22,
+            "nome_social": {
+                "value": "Representante 22",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "19.427.317/0001-51",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 22",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "RS",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 22",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    19,
+                    20
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 23,
+            "nome_social": {
+                "value": "Representante 23",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "13.363.146/0001-41",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 23",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "BA",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 23",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    14
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 24,
+            "nome_social": {
+                "value": "Representante 24",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "95.164.538/0001-17",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 24",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "GO",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 24",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    18
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 25,
+            "nome_social": {
+                "value": "Representante 25",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "38.323.574/0001-95",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 25",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "SC",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 25",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    25
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 26,
+            "nome_social": {
+                "value": "Representante 26",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "18.935.528/0001-53",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 26",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "BA",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 26",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    21
+                ],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 27,
+            "nome_social": {
+                "value": "Representante 27",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "89.414.629/0001-56",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 27",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "BA",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 27",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Inativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 28,
+            "nome_social": {
+                "value": "Representante 28",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "13.599.223/0001-36",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 28",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "BA",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 28",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 29,
+            "nome_social": {
+                "value": "Representante 29",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "90.665.651/0001-71",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 29",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "PE",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 29",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [],
+                "label": "Clientes Relacionados"
+            }
+        },
+        {
+            "id": 30,
+            "nome_social": {
+                "value": "Representante 30",
+                "label": "Nome Social"
+            },
+            "cnpj": {
+                "value": "93.984.731/0001-57",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 30",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "RJ",
+                "label": "Estado"
+            },
+            "responsavel": {
+                "value": "Respons\u00e1vel 30",
+                "label": "Respons\u00e1vel"
+            },
+            "status": {
+                "value": "Ativo",
+                "label": "Status"
+            },
+            "clientes": {
+                "value": [
+                    6
+                ],
+                "label": "Clientes Relacionados"
+            }
+        }
+    ],
+    "clientes": [
+        {
+            "id": 1,
+            "razao_social": {
+                "value": "Cliente 1 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "37.869.815/0001-14",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 1",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 1",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Industrial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 10,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Pendente",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    12
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 2,
+            "razao_social": {
+                "value": "Cliente 2 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "65.926.196/0001-32",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 2",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 2",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Servi\u00e7os",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Pequeno",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 18,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    23
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 3,
+            "razao_social": {
+                "value": "Cliente 3 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "47.612.850/0001-72",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 3",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 3",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Industrial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Pequeno",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 6,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    15
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 4,
+            "razao_social": {
+                "value": "Cliente 4 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "64.583.888/0001-67",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 4",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 4",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Industrial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Pequeno",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 5,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 5,
+            "razao_social": {
+                "value": "Cliente 5 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "33.563.763/0001-84",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 5",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 5",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Servi\u00e7os",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Pequeno",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 20,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 6,
+            "razao_social": {
+                "value": "Cliente 6 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "59.506.458/0001-46",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 6",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 6",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Comercial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Pequeno",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 30,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Pendente",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    22
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 7,
+            "razao_social": {
+                "value": "Cliente 7 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "22.511.858/0001-88",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 7",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 7",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Servi\u00e7os",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Pequeno",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 20,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Aprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 8,
+            "razao_social": {
+                "value": "Cliente 8 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "23.358.815/0001-97",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 8",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 8",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Servi\u00e7os",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "M\u00e9dio",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 21,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Pendente",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    19
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 9,
+            "razao_social": {
+                "value": "Cliente 9 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "35.959.826/0001-75",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 9",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 9",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Industrial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "M\u00e9dio",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 13,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    13,
+                    29
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 10,
+            "razao_social": {
+                "value": "Cliente 10 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "54.360.462/0001-86",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 10",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 10",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Comercial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 18,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 11,
+            "razao_social": {
+                "value": "Cliente 11 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "19.914.821/0001-62",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 11",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 11",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Comercial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 20,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    28
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 12,
+            "razao_social": {
+                "value": "Cliente 12 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "40.468.370/0001-96",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 12",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 12",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Industrial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 4,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Pendente",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 13,
+            "razao_social": {
+                "value": "Cliente 13 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "92.981.395/0001-63",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 13",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 13",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Servi\u00e7os",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Pequeno",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 8,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Aprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 14,
+            "razao_social": {
+                "value": "Cliente 14 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "27.113.896/0001-83",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 14",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 14",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Comercial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 23,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 15,
+            "razao_social": {
+                "value": "Cliente 15 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "14.756.728/0001-46",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 15",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 15",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Servi\u00e7os",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "M\u00e9dio",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 1,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Pendente",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    18,
+                    20
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 16,
+            "razao_social": {
+                "value": "Cliente 16 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "15.940.544/0001-67",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 16",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 16",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Comercial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 21,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 17,
+            "razao_social": {
+                "value": "Cliente 17 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "21.231.498/0001-89",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 17",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 17",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Comercial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 6,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    5
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 18,
+            "razao_social": {
+                "value": "Cliente 18 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "49.538.798/0001-75",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 18",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 18",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Comercial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Pequeno",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 24,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Aprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 19,
+            "razao_social": {
+                "value": "Cliente 19 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "28.376.657/0001-40",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 19",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 19",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Servi\u00e7os",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "M\u00e9dio",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 22,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Pendente",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    2,
+                    9
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 20,
+            "razao_social": {
+                "value": "Cliente 20 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "82.453.547/0001-81",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 20",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 20",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Servi\u00e7os",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 22,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Aprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 21,
+            "razao_social": {
+                "value": "Cliente 21 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "89.746.157/0001-53",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 21",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 21",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Industrial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "M\u00e9dio",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 26,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Pendente",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    6,
+                    27
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 22,
+            "razao_social": {
+                "value": "Cliente 22 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "73.457.123/0001-15",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 22",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 22",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Industrial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "M\u00e9dio",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 11,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    3,
+                    10
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 23,
+            "razao_social": {
+                "value": "Cliente 23 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "76.923.853/0001-11",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 23",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 23",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Servi\u00e7os",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "M\u00e9dio",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 6,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Pendente",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 24,
+            "razao_social": {
+                "value": "Cliente 24 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "90.103.161/0001-14",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 24",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 24",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Industrial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 20,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Pendente",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 25,
+            "razao_social": {
+                "value": "Cliente 25 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "29.909.498/0001-47",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 25",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 25",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Comercial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 25,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Pendente",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    30
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 26,
+            "razao_social": {
+                "value": "Cliente 26 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "18.752.964/0001-15",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 26",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 26",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Comercial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Pequeno",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 12,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Aprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    7,
+                    8
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 27,
+            "razao_social": {
+                "value": "Cliente 27 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "49.182.534/0001-19",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 27",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 27",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Comercial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 21,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    4
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 28,
+            "razao_social": {
+                "value": "Cliente 28 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "27.978.888/0001-32",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 28",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 28",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Servi\u00e7os",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Pequeno",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 2,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Pendente",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    1,
+                    16,
+                    17
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 29,
+            "razao_social": {
+                "value": "Cliente 29 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "21.206.368/0001-49",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 29",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 29",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Comercial",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Grande",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 20,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    21,
+                    24,
+                    25
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        },
+        {
+            "id": 30,
+            "razao_social": {
+                "value": "Cliente 30 Ltda",
+                "label": "Raz\u00e3o Social"
+            },
+            "cnpj": {
+                "value": "23.822.994/0001-14",
+                "label": "CNPJ"
+            },
+            "cidade": {
+                "value": "Cidade 30",
+                "label": "Cidade"
+            },
+            "estado": {
+                "value": "Estado 30",
+                "label": "Estado"
+            },
+            "perfil": {
+                "value": "Servi\u00e7os",
+                "label": "Perfil"
+            },
+            "porte": {
+                "value": "Pequeno",
+                "label": "Porte"
+            },
+            "representante_id": {
+                "value": 5,
+                "label": "Representante Relacionado"
+            },
+            "status": {
+                "value": "Reprovado",
+                "label": "Status"
+            },
+            "pedidos": {
+                "value": [
+                    11,
+                    14,
+                    26
+                ],
+                "label": "Pedidos Relacionados"
+            }
+        }
+    ],
+    "produtos": [
+        {
+            "id": 1,
+            "nome": {
+                "value": "Produto 1",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 321.17,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 1",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 2,
+            "nome": {
+                "value": "Produto 2",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 96.48,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 2",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 3,
+            "nome": {
+                "value": "Produto 3",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 284.66,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 3",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 4,
+            "nome": {
+                "value": "Produto 4",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 377.92,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 4",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 5,
+            "nome": {
+                "value": "Produto 5",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 480.04,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 5",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 6,
+            "nome": {
+                "value": "Produto 6",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 347.76,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 6",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 7,
+            "nome": {
+                "value": "Produto 7",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 100.3,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 7",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 8,
+            "nome": {
+                "value": "Produto 8",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 165.43,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 8",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 9,
+            "nome": {
+                "value": "Produto 9",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 387.64,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 9",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 10,
+            "nome": {
+                "value": "Produto 10",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 191.56,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 10",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 11,
+            "nome": {
+                "value": "Produto 11",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 484.28,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 11",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 12,
+            "nome": {
+                "value": "Produto 12",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 405.3,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 12",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 13,
+            "nome": {
+                "value": "Produto 13",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 255.03,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 13",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 14,
+            "nome": {
+                "value": "Produto 14",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 128.58,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 14",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 15,
+            "nome": {
+                "value": "Produto 15",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 323.22,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 15",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 16,
+            "nome": {
+                "value": "Produto 16",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 190.2,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 16",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 17,
+            "nome": {
+                "value": "Produto 17",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 279.57,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 17",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 18,
+            "nome": {
+                "value": "Produto 18",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 400.15,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 18",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 19,
+            "nome": {
+                "value": "Produto 19",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 137.19,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 19",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 20,
+            "nome": {
+                "value": "Produto 20",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 497.97,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 20",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 21,
+            "nome": {
+                "value": "Produto 21",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 258.07,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 21",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 22,
+            "nome": {
+                "value": "Produto 22",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 83.04,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 22",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 23,
+            "nome": {
+                "value": "Produto 23",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 492.09,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 23",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 24,
+            "nome": {
+                "value": "Produto 24",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 382.83,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 24",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 25,
+            "nome": {
+                "value": "Produto 25",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 59.39,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 25",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 26,
+            "nome": {
+                "value": "Produto 26",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 397.23,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 26",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 27,
+            "nome": {
+                "value": "Produto 27",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 253.6,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 27",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 28,
+            "nome": {
+                "value": "Produto 28",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 241.78,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 28",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 29,
+            "nome": {
+                "value": "Produto 29",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 342.91,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 29",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        },
+        {
+            "id": 30,
+            "nome": {
+                "value": "Produto 30",
+                "label": "Nome do Produto"
+            },
+            "preco": {
+                "value": 216.77,
+                "label": "Pre\u00e7o"
+            },
+            "descricao": {
+                "value": "Descri\u00e7\u00e3o do Produto 30",
+                "label": "Descri\u00e7\u00e3o"
+            }
+        }
+    ],
+    "pedidos": [
+        {
+            "id": 1,
+            "numero_pedido": {
+                "value": "001",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 28,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 2,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-08-12",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-09-11",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pago",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "N\u00e3o Faturado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 25,
+                        "quantidade": 2
+                    },
+                    {
+                        "produto_id": 23,
+                        "quantidade": 6
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 2,
+            "numero_pedido": {
+                "value": "002",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 19,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 22,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-05-12",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-06-11",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pago",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Entregue",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 7,
+                        "quantidade": 8
+                    },
+                    {
+                        "produto_id": 15,
+                        "quantidade": 10
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 3,
+            "numero_pedido": {
+                "value": "003",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 22,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 11,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-09-23",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-10-23",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pendente",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Enviado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 29,
+                        "quantidade": 8
+                    },
+                    {
+                        "produto_id": 4,
+                        "quantidade": 4
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 4,
+            "numero_pedido": {
+                "value": "004",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 27,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 21,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-05-18",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-06-17",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pendente",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "N\u00e3o Faturado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 29,
+                        "quantidade": 9
+                    },
+                    {
+                        "produto_id": 15,
+                        "quantidade": 1
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 5,
+            "numero_pedido": {
+                "value": "005",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 17,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 6,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2025-01-06",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2025-02-05",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Atrasado",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Aguardando",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 26,
+                        "quantidade": 2
+                    },
+                    {
+                        "produto_id": 15,
+                        "quantidade": 10
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 6,
+            "numero_pedido": {
+                "value": "006",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 21,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 26,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2025-01-25",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2025-02-24",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pago",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Entregue",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 8,
+                        "quantidade": 10
+                    },
+                    {
+                        "produto_id": 3,
+                        "quantidade": 9
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 7,
+            "numero_pedido": {
+                "value": "007",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 26,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 12,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-01-03",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-02-02",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pendente",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Em aberto",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 27,
+                        "quantidade": 2
+                    },
+                    {
+                        "produto_id": 19,
+                        "quantidade": 4
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 8,
+            "numero_pedido": {
+                "value": "008",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 26,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 12,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-07-09",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-08-08",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pendente",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Enviado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 12,
+                        "quantidade": 1
+                    },
+                    {
+                        "produto_id": 5,
+                        "quantidade": 6
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 9,
+            "numero_pedido": {
+                "value": "009",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 19,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 22,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-11-20",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-12-20",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pago",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "N\u00e3o Faturado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 18,
+                        "quantidade": 1
+                    },
+                    {
+                        "produto_id": 29,
+                        "quantidade": 10
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 10,
+            "numero_pedido": {
+                "value": "010",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 22,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 11,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-09-13",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-10-13",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pago",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Em aberto",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 26,
+                        "quantidade": 8
+                    },
+                    {
+                        "produto_id": 29,
+                        "quantidade": 4
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 11,
+            "numero_pedido": {
+                "value": "011",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 30,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 5,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-06-11",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-07-11",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pendente",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Enviado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 20,
+                        "quantidade": 5
+                    },
+                    {
+                        "produto_id": 7,
+                        "quantidade": 7
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 12,
+            "numero_pedido": {
+                "value": "012",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 1,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 10,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2025-03-26",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2025-04-25",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pago",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Em aberto",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 13,
+                        "quantidade": 4
+                    },
+                    {
+                        "produto_id": 20,
+                        "quantidade": 6
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 13,
+            "numero_pedido": {
+                "value": "013",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 9,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 13,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-04-25",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-05-25",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Atrasado",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Faturado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 8,
+                        "quantidade": 8
+                    },
+                    {
+                        "produto_id": 7,
+                        "quantidade": 9
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 14,
+            "numero_pedido": {
+                "value": "014",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 30,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 5,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-01-25",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-02-24",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pago",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Aguardando",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 18,
+                        "quantidade": 3
+                    },
+                    {
+                        "produto_id": 18,
+                        "quantidade": 3
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 15,
+            "numero_pedido": {
+                "value": "015",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 3,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 6,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-01-03",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-02-02",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Atrasado",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Enviado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 19,
+                        "quantidade": 3
+                    },
+                    {
+                        "produto_id": 15,
+                        "quantidade": 5
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 16,
+            "numero_pedido": {
+                "value": "016",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 28,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 2,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2025-01-18",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2025-02-17",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Atrasado",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Enviado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 24,
+                        "quantidade": 9
+                    },
+                    {
+                        "produto_id": 3,
+                        "quantidade": 5
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 17,
+            "numero_pedido": {
+                "value": "017",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 28,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 2,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2025-02-04",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2025-03-06",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pago",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Aguardando",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 16,
+                        "quantidade": 4
+                    },
+                    {
+                        "produto_id": 17,
+                        "quantidade": 9
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 18,
+            "numero_pedido": {
+                "value": "018",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 15,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 1,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-01-01",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-01-31",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pago",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "N\u00e3o Faturado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 25,
+                        "quantidade": 7
+                    },
+                    {
+                        "produto_id": 22,
+                        "quantidade": 5
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 19,
+            "numero_pedido": {
+                "value": "019",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 8,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 21,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-02-23",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-03-24",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pago",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "N\u00e3o Faturado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 23,
+                        "quantidade": 7
+                    },
+                    {
+                        "produto_id": 3,
+                        "quantidade": 7
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 20,
+            "numero_pedido": {
+                "value": "020",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 15,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 1,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-05-05",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-06-04",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Atrasado",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Entregue",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 17,
+                        "quantidade": 9
+                    },
+                    {
+                        "produto_id": 28,
+                        "quantidade": 8
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 21,
+            "numero_pedido": {
+                "value": "021",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 29,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 20,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-03-25",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-04-24",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pago",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Entregue",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 7,
+                        "quantidade": 2
+                    },
+                    {
+                        "produto_id": 22,
+                        "quantidade": 2
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 22,
+            "numero_pedido": {
+                "value": "022",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 6,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 30,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-06-26",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-07-26",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Atrasado",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Enviado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 3,
+                        "quantidade": 9
+                    },
+                    {
+                        "produto_id": 24,
+                        "quantidade": 8
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 23,
+            "numero_pedido": {
+                "value": "023",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 2,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 18,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-01-20",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-02-19",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Atrasado",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "N\u00e3o Faturado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 15,
+                        "quantidade": 2
+                    },
+                    {
+                        "produto_id": 22,
+                        "quantidade": 7
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 24,
+            "numero_pedido": {
+                "value": "024",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 29,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 20,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-05-26",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-06-25",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Atrasado",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Faturado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 18,
+                        "quantidade": 7
+                    },
+                    {
+                        "produto_id": 30,
+                        "quantidade": 7
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 25,
+            "numero_pedido": {
+                "value": "025",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 29,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 20,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-03-22",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-04-21",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pendente",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Aguardando",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 24,
+                        "quantidade": 3
+                    },
+                    {
+                        "produto_id": 11,
+                        "quantidade": 8
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 26,
+            "numero_pedido": {
+                "value": "026",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 30,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 5,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-02-01",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-03-02",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Atrasado",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Aguardando",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 11,
+                        "quantidade": 4
+                    },
+                    {
+                        "produto_id": 2,
+                        "quantidade": 2
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 27,
+            "numero_pedido": {
+                "value": "027",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 21,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 26,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-10-19",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-11-18",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pendente",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Faturado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 5,
+                        "quantidade": 8
+                    },
+                    {
+                        "produto_id": 11,
+                        "quantidade": 1
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 28,
+            "numero_pedido": {
+                "value": "028",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 11,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 20,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2025-01-07",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2025-02-06",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Pendente",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Faturado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 18,
+                        "quantidade": 7
+                    },
+                    {
+                        "produto_id": 23,
+                        "quantidade": 2
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 29,
+            "numero_pedido": {
+                "value": "029",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 9,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 13,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-12-05",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2025-01-04",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Atrasado",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Em aberto",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 9,
+                        "quantidade": 1
+                    },
+                    {
+                        "produto_id": 10,
+                        "quantidade": 8
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        },
+        {
+            "id": 30,
+            "numero_pedido": {
+                "value": "030",
+                "label": "N\u00famero do Pedido"
+            },
+            "cliente_id": {
+                "value": 25,
+                "label": "Cliente Relacionado"
+            },
+            "representante_id": {
+                "value": 25,
+                "label": "Representante Relacionado"
+            },
+            "data_entrada": {
+                "value": "2024-01-26",
+                "label": "Data de Entrada"
+            },
+            "vencimento": {
+                "value": "2024-02-25",
+                "label": "Vencimento"
+            },
+            "situacao": {
+                "value": "Atrasado",
+                "label": "Situa\u00e7\u00e3o"
+            },
+            "status": {
+                "value": "Enviado",
+                "label": "Status"
+            },
+            "produtos": {
+                "value": [
+                    {
+                        "produto_id": 1,
+                        "quantidade": 9
+                    },
+                    {
+                        "produto_id": 18,
+                        "quantidade": 3
+                    }
+                ],
+                "label": "Produtos Relacionados"
+            }
+        }
+    ]
+}

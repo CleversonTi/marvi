@@ -27,7 +27,9 @@
         <TableList
           :pedidos="pedidosPaginados"
           :total-pedidos="pedidosFiltrados.length"
+          style="cursor: pointer;"
           @mudanca-pagina="atualizarPagina"
+          @click="abrirDetalhes(pedido)"
         />
       </div>
       <div
@@ -37,7 +39,9 @@
         <GridList
           :pedidos="pedidosPaginados"
           :total-pedidos="pedidosFiltrados.length"
+          style="cursor: pointer;"
           @mudanca-pagina="atualizarPagina"
+          @click="abrirDetalhes(pedido)"
         />
       </div>
     </transition>
