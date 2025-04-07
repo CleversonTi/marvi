@@ -1,92 +1,160 @@
-<script setup lang="ts">
-import { ref } from 'vue';
+<template>
+  <div>
+    <form
+      id="login-form"
+      @submit.prevent="submitForm"
+    >
+      <div class="form-group">
+        <label for="username">Usuário</label>
+        <input
+          v-model="username"
+          type="text"
+          required
+          autocomplete="username"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Senha:</label>
+        <div class="password-wrapper">
+          <input
+            v-model="password"
+            :type="showPassword ? 'text' : 'password'"
+            required
+            autocomplete="current-password"
+          >
+          <button
+            type="button"
+            class="toggle-password"
+            @click="togglePassword"
+          >
+            {{ showPassword ? '🙈' : '👁️' }}
+          </button>
+        </div>
+      </div>
+
+      <button type="submit">
+        Entrar
+      </button>
+      <p
+        v-if="erroLogin"
+        class="error-message"
+      >
+        {{ erroLogin }}
+      </p>
+    </form>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/useAuthStore';
+
+const authStore = useAuthStore();
+const router = useRouter();
 
 const username = ref('');
 const password = ref('');
-const checkbox = ref(true);
-const router = useRouter();
+const showPassword = ref(false);
 
-const login = () => {
-  if (username.value === 'admin' && password.value === '123') {
-    localStorage.setItem('userType', 'admin');
-    localStorage.setItem('userName', 'Administrador');
-    router.push({ name: 'dashboard' }); // 🔥 Redireciona para dashboard
-  } else if (username.value === 'rep' && password.value === '123') {
-    localStorage.setItem('userType', 'representante');
-    localStorage.setItem('userName', 'Representante Comercial');
-    router.push({ name: 'dashboard' }); // 🔥 Redireciona para dashboard
-  } else {
-    alert('Credenciais inválidas! Tente novamente.');
-  }
+const erroLogin = computed(() => authStore.erroLogin); // Obtém a mensagem de erro do store
+
+const submitForm = async () => {
+  console.log("username.value, password.value, router");
+  console.log(username.value, password.value, router);
+
+  // ✅ Correção: Enviar credenciais como um objeto, não como valores separados
+  await authStore.fazerLogin({ 
+    username: username.value, 
+    password: password.value 
+  }, router);
+};
+
+const togglePassword = () => {
+  showPassword.value = !showPassword.value;
 };
 </script>
 
-<template>
-  <v-row class="d-flex mb-3">
-    <v-col cols="12">
-      <v-label class="font-weight-bold mb-1">
-        Username
-      </v-label>
-      <v-text-field 
-        v-model="username"
-        variant="outlined"
-        hide-details
-        color="primary"
-      />
-    </v-col>
-    <v-col cols="12">
-      <v-label class="font-weight-bold mb-1">
-        Password
-      </v-label>
-      <v-text-field 
-        v-model="password"
-        variant="outlined"
-        type="password"
-        hide-details
-        color="primary"
-      />
-    </v-col>
-    <v-col
-      cols="12"
-      class="pt-0"
-    >
-      <div class="d-flex flex-wrap align-center ml-n2">
-        <v-checkbox
-          v-model="checkbox"
-          color="primary"
-          hide-details
-        >
-          <template
-            #label
-            class="text-body-1"
-          >
-            Remember this Device
-          </template>
-        </v-checkbox>
-        <div class="ml-sm-auto">
-          <RouterLink 
-            to="/" 
-            class="text-primary text-decoration-none text-body-1 opacity-1 font-weight-medium"
-          >
-            Forgot Password ?
-          </RouterLink>
-        </div>
-      </div>
-    </v-col>
-    <v-col
-      cols="12"
-      class="pt-0"
-    >
-      <v-btn
-        color="primary"
-        size="large"
-        block
-        flat
-        @click="login"
-      >
-        Sign in
-      </v-btn>
-    </v-col>
-  </v-row>
-</template>
+<style scoped lang="scss">
+ // Variáveis para cores e estilos principais
+// Variáveis para cores e estilos principais
+$primary-color: #4a90e2;
+$secondary-color: #333;
+$background-color: #f4f4f4;
+$input-background: white;
+$border-radius: 8px;
+$transition-speed: 0.3s;
+
+// Estilo geral do formulário
+#login-form {
+  width: 320px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: $background-color;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+  .form-group {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: $secondary-color;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $secondary-color;
+      border-radius: $border-radius;
+      background-color: $input-background;
+      transition: border-color $transition-speed;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+        box-shadow: 0 0 5px rgba($primary-color, 0.5);
+      }
+    }
+     .password-wrapper {
+        position: relative;
+        .toggle-password {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: $secondary-color;
+          width: auto;
+        }
+
+     }
+
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color $transition-speed;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+</style>

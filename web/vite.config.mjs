@@ -19,6 +19,9 @@ export default defineConfig({
     Vue({
       template: { transformAssetUrls }
     }),
+     
+ 
+ 
     // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin#readme
     Vuetify({
       autoImport: true,
@@ -46,6 +49,7 @@ export default defineConfig({
       vueTemplate: true,
     }),
   ],
+
   define: { 'process.env': {} },
   resolve: {
     alias: {
@@ -63,6 +67,14 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    proxy: {
+      '/api': {
+        target: 'https://fontemixbisws.bisws.com.br',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, '/rest/V1')
+      }
+    }
   },
   css: {
     preprocessorOptions: {

@@ -17,8 +17,11 @@ import '@/scss/style.scss'
 // Criando a aplicação
 const app = createApp(App)
 const pinia = createPinia()
+app.use(pinia) // ✅ Registra o Pinia antes de usá-lo
+
+const authStore = useAuthStore(); // ✅ Agora é seguro usar a store
+
 axios.interceptors.request.use(config => {
-  const authStore = useAuthStore();
   if (authStore.token) {
     config.headers.Authorization = `Bearer ${authStore.token}`;
   }
@@ -31,7 +34,6 @@ app
   .use(ElementPlus, { locale: ptBr }) // Locale correto aplicado aqui
   .use(VueApexCharts)
   .use(pinia)
-app.component('Apexchart', VueApexCharts)
-app.mount('#app')
-const authStore = useAuthStore(); // Agora o store existe
-authStore.carregarToken(); // Certifique-se de que esta linha está após app.mount
+  .mount('#app')
+
+authStore.carregarToken(); // ✅ Certifique-se de que o token é carregado após inicializar a store
