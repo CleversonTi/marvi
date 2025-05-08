@@ -69,10 +69,10 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://fontemixbisws.bisws.com.br',
+        target: 'https://ekkoparts.bisws.com.br/rest/all/V1',
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/api/, '/rest/V1')
+        rewrite: (path) => path.replace(/^\/api/, ''),
       }
     }
   },

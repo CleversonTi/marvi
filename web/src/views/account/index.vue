@@ -13,7 +13,10 @@
         />
       </div>
     </section>
-   
+    <ResumoMagento 
+      :start-date="startDate"
+      :start-end="startEnd"
+    />
     <Resumo 
       :start-date="startDate"
       :start-end="startEnd"   
@@ -25,6 +28,7 @@
 import { ref, onMounted } from 'vue';
 import FilterPerido from '@/components/FilterDates/DatePicker.vue';
 import Resumo from '@/layouts/pedidos/dashboard/Main.vue';
+import ResumoMagento from '@/layouts/pedidos/dashboard/MainPadidos.vue';
 
 const pedidos = ref([]);
 const startDate = ref('');

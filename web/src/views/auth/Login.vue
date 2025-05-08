@@ -2,7 +2,7 @@
 import Logo from '@/layouts/full/logo/Logo.vue';
 /* Login form */
 import LoginForm from '@/components/auth/LoginForm.vue';
-import Header from '@/layouts/full/horizontal-header/HeaderDefault.vue';
+
 </script>
 <template>
   <div class="authentication">

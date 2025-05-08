@@ -65,12 +65,12 @@ export function usePedidos() {
       dataPedido.setHours(0, 0, 0, 0);
 
       const dentroDoRange = dataPedido >= dataIni && dataPedido <= dataFim;
-      console.log(`📅 Pedido: ${pedido.NumeroPedido} | Data: ${dataPedido.toISOString()} | Dentro do Range: ${dentroDoRange}`);
+     
 
       return dentroDoRange;
     });
 
-    console.log('✅ Pedidos Filtrados após o filtro:', pedidosFiltrados.value);
+    
 };
 
   const aplicarBusca = () => {

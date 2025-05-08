@@ -50,7 +50,9 @@ const pedidosFiltradosCount = computed(() => pedidosFiltrados.value?.length || 0
 
 <template>
   <section class="primary_section">
-    <h4>Resumo dos pedidos</h4>
+    <h4>
+      Resumo dos pedidos
+    </h4>
     <div class="filter_area">
       <Download />
     </div>

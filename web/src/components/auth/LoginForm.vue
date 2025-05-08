@@ -33,9 +33,29 @@
         </div>
       </div>
 
-      <button type="submit">
-        Entrar
+      <button
+        type="submit"
+        :disabled="loading"
+        class="btn-login"
+      >
+        <span
+          v-if="loading"
+          class="spinner"
+        />
+        <span v-else>Entrar</span>
       </button>
+      <div class="form-group lembrar-group">
+        <label>
+          <input
+            v-model="lembrarMe"
+            type="checkbox"
+          >
+          <span>
+            Lembrar-me
+          </span>
+        </label>
+      </div>
+
       <p
         v-if="erroLogin"
         class="error-message"
@@ -57,17 +77,21 @@ const router = useRouter();
 const username = ref('');
 const password = ref('');
 const showPassword = ref(false);
+const lembrarMe = ref(localStorage.getItem('lembrarUsername') !== null);
+username.value = lembrarMe.value ? localStorage.getItem('lembrarUsername') : '';
 
-const erroLogin = computed(() => authStore.erroLogin); // Obtém a mensagem de erro do store
+const erroLogin = computed(() => authStore.erroLogin);
+const loading = computed(() => authStore.loading);
 
 const submitForm = async () => {
-  console.log("username.value, password.value, router");
-  console.log(username.value, password.value, router);
-
-  // ✅ Correção: Enviar credenciais como um objeto, não como valores separados
-  await authStore.fazerLogin({ 
-    username: username.value, 
-    password: password.value 
+  if (lembrarMe.value) {
+    localStorage.setItem('lembrarUsername', username.value);
+  } else {
+    localStorage.removeItem('lembrarUsername');
+  }
+  await authStore.fazerLogin({
+    username: username.value,
+    password: password.value
   }, router);
 };
 
@@ -77,8 +101,6 @@ const togglePassword = () => {
 </script>
 
 <style scoped lang="scss">
- // Variáveis para cores e estilos principais
-// Variáveis para cores e estilos principais
 $primary-color: #4a90e2;
 $secondary-color: #333;
 $background-color: #f4f4f4;
@@ -86,7 +108,6 @@ $input-background: white;
 $border-radius: 8px;
 $transition-speed: 0.3s;
 
-// Estilo geral do formulário
 #login-form {
   width: 320px;
   margin: 40px auto;
@@ -94,7 +115,9 @@ $transition-speed: 0.3s;
   background-color: $background-color;
   border-radius: $border-radius;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
   .form-group {
     margin-bottom: 20px;
 
@@ -119,25 +142,39 @@ $transition-speed: 0.3s;
         box-shadow: 0 0 5px rgba($primary-color, 0.5);
       }
     }
-     .password-wrapper {
-        position: relative;
-        .toggle-password {
-          position: absolute;
-          right: 10px;
-          top: 50%;
-          transform: translateY(-50%);
-          background: none;
-          border: none;
-          cursor: pointer;
-          color: $secondary-color;
-          width: auto;
-        }
 
-     }
+    .password-wrapper {
+      position: relative;
 
+      .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: $secondary-color;
+        width: auto;
+      }
+    }
   }
+  .lembrar-group {
+    
+    font-size: 14px;
+    color: $secondary-color;
+    label{
+      display: flex;
+      align-items: center;
+    }
+    input[type='checkbox'] {
+      margin-right: 6px;
+      width: 15px;
+      height: 15px;
+    }
+}
 
-  button {
+  .btn-login {
     width: 100%;
     padding: 10px;
     background-color: $primary-color;
@@ -146,15 +183,38 @@ $transition-speed: 0.3s;
     border-radius: $border-radius;
     cursor: pointer;
     transition: background-color $transition-speed;
+    text-align: center;
 
     &:hover {
       background-color: darken($primary-color, 10%);
     }
+
+    &:disabled {
+      background-color: lighten($primary-color, 15%);
+      cursor: not-allowed;
+    }
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s ease-in-out infinite;
+    vertical-align: middle;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
   }
 }
+
 .error-message {
   color: red;
   margin-top: 10px;
 }
-
 </style>

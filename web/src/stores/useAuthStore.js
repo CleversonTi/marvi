@@ -76,22 +76,22 @@ export const useAuthStore = defineStore('auth', () => {
   // 🔑 Função para carregar o usuário autenticado
   async function carregarUsuario() {
     if (!token.value) return;
-
+  
     try {
-      const response = await axiosInstance.get('/customers/me', {
+      // Validação de token com qualquer rota protegida
+      await axiosInstance.get('/orders?searchCriteria[currentPage]=1', {
         headers: {
           'Authorization': `Bearer ${token.value}`
         }
       });
-
-      if (response.data) {
-        user.value = response.data;
-        console.log('👤 Usuário carregado:', user.value);
-      } else {
-        console.error('Nenhum usuário encontrado.');
-      }
+  
+      isAuthenticated.value = true;
+      console.log('✅ Token válido');
     } catch (error) {
-      console.error('Erro ao carregar usuário:', error);
+      console.error('❌ Token inválido:', error);
+      token.value = null;
+      localStorage.removeItem('token');
+      isAuthenticated.value = false;
     }
   }
 
@@ -105,8 +105,9 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   const fullName = computed(() => {
-    if (user.value) {
-      return `${user.value.firstname} ${user.value.lastname}`;
+    if (token.value) {
+      console.log('🔑 Token encontrado:', token.value);
+      return 'Administrador Magento';
     }
     return 'Usuário Desconhecido';
   });

@@ -1,6 +1,10 @@
 <script setup lang="js">
 import { UserIcon, MailIcon, ListCheckIcon } from 'vue-tabler-icons';
 import { ChevronDown } from 'lucide-vue-next';
+import { useAuthStore } from '@/stores/useAuthStore';
+
+const authStore = useAuthStore();
+const fullName = computed(() => authStore.fullName);
 </script>
 
 <template>
@@ -19,9 +23,7 @@ import { ChevronDown } from 'lucide-vue-next';
         </div>
         <div class="user-persona">
           <router-link to="/">
-            <span>
-              Primeiro Segundo 
-            </span> 
+            <span>{{ fullName }}</span>
             <ChevronDown
               stroke-width="1.5"
               size="20"
@@ -60,7 +62,7 @@ import { ChevronDown } from 'lucide-vue-next';
       </v-list>
       <div class="pt-4 pb-4 px-5 text-center">
         <v-btn
-          to="/auth/login"
+          to="/login"
           color="primary"
           variant="outlined"
           block
@@ -71,3 +73,15 @@ import { ChevronDown } from 'lucide-vue-next';
     </v-sheet>
   </v-menu>
 </template>
+
+
+<style scoped lang="scss">
+.sidebar-primary{
+  .v-btn {
+    &:hover {
+      background: none;
+    }
+  }
+}
+</style>
+
