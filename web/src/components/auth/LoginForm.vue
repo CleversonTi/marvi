@@ -67,17 +67,21 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
+import { useToast } from 'vue-toastification';
 import { useAuthStore } from '@/stores/useAuthStore';
 
 const authStore = useAuthStore();
 const router = useRouter();
+const toast = useToast();
 
 const username = ref('');
 const password = ref('');
 const showPassword = ref(false);
 const lembrarMe = ref(localStorage.getItem('lembrarUsername') !== null);
+
+// Pré-preenche username se salvo
 username.value = lembrarMe.value ? localStorage.getItem('lembrarUsername') : '';
 
 const erroLogin = computed(() => authStore.erroLogin);
@@ -89,10 +93,21 @@ const submitForm = async () => {
   } else {
     localStorage.removeItem('lembrarUsername');
   }
-  await authStore.fazerLogin({
-    username: username.value,
-    password: password.value
-  }, router);
+
+  await authStore.fazerLogin(
+    {
+      username: username.value,
+      password: password.value
+    },
+    router
+  );
+
+  if (authStore.token) {
+    toast.success('🎉 Login realizado com sucesso!');
+    router.push({ name: 'account' });
+  } else if (erroLogin.value) {
+    toast.error(erroLogin.value);
+  }
 };
 
 const togglePassword = () => {

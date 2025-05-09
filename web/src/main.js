@@ -13,6 +13,8 @@ import { useAuthStore } from './stores/useAuthStore'; // ✅ Importar a store de
 // Estilos
 import 'element-plus/dist/index.css'
 import '@/scss/style.scss'
+import Toast, { POSITION } from 'vue-toastification';
+import 'vue-toastification/dist/index.css';
 
 // Criando a aplicação
 const app = createApp(App)
@@ -27,7 +29,20 @@ axios.interceptors.request.use(config => {
   }
   return config;
 });
-
+app.use(Toast, {
+  position: POSITION.BOTTOM_LEFT,
+  timeout: 4000,
+  closeOnClick: true,
+  pauseOnFocusLoss: true,
+  pauseOnHover: true,
+  draggable: true,
+  draggablePercent: 0.6,
+  showCloseButtonOnHover: false,
+  hideProgressBar: false,
+  closeButton: 'button',
+  icon: true,
+  rtl: false,
+});
 app
   .use(router)
   .use(vuetify)

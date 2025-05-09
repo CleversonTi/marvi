@@ -66,7 +66,7 @@ export const useAuthStore = defineStore('auth', () => {
       localStorage.setItem('token', token.value);
 
       if (router) {
-        router.push({ name: 'dashboard' });
+        router.push({ name: 'account' });
       }
     } else {
       console.error('❌ Falha ao obter token.');
@@ -96,11 +96,11 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   // 🔑 Função para carregar o token salvo no localStorage
-  function carregarToken() {
+  async function carregarToken() {
     const savedToken = localStorage.getItem('token');
     if (savedToken) {
       token.value = savedToken;
-      carregarUsuario();
+      await carregarUsuario(); // 🔄 Aguarda a verificação do token
     }
   }
 

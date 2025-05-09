@@ -11,8 +11,13 @@
   },
   "dependencies": {
     "@mdi/font": "7.4.47",
+    "fixed": "^0.3.1",
+    "for": "^0.0.1-dev.0",
+    "it": "^1.1.1",
+    "me": "^0.3.0",
     "roboto-fontface": "*",
     "vue": "^3.4.31",
+    "vue-toastification": "^2.0.0-rc.5",
     "vuetify": "^3.6.14"
   },
   "devDependencies": {
