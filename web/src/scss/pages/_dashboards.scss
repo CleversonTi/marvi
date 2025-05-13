@@ -267,6 +267,11 @@
         font-size: 24;
         font-weight: 600;
     }
+    .v-card-item__content{
+        .v-card-item_header{
+            column-gap: 50px;
+        }
+    }
 }
 .area-graphics{
     

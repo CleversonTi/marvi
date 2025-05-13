@@ -1,126 +1,126 @@
+// web/src/stores/useAuthStore.js
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import { ref, computed } from 'vue';
 
 export const useAuthStore = defineStore('auth', () => {
-  const token = ref(localStorage.getItem('token') || null);
-  const user = ref(null);
-  const erroLogin = ref('');
-  const isAuthenticated = ref(false);
+  // Estados
+  const token           = ref(localStorage.getItem('token') || null);
+  const erroLogin       = ref('');
+  const isAuthenticated = ref(!!token.value);
+  const loading         = ref(false);
 
-  // ✅ Configurar o axios para usar o Proxy do Vite
+  // Instância Axios usando o proxy /api
   const axiosInstance = axios.create({
-    baseURL: '/api',  // ✅ Agora ele usa o proxy configurado no Vite
+    baseURL: '/api',
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
+      'Accept':       'application/json',
     },
     withCredentials: true
   });
 
-  console.log('Axios instance configurado com a URL base:', axiosInstance.defaults.baseURL);
+  // Interceptor para injetar o token
+  axiosInstance.interceptors.request.use(config => {
+    if (token.value) {
+      config.headers.Authorization = `Bearer ${token.value}`;
+    }
+    return config;
+  });
 
-  // 🔑 Função para obter o Token do Magento
+  // 1️⃣ Solicita token ao Magento
   async function obterToken(username, password) {
-    console.log('Tentando obter token com:', username, password);
-
     try {
-      const response = await axiosInstance.post('/integration/admin/token', { // ✅ Agora usando o proxy
+      const { data } = await axiosInstance.post('/integration/admin/token', {
         username,
         password
       });
-
-      console.log('✅ Token recebido:', response.data);
-      return response.data; // Retorna o token recebido
-    } catch (error) {
-      console.error('❌ Erro ao obter token:', error);
-
-      if (error.response && error.response.status === 401) {
-        erroLogin.value = 'Usuário ou senha incorretos. Tente novamente.'; 
-      } else if (error.code === 'ERR_NETWORK') {
-        erroLogin.value = 'Falha na conexão com o servidor. Verifique se a URL está correta e o servidor está ativo.';
+      return data;
+    } catch (err) {
+      if (err.response?.status === 401) {
+        erroLogin.value = 'Usuário ou senha incorretos.';
       } else {
-        erroLogin.value = 'Ocorreu um erro ao tentar obter o token. Tente novamente mais tarde.'; 
+        erroLogin.value = 'Erro de conexão. Tente novamente.';
       }
-
       return null;
     }
   }
 
-  // 🔑 Função para fazer login e salvar o token
-  async function fazerLogin(credentials, router) { 
-    if (!credentials || !credentials.username || !credentials.password) {
-      console.error('❌ Credenciais inválidas fornecidas.');
-      return;
-    }
+  // 2️⃣ Efetua o login e salva o token
+  async function fazerLogin({ username, password }, router) {
+    loading.value  = true;
+    erroLogin.value = '';
 
-    console.log('📨 Enviando requisição de login com:', credentials);
-
-    const recebidoToken = await obterToken(credentials.username, credentials.password);
-
-    if (recebidoToken) {
-      token.value = recebidoToken;
+    const novoToken = await obterToken(username, password);
+    if (novoToken) {
+      token.value           = novoToken;
       isAuthenticated.value = true;
-      erroLogin.value = '';
-
-      localStorage.setItem('token', token.value);
-
-      if (router) {
-        router.push({ name: 'account' });
-      }
-    } else {
-      console.error('❌ Falha ao obter token.');
+      localStorage.setItem('token', novoToken);
+      router?.push({ name: 'account' });
     }
+
+    loading.value = false;
   }
 
-  // 🔑 Função para carregar o usuário autenticado
-  async function carregarUsuario() {
+  // 3️⃣ Valida token sem derrubar sessão em caso de 500
+  async function validarToken() {
     if (!token.value) return;
-  
+
     try {
-      // Validação de token com qualquer rota protegida
-      await axiosInstance.get('/orders?searchCriteria[currentPage]=1', {
-        headers: {
-          'Authorization': `Bearer ${token.value}`
-        }
+      // Um endpoint leve apenas para checar validade, ex: /orders?pageSize=1
+      await axiosInstance.get('/orders', {
+        params: { 'searchCriteria[pageSize]': 1 }
       });
-  
       isAuthenticated.value = true;
-      console.log('✅ Token válido');
-    } catch (error) {
-      console.error('❌ Token inválido:', error);
-      token.value = null;
-      localStorage.removeItem('token');
-      isAuthenticated.value = false;
+    } catch (err) {
+      const status = err.response?.status;
+      if (status === 401 || status === 403) {
+        // Token realmente inválido ou expirado
+        console.warn('Token expirado ou inválido:', status);
+        token.value = null;
+        isAuthenticated.value = false;
+        localStorage.removeItem('token');
+      } else {
+        // Outros erros (500, etc) – não derruba a sessão
+        console.warn('Erro ao validar token (mas mantenho sessão):', status);
+        isAuthenticated.value = true;
+      }
     }
   }
 
-  // 🔑 Função para carregar o token salvo no localStorage
+  // 4️⃣ Recupera token do localStorage e já considera o usuário autenticado
   async function carregarToken() {
-    const savedToken = localStorage.getItem('token');
-    if (savedToken) {
-      token.value = savedToken;
-      await carregarUsuario(); // 🔄 Aguarda a verificação do token
+    const saved = localStorage.getItem('token');
+    if (saved) {
+      token.value = saved;
+      isAuthenticated.value = true;  // assume válido até prova em contrário
+      await validarToken();
     }
   }
 
-  const fullName = computed(() => {
-    if (token.value) {
-      console.log('🔑 Token encontrado:', token.value);
-      return 'Administrador Magento';
-    }
-    return 'Usuário Desconhecido';
-  });
+  // 5️⃣ Logout claro
+  function logout(router) {
+    token.value = null;
+    isAuthenticated.value = false;
+    localStorage.removeItem('token');
+    router?.push({ name: 'login' });
+  }
+
+  // Nome apresentado
+  const fullName = computed(() =>
+    isAuthenticated.value ? 'Administrador Magento' : 'Usuário Desconhecido'
+  );
 
   return {
     token,
-    user,
+    loading,
+    erroLogin,
+    isAuthenticated,
     fullName,
-    obterToken,
+
     fazerLogin,
     carregarToken,
-    carregarUsuario,
-    erroLogin,
-    isAuthenticated
+    validarToken,
+    logout
   };
 });

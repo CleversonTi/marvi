@@ -1,4 +1,5 @@
 export function formatarDataSimples(data) {
+  console.log("Convertendo data:", data);
     console.log('📅 Formatar data:', data);
     if (!data || !(data instanceof Date) || isNaN(data.getTime())) {
       return 'Data inválida';

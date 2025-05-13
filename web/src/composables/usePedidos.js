@@ -22,14 +22,14 @@ export function usePedidos() {
   };
 
   const filtrarPedidos = (startDate, endDate) => {
-    console.log("Entrou no filtrar pedidos");
+    
 
     if (!startDate || !endDate || !pedidos.value.length) {
       console.warn("⚠️ Dados insuficientes para o filtro.");
       return;
     }
 
-    console.log("📅 Chamou filtrarPedidos com as datas:", startDate, endDate);
+    
 
     const dataIni = new Date(startDate);
     const dataFim = new Date(endDate);
@@ -98,8 +98,7 @@ export function usePedidos() {
     const formatarDataCurta = (data) => {
       const dia = data.getDate().toString().padStart(2, '0');
       const mes = (data.getMonth() + 1).toString().padStart(2, '0');
-      // console.log("Formatar Periodo");
-      // console.log(`${dia}/${mes}`);
+     
       return `${dia}/${mes}`;
     };
 

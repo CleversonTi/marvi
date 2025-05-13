@@ -1,66 +1,63 @@
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
-import axios from 'axios';
-import { useAuthStore } from './useAuthStore';
+// web/src/stores/usePedidosMg.js
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'    // ← aqui
+import axios         from 'axios'
+import { useAuthStore } from './useAuthStore'
 
 export const usePedidosMg = defineStore('pedidosMg', () => {
-  const pedidos = ref([]);
-  const carregando = ref(false);
-  const erro = ref(null);
-  const startDate = ref(null);
-  const startEnd = ref(null);
+  const pedidos   = ref([])
+  const carregando = ref(false)
+  const erro       = ref(null)
+  const startDate  = ref(null)
+  const startEnd   = ref(null)
 
-  const carregarPedidos = async () => {
-    const authStore = useAuthStore();
-
+  async function carregarPedidos() {
+    const authStore = useAuthStore()
     if (!authStore.token) {
-      erro.value = 'Token não encontrado.';
-      return;
+      erro.value = 'Token não encontrado.'
+      return
     }
 
-    carregando.value = true;
-    erro.value = null;
+    carregando.value = true
+    erro.value       = null
 
     try {
-      const response = await axios.get('/api/orders', {
-        headers: {
-          Authorization: `Bearer ${authStore.token}`,
-        },
+      const { data } = await axios.get('/api/orders', {
+        headers: { Authorization: `Bearer ${authStore.token}` },
         params: {
           'searchCriteria[pageSize]': 200,
-          'searchCriteria[currentPage]': 1,
-        },
-      });
+          'searchCriteria[currentPage]': 1
+        }
+      })
 
-      pedidos.value = response.data.items || [];
-      console.log('📦 Pedidos carregados:', pedidos.value);
+      pedidos.value = data.items || []
 
-      // 🕒 Extrair datas mínimas e máximas
+      // extrai datas
       const datas = pedidos.value
-        .map(p => new Date(p.created_at))
-        .filter(date => !isNaN(date));
-      console.log('Carregar pedidos Datas extraídas:', datas);
-      if (datas.length) {
-        startDate.value = new Date(Math.min(...datas));
-        startEnd.value = new Date(Math.max(...datas));
-        console.log('📅 Intervalo detectado:', startDate.value, startEnd.value);
-      }
+        .map(p => new Date(p.created_at.replace(' ', 'T')))
+        .filter(d => !isNaN(d))
 
-    } catch (err) {
-      erro.value = 'Erro ao carregar pedidos';
-      console.error('❌ Erro ao buscar pedidos:', err.response?.data || err.message);
+      if (datas.length) {
+        startDate.value = new Date(Math.min(...datas))
+        startEnd.value  = new Date(Math.max(...datas))
+      }
+    } catch (e) {
+      erro.value = 'Erro ao carregar pedidos'
+      console.error(e)
     } finally {
-      carregando.value = false;
+      carregando.value = false
     }
-  };
+  }
+
+  // BY DATE RANGE
   const pedidosFiltrados = computed(() => {
-    if (!startDate.value || !startEnd.value) return [];
-  
-    return pedidos.value.filter(pedido => {
-      const dataPedido = new Date(pedido.created_at);
-      return dataPedido >= startDate.value && dataPedido <= startEnd.value;
-    });
-  });
+    if (!startDate.value || !startEnd.value) return []
+    console.log("pedidosFiltrados? "+ pedidos.value);
+    return pedidos.value.filter(p => {
+      const d = new Date(p.created_at.replace(' ', 'T'))
+      return d >= startDate.value && d <= startEnd.value
+    })
+  })
 
   return {
     pedidos,
@@ -69,6 +66,6 @@ export const usePedidosMg = defineStore('pedidosMg', () => {
     startDate,
     startEnd,
     carregarPedidos,
-    pedidosFiltrados
-  };
-});
+    pedidosFiltrados    // ← exposto aqui
+  }
+})
