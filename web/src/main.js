@@ -1,54 +1,45 @@
-// Vue e App
-import { createApp } from 'vue'
-import App from './App.vue'
-import axios from 'axios';
-// Plugins
-import router from './router'
-import vuetify from './plugins/vuetify'
-import ElementPlus from 'element-plus'
-import ptBr from 'element-plus/es/locale/lang/pt-br'
-import VueApexCharts from 'vue3-apexcharts'
-import { createPinia } from 'pinia'
-import { useAuthStore } from './stores/useAuthStore'; // ✅ Importar a store de autenticação
-// Estilos
+import { createApp }            from 'vue'
+import App                      from './App.vue'
+import { createPinia }          from 'pinia'
+import axios                    from 'axios'
+import router                   from './router'
+import vuetify                  from './plugins/vuetify'
+import ElementPlus              from 'element-plus'
+import ptBr                     from 'element-plus/es/locale/lang/pt-br'
+import VueApexCharts            from 'vue3-apexcharts'
+import Toast, { POSITION }      from 'vue-toastification'
 import 'element-plus/dist/index.css'
+import 'vue-toastification/dist/index.css'
 import '@/scss/style.scss'
-import Toast, { POSITION } from 'vue-toastification';
-import 'vue-toastification/dist/index.css';
 
-// Criando a aplicação
-const app = createApp(App)
-const pinia = createPinia()
-app.use(pinia) // ✅ Registra o Pinia antes de usá-lo
+import { useAuthStore }         from './stores/useAuthStore'
 
-const authStore = useAuthStore(); // ✅ Agora é seguro usar a store
+async function bootstrap() {
+  // 1️⃣ Cria app e instala Pinia
+  const app    = createApp(App)
+  const pinia  = createPinia()
+  app.use(pinia)
 
-axios.interceptors.request.use(config => {
-  if (authStore.token) {
-    config.headers.Authorization = `Bearer ${authStore.token}`;
-  }
-  return config;
-});
-app.use(Toast, {
-  position: POSITION.BOTTOM_LEFT,
-  timeout: 4000,
-  closeOnClick: true,
-  pauseOnFocusLoss: true,
-  pauseOnHover: true,
-  draggable: true,
-  draggablePercent: 0.6,
-  showCloseButtonOnHover: false,
-  hideProgressBar: false,
-  closeButton: 'button',
-  icon: true,
-  rtl: false,
-});
-app
-  .use(router)
-  .use(vuetify)
-  .use(ElementPlus, { locale: ptBr }) // Locale correto aplicado aqui
-  .use(VueApexCharts)
-  .use(pinia)
-  .mount('#app')
+  // 2️⃣ Instancia authStore e recarrega o token (assume válido até validar)
+  const authStore = useAuthStore()
+  await authStore.carregarToken()
 
-authStore.carregarToken(); // ✅ Certifique-se de que o token é carregado após inicializar a store
+  // 3️⃣ Configura interceptor global do Axios
+  axios.interceptors.request.use(config => {
+    if (authStore.token) {
+      config.headers.Authorization = `Bearer ${authStore.token}`
+    }
+    return config
+  })
+
+  // 4️⃣ Registra plugins e monta
+  app
+    .use(router)
+    .use(vuetify)
+    .use(ElementPlus, { locale: ptBr })
+    .use(VueApexCharts)
+    .use(Toast, { position: POSITION.BOTTOM_LEFT })
+    .mount('#app')
+}
+
+bootstrap()

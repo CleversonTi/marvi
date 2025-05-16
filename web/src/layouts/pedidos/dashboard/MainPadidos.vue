@@ -2,9 +2,9 @@
 import { ref, onMounted, computed } from 'vue';
 import { usePedidosMg }       from '@/stores/usePedidosMg';
 import Graficos               from '@/components/Graphic/Graphic.vue';
-import TabelaPedidos          from '@/components/pedidos/TabelaPedidos.vue';
+import TabelaPedidos          from '@/components/Tabelas/TabelaPedidos.vue';
 import Download               from '@/components/download/index.vue';
-import { formatarDataSimples } from '@/utils/helpers.js';
+import { formatarDataSimples,sumOrders, formatatMoeda,  sumNestedField, formatWeight} from '@/utils/helpers.js';
 
 
 // 1️⃣ Props opcionais (default vazio)
@@ -29,20 +29,17 @@ const thisStartEnd = ref(
     : hoje
 )
 const pedidosMg      = usePedidosMg();
-const pedidosFiltrados = ref([]);
+
 
 // 4️⃣ Ao montar, carrega pedidos e, se a store tiver datas, as usa
-onMounted(async () => {
-  await pedidosMg.carregarPedidos()
-
-  if (pedidosMg.startDate && pedidosMg.startEnd) {
-    thisStartDate.value = pedidosMg.startDate
-    thisStartEnd.value  = pedidosMg.startEnd
-  }
-
-  // 5️⃣ Filtra + formata DataEntrada
-  pedidosFiltrados.value = pedidosMg.pedidos
+onMounted(() => {
+  pedidosMg.carregarPedidos()
+})
+const pedidosFiltrados = computed(() => {
+  if (!thisStartDate.value || !thisStartEnd.value) return []
+  return pedidosMg.pedidos
     .filter(p => {
+      // converte "YYYY-MM-DD hh:mm:ss" em um Date válido
       const dt = new Date(p.created_at.replace(' ', 'T'))
       return dt >= thisStartDate.value && dt <= thisStartEnd.value
     })
@@ -53,13 +50,34 @@ onMounted(async () => {
       const ano = dt.getFullYear()
       return { ...p, DataEntrada: `${dia}/${mes}/${ano}` }
     })
+    console.log('pedidosFiltrados', pedidosFiltrados);
 })
-console.log(pedidosFiltrados.value);
+
 const totalPedidos = computed(() => pedidosFiltrados.value.length)
 const periodo      = computed(() => {
   if (!thisStartDate.value || !thisStartEnd.value) return ''
   return `${formatarDataSimples(thisStartDate.value)} – ${formatarDataSimples(thisStartEnd.value)}`
-})
+});
+
+// soma todos os pesos (em kg) dentro de items → total em kg
+const totalWeightKg = computed(() =>
+  sumNestedField(pedidosMg.pedidosFiltrados, 'items', 'weight')
+)
+// já formatado na unidade ideal
+const totalWeightFormatted = computed(() =>
+  formatWeight(totalWeightKg.value)
+)
+// soma bruta (número)
+const valorTotalBruto = computed(() =>
+  sumOrders(pedidosFiltrados.value, 'base_grand_total')
+)
+// formata para moeda
+const valorTotalFaturamento = computed(() =>
+  formatatMoeda(valorTotalBruto.value)
+)
+const totalWeight = computed(() =>
+  sumWeights(pedidosMg.pedidosFiltrados, 'items', 'weight')
+)
 </script>
 
 <template>
@@ -85,17 +103,93 @@ const periodo      = computed(() => {
       <!-- 4️⃣ Passa pedidos e intervalo para o gráfico -->
 
       <Graficos
-        v-if="totalPedidos > 0 && thisStartDate.value && thisStartEnd.value"
-        :key="`${thisStartDate.value.toISOString()}_${thisStartEnd.value.toISOString()}`"
+        v-if="pedidosFiltrados.length"
         :pedidos="pedidosFiltrados"
         :start-date="thisStartDate.value"
         :end-date="thisStartEnd.value"
       />
     </div>
+    <div class="v-card-item__box">
+      <div class="card fatura not-approved">
+        <router-link :to="{ name: 'pedidos' }">
+          <div class="total">
+            <strong>1</strong>
+          </div>
+          <div class="link">
+            <IconDirection
+              stroke-width="1.5"
+              size="20"
+            />
+          </div>
+          <div class="description">
+            <span>Pedidos não aprovados</span>
+          </div>
+        </router-link>
+      </div>
+
+      <div class="card fatura unbilled">
+        <router-link :to="{ name: 'pedidos' }">
+          <div class="total">
+            <strong>3</strong>
+          </div>
+          <div class="link">
+            <IconDirection
+              stroke-width="1.5"
+              size="20"
+            />
+          </div>
+          <div class="description">
+            <span>Pedidos não faturados</span>
+          </div>
+        </router-link>
+      </div>
+
+      <div class="card">
+        <router-link :to="{ name: 'pedidos' }">
+          <div class="total">
+            <strong>300</strong>
+          </div>
+          <div class="description">
+            <span>Pedidos não faturados</span>
+          </div>
+        </router-link>
+      </div>
+
+      <div class="card">
+        <router-link :to="{ name: 'pedidos' }">
+          <div class="total">
+            <strong>20</strong>
+          </div>
+          <div class="description">
+            <span>Pedidos aguardando envio</span>
+          </div>
+        </router-link>
+      </div>
+
+      <div class="card">
+        <router-link :to="{ name: 'pedidos' }">
+          <div class="total">
+            <strong>{{ totalWeightFormatted }}</strong>
+          </div>
+          <div class="description">
+            <span>Peso dos pedidos</span>
+          </div>
+        </router-link>
+      </div>
+
+      <div class="card totalfaturamento">
+        <router-link :to="{ name: 'pedidos' }">
+          <div class="total">
+            <strong>{{ valorTotalFaturamento }}</strong>
+          </div>
+          <div class="description">
+            <span>Valor total do faturamento</span>
+          </div>
+        </router-link>
+      </div>
+    </div>
   </section>
-  {{
-    pedidosFiltrados 
-  }}
+  {{ pedidosFiltrados }}
   <section class="primary_section tables">
     <TabelaPedidos :dados="pedidosFiltrados" />
   </section>

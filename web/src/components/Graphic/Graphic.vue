@@ -1,117 +1,113 @@
+<!-- web/src/components/Graphic/Graphic.vue -->
 <script setup>
 import { ref, watch } from 'vue'
+import ApexChart from 'vue3-apexcharts'
+
+// 1️⃣ Definição dos props (aceita Date ou String ISO)
 const props = defineProps({
-  pedidos: {
-    type: Array,
-    required: true
-  }
+  pedidos:   { type: Array,   default: () => [] },
+  startDate: { type: [Date, String], default: () => new Date(Date.now() - 1000*60*60*24*30) },
+  endDate:   { type: [Date, String], default: () => new Date() }
 })
 
-const lineGraficSeries = ref([{ name: 'Pedidos', data: [] }])
-const lineGraficOptions = ref({
-  chart: {
-    id: 'basic-line-chart',
-    toolbar: { show: false },
-  },
-  xaxis: {
-    type: 'datetime',
-    labels: {
-      format: 'MMM yyyy', // Mostra mês e ano
-      datetimeUTC: false 
-    },
-  },
-  stroke: {
-    curve: 'smooth',
-    width: 3,
-    colors: ['#1A9701'],
-  },
-  grid: {
-    show: true,
-    borderColor: '#ccc',
-    strokeDashArray: 5,
-    xaxis: { lines: { show: false } },
-    yaxis: { lines: { show: true } },
-  },
-});
+// 2️⃣ Normalize os valores de startDate e endDate para refs de Date válidos
+const normalizedStart = ref(new Date(props.startDate))
+const normalizedEnd   = ref(new Date(props.endDate))
 
-const processarPedidos = (novosPedidos) => {
-  if (!novosPedidos || !novosPedidos.length) return;
+// Se o pai passar strings ISO, converte-as para Date
+watch(() => props.startDate, val => {
+  const d = new Date(val)
+  if (!isNaN(d)) normalizedStart.value = d
+})
+watch(() => props.endDate, val => {
+  const d = new Date(val)
+  if (!isNaN(d)) normalizedEnd.value = d
+})
 
-  console.log("📥 Recebendo pedidos para gráfico:", novosPedidos);
+// 3️⃣ Configurações iniciais do gráfico
+const lineSeries  = ref([{ name: 'Pedidos', data: [] }])
+const lineOptions = ref({
+  chart: { id: 'basic-line-chart', toolbar: { show: false } },
+  stroke: { curve: 'smooth', width: 3 },
+  grid: { borderColor: '#ccc', strokeDashArray: 5 },
+  xaxis: { type: 'category', labels: { datetimeUTC: false }, categories: [] }
+})
 
-  const agrupado = {};
-  const mesesCompletos = gerarMesesNoPeriodo(new Date("2024-12-01"), new Date("2025-03-31")); // Ajuste o período como necessário
-
-  // Inicializa o objeto `agrupado` com todos os meses do período
-  mesesCompletos.forEach(mes => agrupado[mes] = 0);
-
-  novosPedidos.forEach(pedido => {
-    const data = pedido.DataEntrada; // formato dd/mm/yyyy
-    if (!data) return;
-
-    const [dia, mes, ano] = data.split('/').map(Number);
-    const dataObj = new Date(ano, mes - 1, dia);
-    dataObj.setDate(1); // Normaliza para o primeiro dia do mês
-
-    const mesAno = dataObj.toISOString().slice(0, 7); // Formato `YYYY-MM`
-
-    if (agrupado[mesAno] !== undefined) {
-      agrupado[mesAno]++;
-    } else {
-      agrupado[mesAno] = 1;
-    }
-  });
-
-  const categorias = Object.keys(agrupado);
-  const dados = Object.values(agrupado);
-
-  console.log("📊 Categorias do Gráfico:", categorias);
-  console.log("📊 Dados do Gráfico:", dados);
-
-  lineGraficSeries.value = [{ name: 'Pedidos', data: dados }];
-  lineGraficOptions.value = { 
-    ...lineGraficOptions.value,
-    xaxis: { 
-      ...lineGraficOptions.value.xaxis,
-      categories: categorias 
-    }
-  };
+// 4️⃣ Função que gera cada mês (YYYY-MM) entre duas datas
+function gerarMesesNoPeriodo(start, end) {
+  const meses = []
+  const d = new Date(start)
+  d.setDate(1)
+  while (d <= end) {
+    meses.push(d.toISOString().slice(0,7))
+    d.setMonth(d.getMonth()+1)
+  }
+  return meses
 }
 
-// Função para gerar todos os meses entre duas datas
-const gerarMesesNoPeriodo = (startDate, endDate) => {
-  const months = [];
-  const currentDate = new Date(startDate);
+// 5️⃣ Processa os pedidos e atualiza series/options
+function processarPedidos() {
+  const s = normalizedStart.value
+  const e = normalizedEnd.value
 
-  currentDate.setDate(1);
-
-  while (currentDate <= endDate) {
-    const mesAno = currentDate.toISOString().slice(0, 7); // Formato YYYY-MM
-    months.push(mesAno);
-    currentDate.setMonth(currentDate.getMonth() + 1);
+  // ❌ Se não tiver datas válidas ou lista de pedidos vazia, limpa tudo
+  if (!(s instanceof Date) || isNaN(s) || !(e instanceof Date) || isNaN(e) || !Array.isArray(props.pedidos)) {
+    lineSeries.value  = [{ name: 'Pedidos', data: [] }]
+    lineOptions.value.xaxis.categories = []
+    return
   }
 
-  return months;
+  // inicializa contagem para cada mês
+  const agrupado = {}
+  gerarMesesNoPeriodo(s, e).forEach(m => agrupado[m] = 0)
+
+  // conta cada pedido
+  props.pedidos.forEach(p => {
+    if (!p.DataEntrada) return
+    const [dia, mes, ano] = p.DataEntrada.split('/').map(Number)
+    const dt = new Date(ano, mes-1, dia)
+    dt.setDate(1)
+    const chave = dt.toISOString().slice(0,7)
+    if (agrupado[chave] !== undefined) agrupado[chave]++
+  })
+
+  // monta categorias e dados
+  const categories = Object.keys(agrupado)
+  const data       = Object.values(agrupado)
+
+  lineOptions.value = {
+    ...lineOptions.value,
+    xaxis: {
+      ...lineOptions.value.xaxis,
+      categories
+    }
+  }
+  lineSeries.value = [{ name: 'Pedidos', data }]
 }
 
+// 6️⃣ Observa mudanças úteis e dispara imediatamente
 watch(
-  () => props.pedidos,
-  (novosPedidos) => processarPedidos(novosPedidos),
-  { immediate: true, deep: true }
+  [
+    () => props.pedidos.length,
+    () => normalizedStart.value.getTime(),
+    () => normalizedEnd.value.getTime()
+  ],
+  processarPedidos,
+  { immediate: true }
 )
 </script>
 
 <template>
   <div class="area-graphics">
-    <div id="chart">
-      <apexchart 
-        type="line"
-        width="650"
-        height="278"
-        :options="lineGraficOptions"
-        :series="lineGraficSeries"
-      />
-    </div>
+    <!-- só renderiza o chart quando já tivermos categorias -->
+    <apexchart
+      v-if="lineOptions.xaxis.categories.length"
+      :series="lineSeries"
+      :options="lineOptions"
+      type="line"
+      height="278"
+      width="650"
+    />
   </div>
 </template>
 
