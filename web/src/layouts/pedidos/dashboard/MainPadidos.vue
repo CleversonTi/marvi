@@ -2,15 +2,16 @@
 import { ref, onMounted, computed } from 'vue';
 import { usePedidosMg }       from '@/stores/usePedidosMg';
 import Graficos               from '@/components/Graphic/Graphic.vue';
-import TabelaPedidos          from '@/components/Tabelas/TabelaPedidos.vue';
+import TabelaPedidos          from '@/components/pedidos/TabelaPedidos.vue';
 import Download               from '@/components/download/index.vue';
+import IconDirection from '@/components/icons/IconLeft.vue'
 import { formatarDataSimples,sumOrders, formatatMoeda,  sumNestedField, formatWeight} from '@/utils/helpers.js';
 
 
 // 1️⃣ Props opcionais (default vazio)
 const props = defineProps({
-  startDate: { type: String, default: '' },
-  startEnd:  { type: String, default: '' }
+  startDate: { type: Date, required: false, default: () => new Date(Date.now() - 30*24*60*60*1000) },
+  endDate:   { type: Date, required: false, default: () => new Date() }
 })
 // 2️⃣ Defaults: hoje e 30 dias atrás
 const hoje       = new Date()
@@ -169,7 +170,7 @@ const totalWeight = computed(() =>
       <div class="card">
         <router-link :to="{ name: 'pedidos' }">
           <div class="total">
-            <strong>{{ totalWeightFormatted }}</strong>
+            <strong>{{ totalWeightFormatted }} </strong>
           </div>
           <div class="description">
             <span>Peso dos pedidos</span>
@@ -189,7 +190,7 @@ const totalWeight = computed(() =>
       </div>
     </div>
   </section>
-  {{ pedidosFiltrados }}
+ 
   <section class="primary_section tables">
     <TabelaPedidos :dados="pedidosFiltrados" />
   </section>
