@@ -3,19 +3,20 @@
     <input 
       v-model="termoBusca" 
       type="text"
-      placeholder="Buscar pedidos..."
+      placeholder="Digite a sua busca"
       @input="emitirBusca"
     >
+    <IconSearch class="search-icon" />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+  import { ref } from 'vue';
+  import IconSearch from '@/components/icons/IconSearch.vue'
+  const emit = defineEmits(['buscar']);
+  const termoBusca = ref('');
 
-const emit = defineEmits(['buscar']);
-const termoBusca = ref('');
-
-const emitirBusca = () => {
-  emit('buscar', termoBusca.value); // Emite o evento de busca com o termo atual
-};
+  const emitirBusca = () => {
+    emit('buscar', termoBusca.value); // Emite o evento de busca com o termo atual
+  };
 </script>

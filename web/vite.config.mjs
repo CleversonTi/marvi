@@ -69,7 +69,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://waysuplementos.bisws.com.br/rest/all/V1',
+        target: 'https://www.waysuplementos.com.br/rest/all/V1',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ''),

@@ -1,51 +1,74 @@
 <template>
-  <section class="tabela-pedidos">
-    <table>
-      <thead>
-        <tr>
-          <th><strong>Número do Pedido</strong></th>
-          <th><strong>Cliente</strong></th>
-          <th><strong>Representante</strong></th>
-          <th><strong>Data Entrada</strong></th>
-          <th><strong>Vencimento</strong></th>
-          <th><strong>Situação</strong></th>
-          <th><strong>Valor Total (R$)</strong></th>
-          <th><strong>Status</strong></th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- linha única quando não há resultados -->
-        <tr v-if="paginated.length === 0">
-          <td
-            colspan="9"
-            class="no-results"
-          >
-            Sem resultados
-          </td>
-        </tr>
-        <!-- linhas paginadas -->
-        <tr
-          v-for="(pedido, i) in pagedData"
-          :key="i"
+  <section class="tabela-pedidos list">
+    <!-- HTML -->
+    <div class="cards-container">
+      <div v-if="paginated.length === 0">
+        <td
+          colspan="9"
+          class="no-results"
         >
-          <td><span class="element-item">{{ pedido.increment_id }}</span></td>
-          <td><span class="element-item">{{ pedido.customer_firstname }}</span></td>
-          <td><span class="element-item">{{ pedido.customer_group_id }}</span></td>
-          <td><span class="element-item">{{ pedido.created_at }}</span></td>
-          <td><span class="element-item">{{ pedido.updated_at }}</span></td>
-          <td><span class="element-item">{{ pedido.state }}</span></td>
-          <td><span class="element-item">{{ formatarMoeda(pedido.base_grand_total) }}</span></td>
-          <td>
+          Sem resultados
+        </td>
+      </div>
+      <div
+        v-for="(pedido, i) in pagedData"
+        :key="i"
+        class="order-card"
+      >
+        <h3 class="card-title">
+          Nº do Pedido
+        </h3>
+        <p class="order-number">
+          <span class="element-item">{{ pedido.increment_id }}</span>
+        </p>
+
+        <div class="field-group">
+          <div class="field">
+            <span class="field-label">Cliente</span>
+            
+            <span class="element-item">{{ pedido.customer_firstname }}</span>
+          </div>
+          <div class="field">
+            <span class="field-label">Representante</span>
+            <span class="field-value">{{ pedido.customer_group_id }}</span>
+          </div>
+        </div>
+
+        <div class="field-group date-group">
+          <div class="field">
+            <span class="field-label">Entrada</span>
+            <span class="field-value">{{ formatarDataHora(pedido.created_at) }}</span>
+          </div>
+          <div class="field">
+            <span class="field-label">Vencimento</span>
+            <span class="field-value">{{ formatarDataHora(pedido.updated_at) }}</span>
+          </div>
+        </div>
+
+        <div class="field-group bottom-group">
+          <div class="field">
+            <span class="field-label">Situação</span>
+            <span class="field-value">{{ pedido.hold_before_status }}</span>
+          </div>
+          <div class="field">
+            <span class="field-label">Total</span>
+            <span class="field-value">{{ formatarMoeda(pedido.base_grand_total) }}</span>
+          </div>
+          <div class="field">
+            <span class="field-label">Status</span>
             <span
               class="status-badge"
               :class="pedido.status.toLowerCase().replace(/\s+/g,'-')"
             >
               {{ pedido.status }}
             </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- repita .order-card quantas vezes for necessário -->
+    </div>
+
 
     <footer>
       <div class="pagination">
@@ -115,7 +138,7 @@ import IconNavigateNext   from '@/components/icons/IconNavigate_next.vue';
 import IconNavigatePrev   from '@/components/icons/IconNavigate_prev';
 import IconArrowDropDown  from '@/components/icons/Icon_arrow_drop_down.vue'
 import { ChevronUp } from 'lucide-vue-next'
-import { formatarMoeda } from '@/utils/helpers.js'
+import { formatarMoeda, formatarData, formatarDataHora } from '@/utils/helpers.js'
 
 import ModalFiltro from '@/components/modals/ModalFiltro.vue';
 const props = defineProps({
@@ -143,7 +166,6 @@ const totalPedidosCount     = computed(() => totalItems.value)
 const filtered = computed(() => {
   if (!props.termoBusca) return props.dados
   const term = props.termoBusca.toLowerCase()
-  console.log('filtered', props.dados);
   return props.dados.filter(p =>
     String(p.increment_id).toLowerCase().includes(term) ||
     String(p.customer_firstname).toLowerCase().includes(term) ||
@@ -174,7 +196,6 @@ const displayRange = computed(() => {
 })
 const pagedData = computed(() => {
   const start = (currentPage.value - 1) * itensPorPagina.value
-  console.log('pagedData', start, start + itensPorPagina.value);
   return filtered.value.slice(start, start + itensPorPagina.value)
 })
 function prevPage() {
@@ -186,69 +207,3 @@ function nextPage() {
 // 8️⃣ Se trocar itensPorPagina, volta à página 1
 watch(itensPorPagina, () => currentPage.value = 1)
 </script>
-
-<style scoped lang="scss">
-
-
-/* paginação */
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 12px;
-}
-.page-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.page-controls button {
-  border: none;
-  background: none;
-  font-size: 1.25rem;
-  cursor: pointer;
-  padding: 4px 8px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-
-
-.no-results {
-  text-align: center;
-  color: #999;
-  padding: 16px 0;
-}
-.page-controls button:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-.per-page {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.per-page select {
-  padding: 4px;
-}
-
-/* status-badge (exemplo) */
-.status-badge {
-  padding: 2px 8px;
-  border-radius: 12px;
-  color: #fff;
-  font-size: 0.75rem;
-  text-transform: capitalize;
-
-  &.faturado       { background: #007bff; }
-  &.em-aberto      { background: #fd7e14; }
-  &.enviado        { background: #28a745; }
-  &.não-faturado,
-  &.nao-faturado   { background: #dc3545; }
-  &.entregue       { background: #6c757d; }
-  &.aguardando     { background: #ffc107; color: #212529; }
-}
-</style>

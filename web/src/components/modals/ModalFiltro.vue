@@ -5,7 +5,6 @@
     @click.self="fecharModal"
   >
     <div class="modal-content">
-      <h3>Filtrar Pedidos</h3>
       <button
         class="close-button"
         @click="fecharModal"
@@ -13,63 +12,103 @@
         X
       </button>
       <div class="filtros-container">
-        <div>
+        <div class="filtros-box">
           <h3>Situação</h3>
-          <div>
-            <label>
-              <input
-                v-model="situacaoSelecionada"
-                type="checkbox"
-                value="Atrasado"
-              > Atrasado
-            </label>
-            <label>
-              <input
-                v-model="situacaoSelecionada"
-                type="checkbox"
-                value="Pendente"
-              > Pendente</label>
-          </div>
+          
+          <ul class="filtros-item">
+            <li>
+              <label>
+                <input
+                  v-model="situacaoSelecionada"
+                  type="checkbox"
+                  value="Atrasado"
+                > 
+                <span>Atrasado</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input
+                  v-model="situacaoSelecionada"
+                  type="checkbox"
+                  value="Pendente"
+                > 
+                <span>
+                  Pendente
+
+                </span>
+              </label>
+            </li>
+          </ul>
         </div>
-        <div>
+        <div class="filtros-box">
           <h3>Status</h3>
-          <div>
-            <label>
-              <input
+         
+          <ul class="filtros-item">
+            <li>
+              <label>
+                <input
+                  v-model="statusSelecionado"
+                  type="checkbox"
+                  value="Em aberto"
+                > 
+                <span>
+                  Em aberto
+                
+                </span>
+              </label>
+            </li>
+            <li>
+              <label><input
+                       v-model="statusSelecionado"
+                       type="checkbox"
+                       value="Enviado"
+                     > 
+                <span>
+                  Enviado
+                </span> 
+            
+              </label>
+            </li>
+            <li>
+              <label>
+                <input
+                  v-model="statusSelecionado"
+                  type="checkbox"
+                  value="Entregue"
+                > 
+                <span>
+                  Entregue
+                </span>
+              </label>
+            </li>
+            <li>
+              <label><input
                 v-model="statusSelecionado"
                 type="checkbox"
-                value="Em aberto"
-              > Em aberto
-            </label>
-            <label><input
-              v-model="statusSelecionado"
-              type="checkbox"
-              value="Enviado"
-            > Enviado </label>
-            <label><input
-              v-model="statusSelecionado"
-              type="checkbox"
-              value="Entregue"
-            > Entregue</label>
-            <label><input
-              v-model="statusSelecionado"
-              type="checkbox"
-              value="Faturado"
-            > Faturado</label>
-            <label><input
-              v-model="statusSelecionado"
-              type="checkbox"
-              value="Não Faturado"
-            > Não Faturado</label>
-          </div>
+                value="Faturado"
+              > <span>Faturado</span></label>
+            </li>
+            <li>
+              <label>
+                <input
+                  v-model="statusSelecionado"
+                  type="checkbox"
+                  value="Não Faturado"
+                > 
+                <span>Não Faturado</span>
+              </label>
+            </li>
+          </ul>
         </div>
-        
-        <button
-          class="filtrar-button"
-          @click="aplicarFiltros"
-        >
-          Filtrar
-        </button>
+        <div class="filtros-box">
+          <button
+            class="filtrar-button"
+            @click="aplicarFiltros"
+          >
+            Filtrar
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -90,12 +129,5 @@ const aplicarFiltros = () => {
 };
 </script>
 <style scoped lang="scss">
-button{
-  &.filtrar-button{
-    font-size: 14px;
-    &:hover{
-      background: darken( #1A9701, 5%);
-    }
-  }
-}
+
 </style>

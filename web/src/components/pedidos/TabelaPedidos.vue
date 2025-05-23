@@ -16,11 +16,11 @@
           v-for="(pedido, index) in dados"
           :key="index"
         >
-          <td>{{ pedido.Cliente || 'Comércio e Representações' }}</td>
-          <td>{{ pedido.NumeroPedido || '000000000-0' }}</td>
-          <td>{{ formatarMoeda(pedido.ValorTotal) }}</td>
-          <td>{{ pedido.PesoFaturado ? pedido.PesoFaturado.toFixed(4) : '0.0000' }}</td>
-          <td>{{ pedido.Situacao || 'Pago' }}</td>
+          <td>{{ pedido.increment_id }}</td>
+          <td>{{ pedido.created_at }}</td>
+          <td>{{ pedido.created_at }}</td>
+          <td>{{ formatWeight(pedido.weight) }}</td>
+          <td>{{ pedido.state }}</td>
         </tr>
       </tbody>
     </table>
@@ -34,6 +34,10 @@
 </template>
 
 <script setup>
+import {
+  formatarMoeda,
+  formatWeight
+} from '@/utils/helpers.js';
 const props = defineProps({
   dados: {
     type: Array,
